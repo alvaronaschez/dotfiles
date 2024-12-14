@@ -26,7 +26,8 @@ vim.opt.listchars:append {
 	nbsp = "•",
 }
 
--- autopairs
+-- autopairs without plugin
+--[[
 vim.api.nvim_set_keymap("i", '"', '""<left>', {noremap = true})
 vim.api.nvim_set_keymap("i", "'", "''<left>", {noremap = true})
 vim.api.nvim_set_keymap("i", "(", "()<left>", {noremap = true})
@@ -34,6 +35,9 @@ vim.api.nvim_set_keymap("i", "[", "[]<left>", {noremap = true})
 vim.api.nvim_set_keymap("i", "{", "{}<left>", {noremap = true})
 vim.api.nvim_set_keymap("i", "{<CR>", "{<CR>}<ESC>O", {noremap = true})
 vim.api.nvim_set_keymap("i", "{;<CR>", "{<CR>};<ESC>O", {noremap = true})
+]]
+
+require("config.lazy")
 
 --[[
 **** amsp end ****
