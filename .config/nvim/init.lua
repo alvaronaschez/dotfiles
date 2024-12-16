@@ -18,13 +18,10 @@ vim.api.nvim_set_keymap("", ";", ":", {noremap = true})
 
 -- hidden characters
 vim.opt.list = true
-vim.opt.listchars:append {
-	tab = "→ ",
-	trail = "·",
-	extends = "…",
-	precedes = "…",
-	nbsp = "•",
-}
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+--vim.opt.listchars:append {tab = "→ ",trail = "·",extends = "…",precedes = "…",nbsp = "•",space = "·",}
+
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- autopairs without plugin
 --[[
