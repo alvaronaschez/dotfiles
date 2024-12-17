@@ -120,12 +120,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias nv=nvim
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get dist-upgrade"
 alias autoclean="sudo apt-get autoclean"
 alias autoremove="sudo apt autoremove"
 alias install="sudo apt-get install"
 alias uninstall="sudo apt-get purge --autoremove"
+alias remove="sudo apt-get purge --autoremove"
 alias dprune="docker system prune -af && docker volume prune -af && docker image prune -af"
 alias git-delete-all-branches-except-current='git branch -D $(git branch)'
 alias cdw="cd ~/Workspace"
