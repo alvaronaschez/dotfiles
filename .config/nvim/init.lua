@@ -76,9 +76,6 @@ vim.api.nvim_set_keymap("i", "{;<CR>", "{<CR>};<ESC>O", {noremap = true})
 ]]
 
 require("config.lazy")
-require("lualine").setup({
-	options = { theme = "dracula" },
-})
 
 --[[
 **** amsp end ****
