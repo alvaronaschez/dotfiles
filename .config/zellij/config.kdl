@@ -282,7 +282,6 @@ plugins {
 // theme "nord"
 // theme "menace"
 // theme "nightfox"
-theme "nightfox"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -366,3 +365,23 @@ copy_command "wl-copy"                    // wayland
 // Default: false
 //
 // disable_session_metadata true
+
+themes {
+    default {
+        fg "#FFFFFF"
+        bg "#2E3440"
+        black "#000000"
+        red "#000000"
+        green "#808b96"
+        yellow "#EBCB8B"
+        blue "#81A1C1"
+        magenta "#B48EAD"
+        cyan "#88C0D0"
+        white "#FFFFFF"
+        orange "#FFFFFF"
+    }
+}
+
+
+//theme "menace"
+theme "default"
