@@ -20,14 +20,14 @@ set hidden
 nnoremap ; :
 "set exrc " use local .vimrc files
 
-" autopairs
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+" autopairs without a plugin
+" inoremap " ""<left>
+" inoremap ' ''<left>
+" inoremap ( ()<left>
+" inoremap [ []<left>
+" inoremap { {}<left>
+" inoremap {<CR> {<CR>}<ESC>O
+" inoremap {;<CR> {<CR>};<ESC>O
 
 
 call plug#begin()
@@ -38,13 +38,15 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'jiangmiao/auto-pairs'
+
 "Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'rhysd/vim-clang-format'
 
-"Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'roxma/nvim-yarp'
@@ -58,7 +60,8 @@ call plug#end()
 "let g:ale_linters = {'c': ['gcc']}
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='molokai'
+" let g:airline_theme='deus'
+let g:airline_theme='violet'
 
 " tagbar
 nmap <F5> :TagbarToggle<CR>
