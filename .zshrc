@@ -120,6 +120,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias v=vim
 alias nv=nvim
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get dist-upgrade"
