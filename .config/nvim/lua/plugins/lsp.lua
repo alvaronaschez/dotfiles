@@ -43,7 +43,9 @@ return {
 		-- These are example language servers. 
 		-- require('lspconfig').gleam.setup{}
 		-- require('lspconfig').ocamllsp.setup{}
-		require('lspconfig').lua_ls.setup{}
+		require('lspconfig').lua_ls.setup{
+			settings = {Lua = {diagnostics = {globals = {"vim"}}}}
+		}
 		local cmp = require('cmp')
 
 		cmp.setup({
