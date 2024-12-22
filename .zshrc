@@ -151,6 +151,14 @@ export b=~/Bookshelf
 export l=~/Workspace/linux
 export k=~/Workspace/linux/kernel/stable
 
+# st 
+# Suckless' Simple Terminal
+# https://git.suckless.org/st/file/FAQ.html
+function zle-line-init () { echoti smkx }
+function zle-line-finish () { echoti rmkx }
+zle -N zle-line-init
+zle -N zle-line-finish
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
