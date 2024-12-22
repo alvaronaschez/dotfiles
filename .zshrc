@@ -128,7 +128,7 @@ alias upgrade="sudo apt-get dist-upgrade"
 alias autoclean="sudo apt-get autoclean"
 alias autoremove="sudo apt autoremove"
 alias install="sudo apt-get install"
-alias uninstall="sudo apt-get purge --autoremove"
+# alias uninstall="sudo apt-get purge --autoremove"
 alias remove="sudo apt-get purge --autoremove"
 alias dprune="docker system prune -af && docker volume prune -af && docker image prune -af"
 alias git-delete-all-branches-except-current='git branch -D $(git branch)'
@@ -137,23 +137,27 @@ alias cdb="cd ~/Bookshelf"
 alias cdd="cd ~/Downloads"
 alias cddot="cd ~/dotfiles"
 alias cdnv="cd ~/.config/nvim"
+# alias cdk="cd ~/Workspace/linux/kernel/stable"
 alias vzsh="vim ~/.zshrc"
+alias nvzsh="nvim ~/.zshrc"
 alias vvim="vim ~/.vimrc"
-alias vnvim="nvim ~/.config/nvim/init.lua"
+alias vnvim="vim ~/.config/nvim/init.lua"
 alias vtmux="vim ~/.tmux.conf"
+alias nvtmux="nvim ~/.tmux.conf"
 alias vranger="vim ~/.config/ranger/rifle.conf"
+alias nvranger="nvim ~/.config/ranger/rifle.conf"
 alias vneofetch="vim ~/.config/neofetch/config.conf"
+alias nvneofetch="nvim ~/.config/neofetch/config.conf"
 alias zj=zellij
 alias vzj="vim ~/.config/zellij/config.kdl"
+alias nvzj="nvim ~/.config/zellij/config.kdl"
 alias vzellij="vim ~/.config/zellij/config.kdl"
+alias nvzellij="nvim ~/.config/zellij/config.kdl"
 alias bat=batcat
-export w=~/Workspace
-export b=~/Bookshelf
-export l=~/Workspace/linux
-export k=~/Workspace/linux/kernel/stable
 
 # st 
 # Suckless' Simple Terminal
+# make home key work
 # https://git.suckless.org/st/file/FAQ.html
 function zle-line-init () { echoti smkx }
 function zle-line-finish () { echoti rmkx }
@@ -165,7 +169,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
@@ -178,11 +182,24 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/home/alvaro/development/flutter/bin
 
 # go
-export PATH=$PATH:/usr/local/go/bin
+# export PATH=$PATH:/usr/local/go/bin
+# sudo ln -s  /usr/local/go/bin/go /usr/local/bin
+# sudo ln -s  /usr/local/go/bin/gofmt /usr/local/bin
 
 # zellij
-export PATH=$PATH:/usr/local/zellij/bin
+# export PATH=$PATH:/usr/local/zellij/bin
+# sudo ln -s  /usr/local/zellij/bin/zellij /usr/local/bin
 
 # neovim
-export PATH=$PATH:/usr/local/nvim/bin
+# export PATH=$PATH:/usr/local/nvim/bin
+# sudo ln -s  /usr/local/nvim/bin/nvim /usr/local/bin
+
+# manually installed stuff in /usr/local/bin
+# go
+# zellij
+# neovim
+
+# manually installed stuff using .deb files
+# vieb
+# balena-etcher
 
