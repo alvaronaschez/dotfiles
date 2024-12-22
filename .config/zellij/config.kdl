@@ -367,7 +367,7 @@ copy_command "wl-copy"                    // wayland
 // disable_session_metadata true
 
 themes {
-    default {
+    bnw {
         fg "#FFFFFF"
         bg "#2E3440"
         black "#000000"
@@ -383,5 +383,5 @@ themes {
 }
 
 
-//theme "menace"
-theme "default"
+theme "menace"
+//theme "bnw"
