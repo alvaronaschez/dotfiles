@@ -121,6 +121,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls --color=always"
+alias grep="grep --color=always"
+alias rg="rg --color=always"
 alias v=vim
 alias nv=nvim
 alias update="sudo apt-get update"
