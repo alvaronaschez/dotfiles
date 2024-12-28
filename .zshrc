@@ -125,6 +125,10 @@ alias grep="grep --color=always"
 alias rg="rg --color=always"
 alias v=vim
 alias nv=nvim
+alias tx=tmux
+alias tm=tmux
+alias nvsway="nvim ~/.config/sway/config"
+alias vsway="vim ~/.config/sway/config"
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get dist-upgrade"
 alias autoclean="sudo apt-get autoclean"
