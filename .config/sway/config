@@ -1,4 +1,5 @@
 # Default config for sway
+# Originally placed in /etc/sway/config
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -39,13 +40,13 @@ output * bg ~/Pictures/Mario.jpg fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout $((2*60)) 'swaylock -f -i ~/Pictures/Mario.jpg' \
+         timeout $((3*60)) 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
+# This will lock your screen after 2 minutes of inactivity, then turn off
+# your displays after another 1 minute, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
