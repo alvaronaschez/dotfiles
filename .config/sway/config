@@ -17,10 +17,12 @@
 # bluetooth - blueman
 # sound - pactl(pulseaudio-utils) pamixer pavucontrol
 # displays - wdisplays
-# network - nmtui
+# network - nmtui nm-connection-editor nmcli
+# file explorer - ranger nautilus
+# document viewer - evince
+# video player - mpv
 #
 ## TODO
-# network
 # usb
 # bluetooth
 # notifications?
