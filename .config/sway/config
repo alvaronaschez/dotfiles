@@ -5,11 +5,14 @@
 #
 # Read `man 5 sway` for a complete reference.
 #
-# dependencies:
+## dependencies:
 # brightnessctl swaylock swayidle
-# pulseaudio-utils pamixer pavucontrol
-# wdisplays swayimg
-# xdg-desktop-portal-wlr xwayland sway-notification-center grimshot
+# pulseaudio-utils pamixer
+# swayimg sway-notification-center grimshot
+# xdg-desktop-portal-wlr xwayland
+#
+## guis
+# wdisplays  pavucontrol
 
 ### Variables
 #
@@ -68,6 +71,10 @@ exec swayidle -w \
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input "type:keyboard" {
+    xkb_layout us
+    xkb_variant altgr-intl
+}
 
 ### Key bindings
 #
