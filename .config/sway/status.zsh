@@ -9,7 +9,9 @@ function battery(){
     echo "$state $percentage $power_supply"
 }
 
-date=$(date +'%a %Y-%m-%d %I:%M:%S %p')
+date=$(date +'%Y-%m-%d %a %H:%M:%S')
 
-echo  $(battery) \| $date
+sound=$(pamixer --get-volume-human)
+
+echo  ssink\ $sound \| $(battery) \| $date
 

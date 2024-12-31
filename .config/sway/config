@@ -4,6 +4,12 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+#
+# dependencies:
+# brightnessctl swaylock swayidle
+# pulseaudio-utils pamixer pavucontrol
+# wdisplays swayimg
+# xdg-desktop-portal-wlr xwayland sway-notification-center grimshot
 
 ### Variables
 #
@@ -225,5 +231,21 @@ bar {
 
 include /etc/sway/config.d/*
 
+# --locked flags allow the buttons to be used whilst the screen is locked.
+
+# sound
+## sudo apt-get install pamixer
+bindsym --locked XF86AudioRaiseVolume exec pamixer -i 5
+#bindsym --locked XF86AudioLowerVolume exec pamixer -d 5
+#bindsym --locked XF86AudioMute exec pamixer -t
+## sudo apt-get install pulseaudio-utils
+#bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+## sudo apt-get install pavucontrol
+
+# brightness
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
