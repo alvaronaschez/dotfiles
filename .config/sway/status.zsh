@@ -13,5 +13,5 @@ date=$(date +'%Y-%m-%d %a %H:%M:%S')
 
 sound=$(pamixer --get-volume-human)
 
-echo  ssink\ $sound \| $(battery) \| $date
+echo  sink\ $sound \| $(battery) \| $date
 

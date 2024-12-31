@@ -10,9 +10,25 @@
 # pulseaudio-utils pamixer
 # swayimg sway-notification-center grimshot
 # xdg-desktop-portal-wlr xwayland
+# !? qtwayland5 qt6-wayland
+#
+## control stuff
+# usb - udiskctl
+# bluetooth - blueman
+# sound - pactl(pulseaudio-utils) pamixer pavucontrol
+# displays - wdisplays
+# network - nmtui
+#
+## TODO
+# network
+# usb
+# bluetooth
+# notifications?
+# launcher?
+# capture screen
 #
 ## guis
-# wdisplays  pavucontrol
+# wdisplays  pavucontrol nmtui
 
 ### Variables
 #
@@ -44,6 +60,17 @@ output * bg ~/Pictures/Mario.jpg fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+set $laptop_screen eDP-1
+set $external_monitor DP-2
+output $laptop_screen pos 0 1080 res 1920x1200
+output $external_monitor pos 0 0 res 1920x1080
+focus output $external_monitor
+# clamshell mode
+bindswitch --reload --locked lid:on output $laptop_screen disable
+bindswitch --reload --locked lid:off output $laptop_screen enable
+# workspaces
+workspace 1 output $external_monitor
+workspace 2 output $laptop_screen
 
 ### Idle configuration
 #
