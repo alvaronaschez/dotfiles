@@ -14,7 +14,7 @@
 #
 ## control stuff
 # usb - udiskctl
-# bluetooth - blueman
+# bluetooth - blueman - From blueman-manager, go in View->Plugins and uncheck "StatusNotifierItem"
 # sound - pactl(pulseaudio-utils) pamixer pavucontrol
 # displays - wdisplays
 # network - nmtui nm-connection-editor nmcli
@@ -26,7 +26,6 @@
 #
 ## TODO
 # usb
-# bluetooth
 # notifications?
 # launcher?
 # capture screen
