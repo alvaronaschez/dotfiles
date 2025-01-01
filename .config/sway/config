@@ -58,9 +58,9 @@ exec swaymsg "workspace 1; exec $term"
 # Example configuration:
 #
 exec swayidle -w \
-         timeout $((2*60)) 'swaylock -f -i ~/Pictures/Mario.jpg' \
+         timeout $((2*60)) 'swaylock -fFe -i ~/Pictures/Mario.jpg' \
          timeout $((3*60)) 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep 'swaylock -fFe -c 000000'
 #
 # This will lock your screen after 2 minutes of inactivity, then turn off
 # your displays after another 1 minute, and turn your screens back on when
@@ -98,7 +98,7 @@ input "type:keyboard" {
     bindsym $mod+d exec $menu
 
     # lock screen
-    bindsym $mod+Escape exec 'swaylock -i ~/Pictures/Mario.jpg'
+    bindsym $mod+Escape exec 'swaylock -fFe -i ~/Pictures/Mario.jpg'
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
