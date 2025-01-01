@@ -23,6 +23,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="fino"
 
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -117,9 +118,27 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
+function __confirm() {
+	#echo "About to execute $1 command"
+	echo "About to execute '${@:1}'"
+	echo -n "Would you like to proceed y/n? "
+	read reply
+
+	if [ "$reply" = y -o "$reply" = Y ]
+	then
+	   "${@:1}"
+	else
+	   echo "'${@:1}' cancelled"
+	fi
+}
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sd="__confirm shutdown now"
+alias rs="__confirm shutdown -r now"
+# alias sdn="shutdown now"
+# alias rst="shutdown -r now"
 alias ls="ls --color=always"
 # alias grep="grep --color=always"
 alias rg="rg --color=always"
@@ -187,8 +206,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# flutter
-export PATH=$PATH:/home/alvaro/development/flutter/bin
+# neovim
+# export PATH=$PATH:/usr/local/nvim/bin
+# sudo ln -s  /usr/local/nvim/bin/nvim /usr/local/bin
 
 # go
 # export PATH=$PATH:/usr/local/go/bin
@@ -199,14 +219,16 @@ export PATH=$PATH:/home/alvaro/development/flutter/bin
 # export PATH=$PATH:/usr/local/zellij/bin
 # sudo ln -s  /usr/local/zellij/bin/zellij /usr/local/bin
 
-# neovim
-# export PATH=$PATH:/usr/local/nvim/bin
-# sudo ln -s  /usr/local/nvim/bin/nvim /usr/local/bin
+# flutter
+# export PATH=$PATH:/usr/local/flutter/bin
+# sudo ln -s /usr/local/flutter/bin/flutter /usr/local/bin
+# sudo ln -s /usr/local/flutter/bin/dart /usr/local/bin
 
 # manually installed stuff in /usr/local/bin
+# neovim
 # go
 # zellij
-# neovim
+# flutter
 
 # manually installed stuff using .deb files
 # vieb
