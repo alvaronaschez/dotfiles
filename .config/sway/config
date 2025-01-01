@@ -5,34 +5,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 #
-## dependencies:
-# brightnessctl swaylock swayidle
-# pulseaudio-utils pamixer
-# swayimg sway-notification-center grimshot
-# xdg-desktop-portal-wlr xwayland
-# !? qtwayland5 qt6-wayland
-#
-## control stuff
-# usb - udiskctl
-# bluetooth - blueman - From blueman-manager, go in View->Plugins and uncheck "StatusNotifierItem"
-# sound - pactl(pulseaudio-utils) pamixer pavucontrol
-# displays - wdisplays
-# network - nmtui nm-connection-editor nmcli
-# file explorer - ranger nautilus
-# document viewer - evince
-# video player - mpv
-# markdown - neovim + Glow plugin
-# markdown - lookatme? mdp? formiko?(heavy)
-#
-## TODO
-# usb
-# notifications?
-# launcher?
-# capture screen
-#
-## guis
-# wdisplays  pavucontrol nmtui
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -44,7 +16,9 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # set $term foot
-set $term st
+# set $term st
+set $term st -e tmux
+set $browser vieb
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -74,6 +48,10 @@ bindswitch --reload --locked lid:off output $laptop_screen enable
 # workspaces
 workspace 1 output $external_monitor
 workspace 2 output $laptop_screen
+exec swaymsg "workspace 1; exec $term"
+#exec swaymsg "workspace 1; exec st -e tmux"
+#exec swaymsg "workspace 1; exec $browser"
+
 
 ### Idle configuration
 #
@@ -273,6 +251,7 @@ include /etc/sway/config.d/*
 # sound
 ## sudo apt-get install pamixer
 bindsym --locked XF86AudioRaiseVolume exec pamixer -i 5
+# pamixer automatically prevents you from increasing the volume over 100%
 #bindsym --locked XF86AudioLowerVolume exec pamixer -d 5
 #bindsym --locked XF86AudioMute exec pamixer -t
 ## sudo apt-get install pulseaudio-utils
