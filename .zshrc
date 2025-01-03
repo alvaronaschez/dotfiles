@@ -185,14 +185,14 @@ alias vzellij="vim ~/.config/zellij/config.kdl"
 alias nvzellij="nvim ~/.config/zellij/config.kdl"
 alias bat=batcat
 
-# st 
-# Suckless' Simple Terminal
-# make home key work
-# https://git.suckless.org/st/file/FAQ.html
-function zle-line-init () { echoti smkx }
-function zle-line-finish () { echoti rmkx }
-zle -N zle-line-init
-zle -N zle-line-finish
+# # st 
+# # Suckless' Simple Terminal
+# # make home key work
+# # https://git.suckless.org/st/file/FAQ.html
+# function zle-line-init () { echoti smkx }
+# function zle-line-finish () { echoti rmkx }
+# zle -N zle-line-init
+# zle -N zle-line-finish
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
