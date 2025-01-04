@@ -90,95 +90,14 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-function __confirm() {
-	#echo "About to execute $1 command"
-	echo "About to execute '${@:1}'"
-	echo -n "Would you like to proceed y/n? "
-	read reply
-
-	if [ "$reply" = y -o "$reply" = Y ]
-	then
-	   "${@:1}"
-	else
-	   echo "'${@:1}' cancelled"
-	fi
-}
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sd="__confirm shutdown now"
-alias rs="__confirm shutdown -r now"
-# alias sdn="shutdown now"
-# alias rst="shutdown -r now"
-alias ls="ls --color=always"
-# alias grep="grep --color=always"
-alias rg="rg --color=always"
-alias v=vim
-alias nv=nvim
-alias tx=tmux
-alias tm=tmux
-alias nvsway="nvim ~/.config/sway/config"
-alias vsway="vim ~/.config/sway/config"
-alias nvfoot="nvim ~/.config/foot/foot.ini"
-alias vfoot="vim ~/.config/foot/foot.ini"
-alias update="sudo apt-get update"
-alias upgrade="sudo apt-get dist-upgrade"
-alias autoclean="sudo apt-get autoclean"
-alias autoremove="sudo apt autoremove"
-alias install="sudo apt-get install"
-# alias uninstall="sudo apt-get purge --autoremove"
-alias remove="sudo apt-get purge --autoremove"
-alias dprune="docker system prune -af && docker volume prune -af && docker image prune -af"
-alias git-delete-all-branches-except-current='git branch -D $(git branch)'
-alias cdw="cd ~/Workspace"
-alias cdb="cd ~/Bookshelf"
-alias cdd="cd ~/Downloads"
-alias cdsway="cd ~/.config/sway"
-alias cdsy=cdsway
-alias cdsw=cdsway
-alias cddot="cd ~/dotfiles"
-alias cdnv="cd ~/.config/nvim"
-# alias cdk="cd ~/Workspace/linux/kernel/stable"
-alias vzsh="vim ~/.zshrc"
-alias nvzsh="nvim ~/.zshrc"
-alias szsh="source ~/.zshrc"
-alias vvim="vim ~/.vimrc"
-alias nvvim="nvim ~/.vimrc"
-alias vnvim="vim ~/.config/nvim/init.lua"
-alias nvnvim="nvim ~/.config/nvim/init.lua"
-alias vtmux="vim ~/.config/tmux/tmux.conf"
-alias nvtmux="nvim ~/.config/tmux/tmux.conf"
-alias stmux="tmux source ~/.config/tmux/tmux.conf"
-alias vgit="vim ~/.config/git/config"
-alias nvgit="nvim ~/.config/git/config"
-alias vranger="vim ~/.config/ranger/rifle.conf"
-alias nvranger="nvim ~/.config/ranger/rifle.conf"
-alias vneofetch="vim ~/.config/neofetch/config.conf"
-alias nvneofetch="nvim ~/.config/neofetch/config.conf"
-alias vzj="vim ~/.config/zellij/config.kdl"
-alias nvzj="nvim ~/.config/zellij/config.kdl"
-alias vzellij="vim ~/.config/zellij/config.kdl"
-alias nvzellij="nvim ~/.config/zellij/config.kdl"
-alias zj=zellij
-alias bat=batcat
 
 # # st 
 # # Suckless' Simple Terminal
