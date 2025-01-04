@@ -22,6 +22,7 @@ function __confirm() {
 
 alias sd="__confirm shutdown now"
 alias rs="__confirm shutdown -r now"
+alias rb=rs
 
 alias ls="ls --color=always"
 # alias grep="grep --color=always"
@@ -57,7 +58,7 @@ alias cdnv="cd ~/.config/nvim"
 
 alias nvzsh="nv ~/.zshrc"
 alias nvaliases="nv ~/.config/oh-my-zsh/custom/aliases.zsh"
-alias nval=ealiases
+alias nval=nvaliases
 alias nvsway="nv ~/.config/sway/config"
 alias nvfoot="nv ~/.config/foot/foot.ini"
 alias nvvim="nv ~/.vimrc"
