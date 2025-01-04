@@ -8,20 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="nanotech"
-# ZSH_THEME="strug"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="simple"
+#ZSH_THEME="fino"
+ZSH_THEME="asp"
 
-# ZSH_THEME="bira"
-# ZSH_THEME="dst"
-# ZSH_THEME="gnzh"
-
-# ZSH_THEME="fino"
-# ZSH_THEME="josh"
-
-ZSH_THEME="fino"
 
 
 # Set list of themes to pick from when loading at random
@@ -184,6 +173,8 @@ alias nvzj="nvim ~/.config/zellij/config.kdl"
 alias vzellij="vim ~/.config/zellij/config.kdl"
 alias nvzellij="nvim ~/.config/zellij/config.kdl"
 alias bat=batcat
+alias stmux="tmux source ~/.tmux.conf"
+alias szsh="source ~/.zshrc"
 
 # # st 
 # # Suckless' Simple Terminal
