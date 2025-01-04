@@ -159,22 +159,26 @@ alias cdnv="cd ~/.config/nvim"
 # alias cdk="cd ~/Workspace/linux/kernel/stable"
 alias vzsh="vim ~/.zshrc"
 alias nvzsh="nvim ~/.zshrc"
+alias szsh="source ~/.zshrc"
 alias vvim="vim ~/.vimrc"
+alias nvvim="nvim ~/.vimrc"
 alias vnvim="vim ~/.config/nvim/init.lua"
-alias vtmux="vim ~/.tmux.conf"
-alias nvtmux="nvim ~/.tmux.conf"
+alias nvnvim="nvim ~/.config/nvim/init.lua"
+alias vtmux="vim ~/.config/tmux/tmux.conf"
+alias nvtmux="nvim ~/.config/tmux/tmux.conf"
+alias stmux="tmux source ~/.tmux.conf"
+alias vgit="vim ~/.config/git/config"
+alias nvgit="nvim ~/.config/git/config"
 alias vranger="vim ~/.config/ranger/rifle.conf"
 alias nvranger="nvim ~/.config/ranger/rifle.conf"
 alias vneofetch="vim ~/.config/neofetch/config.conf"
 alias nvneofetch="nvim ~/.config/neofetch/config.conf"
-alias zj=zellij
 alias vzj="vim ~/.config/zellij/config.kdl"
 alias nvzj="nvim ~/.config/zellij/config.kdl"
 alias vzellij="vim ~/.config/zellij/config.kdl"
 alias nvzellij="nvim ~/.config/zellij/config.kdl"
+alias zj=zellij
 alias bat=batcat
-alias stmux="tmux source ~/.tmux.conf"
-alias szsh="source ~/.zshrc"
 
 # # st 
 # # Suckless' Simple Terminal
