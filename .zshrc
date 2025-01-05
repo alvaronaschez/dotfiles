@@ -97,6 +97,9 @@ else
 fi
 
 export PAGER=batcat
+
+# only read config from ~/.config/ranger
+# see man ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # Compilation flags
