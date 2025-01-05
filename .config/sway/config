@@ -26,7 +26,14 @@ set $browser vieb
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu wofi --show run | xargs swaymsg exec
+# set $menu wofi -n --show run | xargs swaymsg exec
+# set $menu printf $options | wofi --show dmenu -n | xargs swaymsg exec
+# set $menu tofi-run | xargs swaymsg exec --
+set $menu bemenu-run -b | xargs swaymsg exec --
+# set $options "vieb\nqutebrowser\ngoogle-chrome\nfirefox\nblueman-manager\npavucontrol\nnm-connection-editor\nwdisplays\nevince\nmpv"
+# set $menu echo $options | bemenu | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
 

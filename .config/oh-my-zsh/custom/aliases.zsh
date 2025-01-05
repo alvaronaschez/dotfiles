@@ -67,7 +67,19 @@ alias nvtmux="nv ~/.config/tmux/tmux.conf"
 alias nvgit="nv ~/.config/git/config"
 alias nvranger="nv ~/.config/ranger/rifle.conf"
 alias nvneofetch="nv ~/.config/neofetch/config.conf"
+alias nvscratch="nv ~/scratchpad.txt"
 
 alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
+alias ssway="sway reload"
 
+# show help
+alias hh="echo '\
+vieb
+qutebrowser
+blueman-manager
+pavucontrol
+nm-connection-editor
+wdisplays
+evince
+mpv'"
