@@ -96,6 +96,9 @@ else
   export EDITOR='nvim'
 fi
 
+export PAGER=batcat
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
