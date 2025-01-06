@@ -23,6 +23,9 @@ set $right l
 set $term foot tmux
 
 set $browser vieb
+
+default_border pixel 2
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
