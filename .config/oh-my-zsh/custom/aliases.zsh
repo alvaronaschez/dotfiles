@@ -41,6 +41,7 @@ alias autoremove="sudo apt autoremove"
 alias install="sudo apt-get install"
 alias remove="sudo apt-get purge --autoremove"
 alias uninstall=remove
+alias search="apt-cache search"
 
 alias dprune="docker system prune -af && docker volume prune -af && docker image prune -af"
 
@@ -84,3 +85,4 @@ nm-connection-editor
 wdisplays
 evince
 mpv'"
+

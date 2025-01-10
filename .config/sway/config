@@ -109,8 +109,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym --release Super_L exec $menu
-    # bindsym $mod+d exec $menu
+    # bindsym --release Super_L exec $menu
+    bindsym $mod+d exec $menu
 
     # lock screen
     bindsym $mod+Escape exec 'swaylock -fFe -i ~/Pictures/Mario.jpg'
