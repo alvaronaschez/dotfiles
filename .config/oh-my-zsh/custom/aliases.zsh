@@ -42,6 +42,10 @@ alias install="sudo apt-get install"
 alias remove="sudo apt-get purge --autoremove"
 alias uninstall=remove
 alias search="apt-cache search"
+# alias installed="apt list --installed"
+# alias showmanual="apt-mark showmanual"
+# alias showauto="apt-mark showauto"
+alias installed="comm -12 <(history | grep install\\s | sed -e 's/^.*install\s//' -e 's/\s/\n/g' | sort -u) <(apt-mark showmanual | sort -u)"
 
 alias dprune="docker system prune -af && docker volume prune -af && docker image prune -af"
 
@@ -58,8 +62,9 @@ alias cdnv="cd ~/.config/nvim"
 # alias cdk="cd ~/Workspace/linux/kernel/stable"
 
 alias nvzsh="nv ~/.zshrc"
-alias nvaliases="nv ~/.config/oh-my-zsh/custom/aliases.zsh"
-alias nval=nvaliases
+alias nvalias="nv ~/.config/oh-my-zsh/custom/aliases.zsh"
+alias nvaliases=nvalias
+alias nval=nvalias
 alias nvsway="nv ~/.config/sway/config"
 alias nvfoot="nv ~/.config/foot/foot.ini"
 alias nvvim="nv ~/.vimrc"

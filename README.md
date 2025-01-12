@@ -5,6 +5,7 @@ Backup of my dotfiles using [GNU Stow](https://www.gnu.org/software/stow/)
 Inspired by the excelent article [How I manage my dotfiles using GNU Stow](https://tamerlan.dev/how-i-manage-my-dotfiles-using-gnu-stow/)
 
 ## packages installed with apt
+zsh
 tmux
 sway
 ranger
@@ -18,7 +19,10 @@ qutebrowser
 
 ## manually installed stuff using .deb files
 vieb
+docker-desktop
 balena-etcher
+google-chrome
+vscode
 
 ## manually installed stuff in /usr/local/bin
 neovim
