@@ -40,11 +40,12 @@ xz-utils
 
 sudo apt-get install -yq ripgrep less fzf bat
 
-sudo apt-get install -yq waylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl \
+sudo apt-get install -yq swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl \
 sway-notification-center swayimg grimshot blueman
 
-deb http://deb.debian.org/debian bookworm-backports main
-sudo apt-get update
+sudo apt-get install -yq software-properties-common
+sudo add-apt-repository -y "deb http://deb.debian.org/debian bookworm-backports main"
+sudo apt-get update -yq
 sudo apt-get install -yq mpv yt-dlp/bookworm-backports
 
 sudo apt-get install -yq \
@@ -53,7 +54,7 @@ pavucontrol \
 pamixer \
 net-tools
 
-sudo apt-get install -yq vlc obs-studio evince evince-previewer nautilus
+sudo apt-get install -yq vlc obs-studio evince nautilus
 
 sudo apt-get install -yq luarocks
 
