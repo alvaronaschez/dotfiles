@@ -42,6 +42,8 @@ alias install="sudo apt-get install"
 alias remove="sudo apt-get purge --autoremove"
 alias uninstall=remove
 alias search="apt-cache search"
+# see 'man 5 sources.list'
+alias edit-sources="sudo vim /etc/apt/sources.list"
 # alias installed="apt list --installed"
 # alias showmanual="apt-mark showmanual"
 # alias showauto="apt-mark showauto"
@@ -75,6 +77,7 @@ alias nvranger="nv ~/.config/ranger/rifle.conf"
 alias nvneofetch="nv ~/.config/neofetch/config.conf"
 alias nvscratch="nv ~/scratchpad.txt"
 alias nvtofi="nv ~/.config/tofi/config"
+alias nvreadme="nv ~/dotfiles/README.md"
 
 alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
