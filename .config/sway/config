@@ -44,7 +44,13 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/Pictures/Mario.jpg fill
+set $bgimg "~/dotfiles/backgrounds/deb1.png"
+# set $bgimg "~/dotfiles/backgrounds/deb2.png"
+# set $bgimg "~/dotfiles/backgrounds/deb3.jpg"
+# set $bgimg "~/dotfiles/backgrounds/deb4.jpg"
+# set $bgimg "~/dotfiles/backgrounds/deb5.webp"
+# set $bgimg "~/Pictures/Mario.jpg"
+output * bg $bgimg fill
 #
 # Example configuration:
 #
@@ -72,7 +78,7 @@ exec swaymsg "workspace 1; exec $term"
 # Example configuration:
 #
 exec swayidle -w \
-         timeout $((2*60)) 'swaylock -fFe -i ~/Pictures/Mario.jpg' \
+         timeout $((2*60)) 'swaylock -fFe -i $bgimg' \
          timeout $((3*60)) 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -fFe -c 000000'
 #
@@ -113,7 +119,7 @@ input "type:keyboard" {
     bindsym $mod+d exec $menu
 
     # lock screen
-    bindsym $mod+Escape exec 'swaylock -fFe -i ~/Pictures/Mario.jpg'
+    bindsym $mod+Escape exec 'swaylock -fFe -i $bgimg'
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
