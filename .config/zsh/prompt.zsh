@@ -15,9 +15,9 @@ add-zsh-hook precmd vcs_info
 
 # Style the vcs_info message
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats '[%F{magenta}%b %u%c%f]'
+zstyle ':vcs_info:git*' formats '[%F{magenta}%b%u%c%f]'
 # Format when the repo is in an action (merge, rebase, etc)
-zstyle ':vcs_info:git*' actionformats '[%F{magenta}%b|%a %u%c%f]'
+zstyle ':vcs_info:git*' actionformats '[%F{magenta}%b|%a%u%c%f]'
 
 zstyle ':vcs_info:git*' unstagedstr '*'
 zstyle ':vcs_info:git*' stagedstr '+'

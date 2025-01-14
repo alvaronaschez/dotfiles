@@ -1,8 +1,9 @@
+# sudo apt-get update -yq && sudo apt-get dist-upgrade -yq
+# sudo apt-get install -yq git
+# git clone https://github.com/alvaronaschez/dotfiles
+
 sudo apt-get update -yq && sudo apt-get dist-upgrade -yq
 
-sudo apt-get install -yq git
-
-# git clone https://github.com/alvaronaschez/dotfiles
 
 sudo apt-get install -yq \
 tmux \
@@ -19,9 +20,9 @@ qutebrowser \
 neofetch \
 zsh \
 zsh-autosuggestions \
-zsh-syntax-highlighting
-# vim-gtk3 \
-# git \
+zsh-syntax-highlighting \
+vim-gtk3
+# git
 
 sudo apt-get install -yq \
 gcc \
@@ -63,6 +64,10 @@ qemu-system \
 libvirt-daemon-system \
 virt-manager
 
+# https://github.com/junegunn/vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 chsh -s $(which zsh)
 
 ## install docker following official website instructions
@@ -76,3 +81,7 @@ chsh -s $(which zsh)
 # vieb
 # balena-etcher
 # chrome
+
+# run this just after running this script
+stow -R .
+
