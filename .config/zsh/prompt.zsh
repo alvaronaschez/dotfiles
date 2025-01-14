@@ -1,10 +1,5 @@
 # https://sureshjoshi.com/development/zsh-prompts-that-dont-suck
-# PROMPT='%(?.%F{green}⏺.%F{red}⏺)%f %~ > '
-#
-# Autoload zsh's `add-zsh-hook` and `vcs_info` functions
-# (-U autoload w/o substition, -z use zsh style)
-# autoload -Uz add-zsh-hook vcs_info
-autoload -Uz vcs_info
+autoload -Uz add-zsh-hook vcs_info
 precmd() { vcs_info }
 
 # Set prompt substitution so we can use the vcs_info_message variable
@@ -25,8 +20,8 @@ zstyle ':vcs_info:git*' stagedstr '+'
 # but can be slow on large repos
 zstyle ':vcs_info:*:*' check-for-changes true
 
-#SYMBOL=⭙
 #SYMBOL=»
-PROMPT='%(?.%F{green}⏺.%F{red}⏺)%f [%F{blue}%~%f] ${vcs_info_msg_0_}
-> '
+PROMPT='%(?.%F{green}».%F{red}»)%f [%F{blue}%~%f] ${vcs_info_msg_0_}
+$ '
+#%F{blue}»%f '
 

@@ -68,11 +68,11 @@ source ~/dotfiles/.config/zsh/aliases.zsh
 
 # Functions ----------------------------------------------------------------------------------------
 
-# Convenient selection for files management.
-s() { selection=(); for item in "$@"; do selection+=("$(readlink -f "${item}")"); done }
-mv() { if [ "$#" -eq 0 ]; then command mv -i  "${selection[@]}" .; else command mv -i  "$@"; fi }
-cp() { if [ "$#" -eq 0 ]; then command cp -ir "${selection[@]}" .; else command cp -ir "$@"; fi }
-ln() { if [ "$#" -eq 0 ]; then command ln -s  "${selection[@]}" .; else command ln -s  "$@"; fi }
+# # Convenient selection for files management.
+# s() { selection=(); for item in "$@"; do selection+=("$(readlink -f "${item}")"); done }
+# mv() { if [ "$#" -eq 0 ]; then command mv -i  "${selection[@]}" .; else command mv -i  "$@"; fi }
+# cp() { if [ "$#" -eq 0 ]; then command cp -ir "${selection[@]}" .; else command cp -ir "$@"; fi }
+# ln() { if [ "$#" -eq 0 ]; then command ln -s  "${selection[@]}" .; else command ln -s  "$@"; fi }
 
 # Ls whenever the current working directory is changed.
 # chpwd() { l; }

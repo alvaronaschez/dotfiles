@@ -70,6 +70,22 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 chsh -s $(which zsh)
 
+
+# run this just after running this script
+mkdir -p ~/.config # so stow can work properly
+stow -R .
+
+### manual installation steps
+# open vim and run :PlugInstall
+## install
+# neovim & lua_ls
+# -> tar xzf nvim-linux64.tar.gz --one-top-level
+# -> tar xzf lua-language-server-3.13.5-linux-x64.tar.gz --one-top-level
+# vieb
+# -> sudo apt install ~/Downloads/vieb_12.1.0_amd64.deb
+# balena-etcher
+# chrome
+#
 ## install docker following official website instructions
 # docker-desktop.deb
 # docker-buildx-plugin
@@ -78,10 +94,4 @@ chsh -s $(which zsh)
 # docker-compose-plugin
 # containerd.io
 
-# vieb
-# balena-etcher
-# chrome
-
-# run this just after running this script
-stow -R .
 
