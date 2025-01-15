@@ -4,9 +4,10 @@
 # autoload -Uz compinit && compinit
 # autoload -Uz promptinit && promptinit
 
-# History settings
-export HISTSIZE=50000
-export SAVEHIST=10000
+# # History settings
+source ~/.config/zsh/omz.history.zsh
+# export HISTSIZE=50000
+# export SAVEHIST=10000
 
 # Set default editor/pager.
 # Preferred editor for local and remote sessions
@@ -27,13 +28,13 @@ setopt auto_pushd                # Make cd push the old directory onto the direc
 setopt pushd_ignore_dups         # Don't push multiple copies of the same directory onto the directory stack.
 setopt pushd_minus               # Exchanges the meanings of '+' and '-' when used with a number to specify a directory in the stack.
 
-# History.
-setopt extended_history          # Record timestamp of command in HISTFILE.
-setopt hist_expire_dups_first    # Delete duplicates first when HISTFILE size exceeds HISTSIZE.
-setopt hist_ignore_dups          # Ignore duplicated commands history list.
-setopt hist_ignore_space         # Ignore commands that start with space.
-setopt hist_verify               # Show command with history expansion to user before running it.
-setopt share_history             # Share command history data.
+# # History.
+# setopt extended_history          # Record timestamp of command in HISTFILE.
+# setopt hist_expire_dups_first    # Delete duplicates first when HISTFILE size exceeds HISTSIZE.
+# setopt hist_ignore_dups          # Ignore duplicated commands history list.
+# setopt hist_ignore_space         # Ignore commands that start with space.
+# setopt hist_verify               # Show command with history expansion to user before running it.
+# setopt share_history             # Share command history data.
 
 # Completion.
 setopt always_to_end             # If a completion is performed and a full completion is inserted, the cursor is moved to the end of the word.
@@ -61,7 +62,7 @@ alias l='ls -Ah --group-directories-first'
 alias md='mkdir -p'
 alias dl='trash-put'
 alias a='7z'
-alias g='git'
+# alias g='git'
 
 source ~/dotfiles/.config/zsh/aliases.zsh
 
@@ -82,6 +83,7 @@ source ~/dotfiles/.config/zsh/aliases.zsh
 
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/dotfiles/.config/zsh/omz.git.zsh
 source ~/dotfiles/.config/zsh/git.plugin.zsh
 
 # Startup ------------------------------------------------------------------------------------------

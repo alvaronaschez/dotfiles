@@ -9,7 +9,6 @@ sudo apt-get install -yq \
 tmux \
 stow \
 curl \
-fonts-hack \
 foot \
 manpages-dev \
 info \
@@ -23,6 +22,7 @@ zsh-autosuggestions \
 zsh-syntax-highlighting \
 vim-gtk3
 # git
+
 
 sudo apt-get install -yq \
 gcc \
@@ -42,7 +42,8 @@ xz-utils
 sudo apt-get install -yq ripgrep less fzf bat
 
 sudo apt-get install -yq swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl \
-sway-notification-center swayimg grimshot blueman
+sway-notification-center swayimg grimshot \
+blueman libspa-0.2-bluetooth # https://askubuntu.com/a/1480049
 
 sudo apt-get install -yq software-properties-common
 sudo add-apt-repository -y "deb http://deb.debian.org/debian bookworm-backports main"
@@ -64,7 +65,19 @@ qemu-system \
 libvirt-daemon-system \
 virt-manager
 
+
+## install Hack nerd-font
+# github.com/ryanoasis/nerd-fonts
+# apt-get install -yq fonts-hack # this doesn't come with glyphs
+# just backup ~/.local/share/fonts folder?
+curl -fLo ~/.local/share/fonts/HackNerdFontMono-Regular.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Regular/HackNerdFontMono-Regular.ttf
+curl -fLo ~/.local/share/fonts/HackNerdFontMono-Bold.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Bold/HackNerdFontMono-Bold.ttf
+curl -fLo ~/.local/share/fonts/HackNerdFontMono-Italic.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Italic/HackNerdFontMono-Italic.ttf
+curl -fLo ~/.local/share/fonts/HackNerdFontMono-BoldItalic.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/BoldItalic/HackNerdFontMono-BoldItalic.ttf
+
+
 # https://github.com/junegunn/vim-plug
+# just backup ~/.vim/autoload/plug.vim?
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
