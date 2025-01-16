@@ -56,7 +56,7 @@ pavucontrol \
 pamixer \
 net-tools
 
-sudo apt-get install -yq vlc obs-studio evince nautilus
+sudo apt-get install -yq vlc obs-studio evince nautilus foliate
 
 sudo apt-get install -yq luarocks
 
