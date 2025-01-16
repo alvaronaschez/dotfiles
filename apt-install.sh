@@ -35,7 +35,8 @@ python3-pygments
 sudo apt-get install -yq \
 zip \
 unzip \
-xz-utils
+xz-utils \
+trash-cli # https://github.com/andreafrancia/trash-cli
 
 # sudo apt-get install -yq transmission-gtk
 
