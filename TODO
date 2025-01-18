@@ -1,0 +1,6 @@
+- finish i3blocks config
+- add i3blocks to dotfiles folder
+- cleanup Vieb config folder in dotfiles (only viebrc is necesary)
+- update installation script, things about installing HackNerdFontMono and vim Plug
+- update installation script: find a better solution for the problem with NetworkManager and /etc/network/interfaces file
+see https://www.reddit.com/r/debian/comments/14l3uz6/debian_12_kde_wifi_worked_after_minimal/

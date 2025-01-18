@@ -42,8 +42,14 @@ trash-cli # https://github.com/andreafrancia/trash-cli
 
 sudo apt-get install -yq ripgrep less fzf bat
 
-sudo apt-get install -yq swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl \
-sway-notification-center swayimg grimshot \
+# IMPORTANT
+# edit /etc/network/interfaces comment out lines about wifi
+# or just delete it:
+sudo rm /etc/network/interfaces
+# TODO: find a better solution
+sudo apt-get install -yq network-manager \
+swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl \
+sway-notification-center swayimg grimshot i3blocks\
 blueman libspa-0.2-bluetooth # https://askubuntu.com/a/1480049
 
 sudo apt-get install -yq software-properties-common
@@ -108,4 +114,5 @@ stow -R .
 # docker-compose-plugin
 # containerd.io
 
-
+echo 'IMPORTANT: remember to edit /etc/network/interfaces comment out lines about wifi'
+echo 'otherwise network manager is not going to be able to manage your internet connection properly'

@@ -20,6 +20,8 @@ function __confirm() {
 	fi
 }
 
+function untargz() { tar xzf $1 --one-top-level }
+
 alias start="exec sway"
 alias sd="__confirm shutdown now"
 alias rs="__confirm shutdown -r now"
@@ -89,12 +91,15 @@ alias ssway="sway reload"
 
 # show help
 alias hh="echo '\
-vieb
-qutebrowser
-blueman-manager
-pavucontrol
-nm-connection-editor
-wdisplays
-evince
-mpv'"
+vieb - web browser
+qutebrowser - web browser
+blueman-manager - bluetooth
+pavucontrol - sound
+nmtui - network
+wdisplays - displays
+evince - pdf reader
+mpv - video player
+
+remember to use \"sudoedit foo\" or \"sudo -e foo\" instead of \"sudo vim foo\"
+'"
 
