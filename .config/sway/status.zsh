@@ -9,9 +9,14 @@ function battery(){
     echo "$state $percentage $power_supply"
 }
 
+function wifi(){
+    quality=$(iw dev $1 link | grep 'dBm$' | grep -Eoe '-[0-9]{2}' | awk '{print  ($1 > -50 ? 100 :($1 < -100 ? 0 : ($1+100)*2))}')
+    echo wifi: $quality%
+}
+
 date=$(date +'%Y-%m-%d %a %H:%M:%S')
 
 sound=$(pamixer --get-volume-human)
 
-echo  sink\ $sound \| $(battery) \| $date
+echo  $(wifi wlp1s0) \| sink\ $sound \| $(battery) \| $date
 

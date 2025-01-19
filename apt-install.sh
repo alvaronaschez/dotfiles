@@ -49,7 +49,7 @@ sudo rm /etc/network/interfaces
 # TODO: find a better solution
 sudo apt-get install -yq network-manager \
 swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl \
-sway-notification-center swayimg grimshot i3blocks\
+sway-notification-center swayimg grimshot \
 blueman libspa-0.2-bluetooth # https://askubuntu.com/a/1480049
 
 sudo apt-get install -yq software-properties-common
