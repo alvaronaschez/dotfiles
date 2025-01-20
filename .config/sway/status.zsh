@@ -10,7 +10,10 @@ function battery(){
 }
 
 function wifi(){
-    quality=$(iw dev $1 link | grep 'dBm$' | grep -Eoe '-[0-9]{2}' | awk '{print  ($1 > -50 ? 100 :($1 < -100 ? 0 : ($1+100)*2))}')
+    #interface=$(nmcli connection show | egrep 'wifi|ethernet' | awk '{print $4}')
+    interface=$(ip route | awk '/^default via/ {print $5}')
+    interface=$(nmcli connection show | grep $interface | awk '/wifi/ {print $4}')
+    quality=$(iw dev $interface link | grep 'dBm$' | grep -Eoe '-[0-9]{2}' | awk '{print  ($1 > -50 ? 100 :($1 < -100 ? 0 : ($1+100)*2))}')
     echo wifi: $quality%
 }
 
