@@ -1,6 +1,9 @@
 
 export -U PATH=$PATH:/usr/sbin
 
+# disable Ctrl-S stop signal
+stty stop ""
+
 ## https://github.com/NNBnh/kickstart.zsh/tree/main
 # A launch point for your personal .zshrc
 
@@ -39,6 +42,7 @@ setopt interactive_comments      # Allow comments even in interactive shells.
 
 
 #setopt vi                       # Enable Vi keybindings.
+
 export RANGER_LOAD_DEFAULT_RC=FALSE # only read config from ~/.config/ranger # see man ranger
 
 
