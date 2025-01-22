@@ -20,7 +20,7 @@ neofetch \
 zsh \
 zsh-autosuggestions \
 zsh-syntax-highlighting \
-vim-gtk3
+vim vim-scripts vim-doc
 # git
 
 
