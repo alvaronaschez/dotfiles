@@ -9,7 +9,7 @@ sudo apt-get install -yq \
 tmux \
 stow \
 curl \
-foot \
+foot foot-themes \
 manpages-dev \
 info \
 make \
@@ -99,8 +99,10 @@ stow -R .
 # open vim and run :PlugInstall
 ## install
 # neovim & lua_ls
-# -> tar xzf nvim-linux64.tar.gz --one-top-level
-# -> tar xzf lua-language-server-3.13.5-linux-x64.tar.gz --one-top-level
+# curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-64.tar.gz
+## curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz -o ~/Downloads/nvim-linux64.tar.gz
+# -> tar xf nvim-linux64.tar.gz
+# -> tar xf lua-language-server-3.13.5-linux-x64.tar.gz
 # vieb
 # -> sudo apt install ~/Downloads/vieb_12.1.0_amd64.deb
 # balena-etcher

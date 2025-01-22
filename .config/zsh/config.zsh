@@ -35,13 +35,10 @@ fi
 # setopt extended_glob             # Treat the '#', '~' and '^' characters as part of patterns for filename generation, etc.
 # setopt glob_dots                 # Do not require a leading '.' in a filename to be matched explicitly.
 
-# Misc.
-setopt long_list_jobs            # Print job notifications in the long format by default.
+# # Misc.
+# setopt long_list_jobs            # Print job notifications in the long format by default.
 setopt interactive_comments      # Allow comments even in interactive shells.
 
-
-
-#setopt vi                       # Enable Vi keybindings.
 
 export RANGER_LOAD_DEFAULT_RC=FALSE # only read config from ~/.config/ranger # see man ranger
 
@@ -79,6 +76,17 @@ source ~/dotfiles/.config/zsh/git.plugin.zsh
 source ~/dotfiles/.config/zsh/omz.directories.zsh
 source ~/dotfiles/.config/zsh/omz.history.zsh
 
+
+# Keybindings --------------------------------------------------------------------------------------
+# run 'bindkey' alone to print all keybindings
+
+bindkey -v # vi mode
+# bindkey -e # emacs mode
+bindkey -r "^[" # disable esc mode
+
+
 # Startup ------------------------------------------------------------------------------------------
 
+
 neofetch
+
