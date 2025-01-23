@@ -83,7 +83,6 @@ alias nvranger="nv ~/.config/ranger/rifle.conf"
 alias nvneofetch="nv ~/.config/neofetch/config.conf"
 alias nvscratch="nv ~/scratchpad.txt"
 alias nvtofi="nv ~/.config/tofi/config"
-alias nvreadme="nv ~/dotfiles/README.md"
 
 alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"

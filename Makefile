@@ -1,3 +1,2 @@
 default sync:
-	stow -R .
-
+	./stow.sh

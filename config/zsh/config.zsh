@@ -44,7 +44,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE # only read config from ~/.config/ranger # s
 
 
 # Prompt -------------------------------------------------------------------------------------------
-source ~/dotfiles/.config/zsh/prompt.zsh
+source ~/.config/zsh/prompt.zsh
 
 
 # Aliases ------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ alias _="sudo "
 alias dl='trash-put'
 # alias md='mkdir -p'
 
-source ~/dotfiles/.config/zsh/aliases.zsh
+source ~/.config/zsh/aliases.zsh
 
 
 # Functions ----------------------------------------------------------------------------------------
@@ -72,9 +72,9 @@ source ~/dotfiles/.config/zsh/aliases.zsh
 
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/dotfiles/.config/zsh/git.plugin.zsh
-source ~/dotfiles/.config/zsh/omz.directories.zsh
-source ~/dotfiles/.config/zsh/omz.history.zsh
+source ~/.config/zsh/git.plugin.zsh
+source ~/.config/zsh/omz.directories.zsh
+source ~/.config/zsh/omz.history.zsh
 
 
 # Keybindings --------------------------------------------------------------------------------------
