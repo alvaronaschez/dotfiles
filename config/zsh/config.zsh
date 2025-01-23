@@ -82,7 +82,7 @@ source ~/.config/zsh/omz.history.zsh
 
 bindkey -v # vi mode
 # bindkey -e # emacs mode
-bindkey -r "^[" # disable esc mode
+# bindkey -r "^[" # disable esc mode
 
 
 # Startup ------------------------------------------------------------------------------------------
