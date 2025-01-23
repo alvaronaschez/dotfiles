@@ -66,6 +66,7 @@ alias cdsway="cd ~/.config/sway"
 alias cdsy=cdsway
 alias cdsw=cdsway
 alias cdnv="cd ~/.config/nvim"
+alias cds="cd ~/Scripts"
 # alias cdk="cd ~/Workspace/linux/kernel/stable"
 
 alias nvz="nv ~/.config/zsh/config.zsh"

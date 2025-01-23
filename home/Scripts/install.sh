@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+if [ -d ~/Scripts ]; then echo 'do not run this script twice!'; return 0; fi
+
 # sudo apt-get update -yq && sudo apt-get dist-upgrade -yq
 # sudo apt-get install -yq git
 # git clone https://github.com/alvaronaschez/dotfiles
