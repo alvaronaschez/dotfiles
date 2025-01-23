@@ -39,13 +39,13 @@ include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-set $bgimg "~/dotfiles/backgrounds/deb1.png"
-# set $bgimg "~/dotfiles/backgrounds/deb2.png"
-# set $bgimg "~/dotfiles/backgrounds/deb3.jpg"
-# set $bgimg "~/dotfiles/backgrounds/deb4.jpg"
-# set $bgimg "~/dotfiles/backgrounds/deb5.webp"
+# Default wallpaper (more resolutions are available in /usr/share/Documents/backgrounds/sway/)
+#output * bg /usr/share/Documents/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+set $bgimg "~/dotfiles/Documents/backgrounds/deb1.png"
+# set $bgimg "~/dotfiles/Documents/backgrounds/deb2.png"
+# set $bgimg "~/dotfiles/Documents/backgrounds/deb3.jpg"
+# set $bgimg "~/dotfiles/Documents/backgrounds/deb4.jpg"
+# set $bgimg "~/dotfiles/Documents/backgrounds/deb5.webp"
 # set $bgimg "~/Pictures/Mario.jpg"
 output * bg $bgimg fill
 #

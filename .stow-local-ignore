@@ -3,5 +3,5 @@
 README.md
 Makefile
 tags
-apt-install.sh
-/backgrounds
+Scripts/install.sh
+

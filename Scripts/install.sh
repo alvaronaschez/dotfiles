@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # sudo apt-get update -yq && sudo apt-get dist-upgrade -yq
 # sudo apt-get install -yq git
 # git clone https://github.com/alvaronaschez/dotfiles
@@ -87,34 +89,34 @@ curl -fLo ~/.local/share/fonts/HackNerdFontMono-BoldItalic.ttf --create-dirs htt
 # just backup ~/.vim/autoload/plug.vim?
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# open vim and run :PlugInstall
+# vim -c PlugInstall
 
+# set zsh as the default shell
 chsh -s $(which zsh)
 
 
-# run this just after running this script
-mkdir -p ~/.config # so stow can work properly
-stow -R .
+# so stow can work properly
+mkdir ~/.config
+mkdir ~/Documents
 
-### manual installation steps
-# open vim and run :PlugInstall
+## run installation scripts
+~/dotfiles/Scripts/vieb-install-or-update.sh
+
 ## install
 # neovim & lua_ls
 # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-64.tar.gz
-## curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz -o ~/Downloads/nvim-linux64.tar.gz
 # -> tar xf nvim-linux64.tar.gz
 # -> tar xf lua-language-server-3.13.5-linux-x64.tar.gz
-# vieb
-# -> sudo apt install ~/Downloads/vieb_12.1.0_amd64.deb
+
+
+### manual install
+# docker
 # balena-etcher
 # chrome
 #
-## install docker following official website instructions
-# docker-desktop.deb
-# docker-buildx-plugin
-# docker-ce
-# docker-ce-cli
-# docker-compose-plugin
-# containerd.io
 
+
+# stow -R .
 echo 'IMPORTANT: remember to edit /etc/network/interfaces comment out lines about wifi'
 echo 'otherwise network manager is not going to be able to manage your internet connection properly'
