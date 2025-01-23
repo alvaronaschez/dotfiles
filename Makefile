@@ -1,2 +1,2 @@
 default sync:
-	./stow.sh
+	~/dotfiles/home/Scripts/stow.sh
