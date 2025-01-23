@@ -27,8 +27,9 @@ chsh -s $(which zsh)
 
 
 # so stow can work properly
-mkdir ~/.config
-mkdir ~/Documents
+# use 'mkdir -p' so you don't get any error if the directory already exists
+mkdir -p ~/.config
+mkdir -p ~/Documents
 
 ## run installation scripts
 ~/dotfiles/Scripts/vieb-install-or-update.sh
