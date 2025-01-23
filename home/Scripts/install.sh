@@ -1,6 +1,9 @@
 #!/usr/bin/zsh
 
-if [ -d ~/Scripts ]; then echo 'do not run this script twice!'; return 0; fi
+if [ -d ~/Scripts ]; then;
+  echo 'do not run this script twice!'
+  return 0
+fi
 
 # sudo apt-get update -yq && sudo apt-get dist-upgrade -yq
 # sudo apt-get install -yq git
@@ -8,91 +11,16 @@ if [ -d ~/Scripts ]; then echo 'do not run this script twice!'; return 0; fi
 
 sudo apt-get update -yq && sudo apt-get dist-upgrade -yq
 
-
-sudo apt-get install -yq \
-tmux \
-stow \
-curl \
-foot foot-themes \
-manpages-dev \
-info \
-make \
-build-essential \
-ranger \
-qutebrowser \
-neofetch \
-zsh \
-zsh-autosuggestions \
-zsh-syntax-highlighting \
-vim vim-scripts vim-doc
-# git
-
-
-sudo apt-get install -yq \
-gcc \
-clang-format \
-cscope \
-cmake \
-universal-ctags \
-python3-pygments
-
-sudo apt-get install -yq \
-zip \
-unzip \
-xz-utils \
-trash-cli # https://github.com/andreafrancia/trash-cli
-
-# sudo apt-get install -yq transmission-gtk
-
-sudo apt-get install -yq ripgrep less fzf bat
-
 # IMPORTANT
 # edit /etc/network/interfaces comment out lines about wifi
+# so network-manager can manage it
 # or just delete it:
 sudo rm /etc/network/interfaces
-# TODO: find a better solution
-sudo apt-get install -yq network-manager network-manager-config-connectivity-debian\
-swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl \
-sway-notification-center swayimg grimshot \
-blueman libspa-0.2-bluetooth # https://askubuntu.com/a/1480049
 
-sudo apt-get install -yq software-properties-common
 sudo add-apt-repository -y "deb http://deb.debian.org/debian bookworm-backports main"
 sudo apt-get update -yq
-sudo apt-get install -yq mpv yt-dlp/bookworm-backports
 
-sudo apt-get install -yq \
-pulseaudio-utils \
-pavucontrol \
-pamixer \
-net-tools
-
-sudo apt-get install -yq vlc obs-studio evince nautilus foliate
-
-sudo apt-get install -yq luarocks
-
-sudo apt-get install -yq \
-qemu-system \
-libvirt-daemon-system \
-virt-manager
-
-
-## install Hack nerd-font
-# github.com/ryanoasis/nerd-fonts
-# apt-get install -yq fonts-hack # this doesn't come with glyphs
-# just backup ~/.local/share/fonts folder?
-curl -fLo ~/.local/share/fonts/HackNerdFontMono-Regular.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Regular/HackNerdFontMono-Regular.ttf
-curl -fLo ~/.local/share/fonts/HackNerdFontMono-Bold.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Bold/HackNerdFontMono-Bold.ttf
-curl -fLo ~/.local/share/fonts/HackNerdFontMono-Italic.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Italic/HackNerdFontMono-Italic.ttf
-curl -fLo ~/.local/share/fonts/HackNerdFontMono-BoldItalic.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/BoldItalic/HackNerdFontMono-BoldItalic.ttf
-
-
-# https://github.com/junegunn/vim-plug
-# just backup ~/.vim/autoload/plug.vim?
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# open vim and run :PlugInstall
-# vim -c PlugInstall
+~/dotfiles/Scripts/apt-install.sh
 
 # set zsh as the default shell
 chsh -s $(which zsh)
@@ -104,6 +32,8 @@ mkdir ~/Documents
 
 ## run installation scripts
 ~/dotfiles/Scripts/vieb-install-or-update.sh
+~/dotfiles/Scripts/hacker-font-install.sh
+~/dotfiles/Scripts/vim-plug-install.sh
 
 ## install
 # neovim & lua_ls

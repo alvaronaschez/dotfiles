@@ -1,0 +1,54 @@
+tmux
+stow
+curl
+foot foot-themes
+manpages-dev
+info
+make
+build-essential
+ranger
+qutebrowser
+neofetch
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+vim vim-scripts vim-doc
+git
+
+gcc
+clang-format
+cscope
+cmake
+universal-ctags
+python3-pygments
+
+zip
+unzip
+xz-utils
+trash-cli # https://github.com/andreafrancia/trash-cli
+
+# transmission-gtk
+
+ripgrep less fzf bat
+
+network-manager network-manager-config-connectivity-debian
+swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl
+sway-notification-center swayimg grimshot
+blueman libspa-0.2-bluetooth # https://askubuntu.com/a/1480049
+
+software-properties-common
+mpv yt-dlp/bookworm-backports
+
+pulseaudio-utils
+pavucontrol
+pamixer
+net-tools
+
+vlc obs-studio evince nautilus foliate
+
+luarocks
+
+qemu-system
+libvirt-daemon-system
+virt-manager
+
