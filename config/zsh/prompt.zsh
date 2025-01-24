@@ -10,7 +10,7 @@ add-zsh-hook precmd vcs_info
 
 # Style the vcs_info message
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats '[%F{magenta}%b%u%c%f]'
+zstyle ':vcs_info:git*' formats '[%F{magenta}%b%u%c%f%m]'
 # Format when the repo is in an action (merge, rebase, etc)
 zstyle ':vcs_info:git*' actionformats '[%F{magenta}%b|%a%u%c%f]'
 
@@ -20,8 +20,17 @@ zstyle ':vcs_info:git*' stagedstr '+'
 # but can be slow on large repos
 zstyle ':vcs_info:*:*' check-for-changes true
 
-#SYMBOL=»
+# https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
++vi-git-untracked(){
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+        git status --porcelain | grep '??' &> /dev/null ; then
+        # This will show the marker if there are any untracked files in repo.
+        hook_com[staged]+='?'
+    fi
+}
+
+
 PROMPT='%(?.%F{green}».%F{red}»)%f [%F{blue}%~%f] ${vcs_info_msg_0_}
 $ '
-#%F{blue}»%f '
 
