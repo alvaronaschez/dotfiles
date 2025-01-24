@@ -26,6 +26,7 @@ zip
 unzip
 xz-utils
 trash-cli # https://github.com/andreafrancia/trash-cli
+rlwrap
 
 # transmission-gtk
 

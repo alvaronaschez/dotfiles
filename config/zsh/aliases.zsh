@@ -20,7 +20,9 @@ function __confirm() {
 	fi
 }
 
-function untargz() { tar xzf $1 --one-top-level }
+# function untargz() { tar xzf $1 --one-top-level }
+function untargz() { tar xf $1 }
+
 
 alias start="exec sway"
 alias sd="__confirm shutdown now"
@@ -36,6 +38,7 @@ alias nv=nvim
 alias tx=tmux
 alias tm=tmux
 alias bat=batcat
+alias luajit-repl="rlwrap luajit"
 
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get dist-upgrade"
