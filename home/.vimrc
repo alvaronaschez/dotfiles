@@ -5,7 +5,7 @@ set autoindent
 set nowrap
 set encoding=utf8
 set clipboard=unnamedplus
-colorscheme slate
+" colorscheme slate
 set number
 set mouse=a
 
@@ -59,9 +59,17 @@ call plug#end()
 "let g:ale_c_parse_makefile = 1
 "let g:ale_linters = {'c': ['gcc']}
 
-let g:airline_powerline_fonts = 1
-" let g:airline_theme='deus'
-let g:airline_theme='violet'
+
+let g:airline_theme='monochrome'
+" are we in tty?
+if $TERM != "linux"
+	let g:airline_powerline_fonts = 1
+"	let g:airline_theme='simple'
+
+	let g:airline_theme='violet'
+	colorscheme slate
+endif
+
 
 " tagbar
 nmap <F5> :TagbarToggle<CR>

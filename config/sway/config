@@ -16,8 +16,8 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-# set $term foot
-set $term foot tmux
+set $term foot
+# set $term sakura
 
 set $browser vieb
 
@@ -65,8 +65,7 @@ bindswitch --reload --locked lid:off output $laptop_screen enable
 # workspaces
 workspace 1 output $external_monitor
 workspace 2 output $laptop_screen
-exec swaymsg "workspace 1; exec $term"
-#exec swaymsg "workspace 1; exec st -e tmux"
+exec swaymsg "workspace 1; exec $term tmux"
 #exec swaymsg "workspace 1; exec $browser"
 
 
@@ -107,6 +106,7 @@ input "type:keyboard" {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $term tmux
 
     # Kill focused window
     bindsym $mod+Shift+q kill
