@@ -62,9 +62,12 @@ call plug#end()
 
 let g:airline_theme='monochrome'
 " are we in tty?
-if $TERM != "linux"
+"if $TERM != 'linux' " this will fail when running tmux from tty
+if !empty($DISPLAY)
 	let g:airline_powerline_fonts = 1
-"	let g:airline_theme='simple'
+
+	"let g:airline_theme='simple'
+	"colorscheme default
 
 	let g:airline_theme='violet'
 	colorscheme slate

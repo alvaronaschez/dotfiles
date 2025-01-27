@@ -102,6 +102,9 @@ nmtui - network
 wdisplays - displays
 evince - pdf reader
 mpv - video player
+grep
+sed
+awk
 
 remember to use \"sudoedit foo\" or \"sudo -e foo\" instead of \"sudo vim foo\"
 '"
