@@ -41,12 +41,8 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/Documents/backgrounds/sway/)
 #output * bg /usr/share/Documents/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-set $bgimg "~/Documents/backgrounds/deb1.png"
-# set $bgimg "~/Documents/backgrounds/deb2.png"
-# set $bgimg "~/Documents/backgrounds/deb3.jpg"
-# set $bgimg "~/Documents/backgrounds/deb4.jpg"
-# set $bgimg "~/Documents/backgrounds/deb5.webp"
-# set $bgimg "~/Pictures/Mario.jpg"
+set $bgimg "~/Documents/backgrounds/deb6.jpg"
+set $lockimg "~/Documents/backgrounds/deb1.png"
 output * bg $bgimg fill
 #
 # Example configuration:
@@ -74,7 +70,7 @@ exec swaymsg "workspace 1; exec $term tmux"
 # Example configuration:
 #
 exec swayidle -w \
-         timeout $((2*60)) 'swaylock -fFe -i $bgimg' \
+         timeout $((2*60)) 'swaylock -fFe -i $lockimg' \
          timeout $((3*60)) 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -fFe -c 000000'
 #
@@ -116,7 +112,7 @@ input "type:keyboard" {
     bindsym $mod+d exec $menu
 
     # lock screen
-    bindsym $mod+Escape exec 'swaylock -fFe -i $bgimg'
+    bindsym $mod+Escape exec 'swaylock -fFe -i $lockimg'
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

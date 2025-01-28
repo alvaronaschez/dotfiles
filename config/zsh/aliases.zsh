@@ -21,7 +21,7 @@ function __confirm() {
 }
 
 # function untargz() { tar xzf $1 --one-top-level }
-function untargz() { tar xf $1 }
+# function untargz() { tar xf $1 }
 
 
 alias start="exec sway"
@@ -39,6 +39,7 @@ alias tx=tmux
 alias tm=tmux
 alias bat=batcat
 alias luajit-repl="rlwrap luajit"
+alias untargz="tar xf"
 
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get dist-upgrade"

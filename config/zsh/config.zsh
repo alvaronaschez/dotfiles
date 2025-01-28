@@ -1,5 +1,6 @@
 
 export -U PATH=$PATH:/usr/sbin
+export -U PATH=$PATH:~/.local/bin
 
 # disable Ctrl-S stop signal
 stty stop ""
@@ -18,7 +19,7 @@ source ~/.config/zsh/omz.history.zsh
 # Set default editor/pager.
 # Preferred editor for local and remote sessions
 export PAGER=batcat
-if [[ -n $SSH_CONNECTION ]]; then
+if [[ -n $SSH_CONNECTION || -z $DISPLAY ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
