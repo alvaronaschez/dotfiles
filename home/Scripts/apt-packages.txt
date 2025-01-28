@@ -7,7 +7,7 @@ info
 make
 build-essential
 ranger # if version<1.9.4 and image setup doesn't work, use Scripts/ranger-git-install.sh instead
-qutebrowser
+# qutebrowser # install using installation script, apt version very outdated
 neofetch
 zsh
 zsh-autosuggestions

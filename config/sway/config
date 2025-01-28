@@ -19,7 +19,8 @@ set $right l
 set $term foot
 # set $term sakura
 
-set $browser vieb
+set $browser qutebrowser
+# set $browser vieb
 
 default_border pixel 2
 
