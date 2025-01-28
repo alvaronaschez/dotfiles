@@ -6,7 +6,7 @@ manpages-dev
 info
 make
 build-essential
-ranger
+ranger # if version<1.9.4 and image setup doesn't work, use Scripts/ranger-git-install.sh instead
 qutebrowser
 neofetch
 zsh
