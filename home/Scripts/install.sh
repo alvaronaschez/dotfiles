@@ -32,6 +32,7 @@ mkdir -p ~/.config
 mkdir -p ~/Documents
 
 ## run installation scripts
+~/dotfiles/Scripts/tmux-install-or-update.sh
 ~/dotfiles/Scripts/vieb-install-or-update.sh
 ~/dotfiles/Scripts/qutebrowser-install.sh
 ~/dotfiles/Scripts/hacker-font-install.sh

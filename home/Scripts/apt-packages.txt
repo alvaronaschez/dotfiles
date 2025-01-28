@@ -1,4 +1,4 @@
-tmux
+# tmux
 stow
 curl
 foot foot-themes
@@ -21,6 +21,9 @@ cscope
 cmake
 universal-ctags
 python3-pygments
+
+# not sure if needed
+pm-utils # power management
 
 zip
 unzip
