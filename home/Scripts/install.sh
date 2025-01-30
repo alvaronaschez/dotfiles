@@ -39,6 +39,10 @@ mkdir -p ~/Documents
 ~/dotfiles/Scripts/vim-plug-install.sh
 # ~/dotfiles/Scripts/luajit-install.sh
 
+# this is needed so virt-manager works properly
+sudo usermod -aG libvirt $USER && sudo usermod -aG kvm $USER\n
+
+
 ## install
 # neovim & lua_ls
 # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-64.tar.gz
