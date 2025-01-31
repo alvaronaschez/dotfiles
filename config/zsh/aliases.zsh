@@ -93,6 +93,8 @@ alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias ssway="sway reload"
 
+alias mpv='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
+
 # show help
 alias hh="echo '\
 vieb - web browser
@@ -108,5 +110,13 @@ sed
 awk
 
 remember to use \"sudoedit foo\" or \"sudo -e foo\" instead of \"sudo vim foo\"
+
+# mount/unmount devices
+lsblk - list block devices
+df - report system space usage
+mount - list all mounted devices
+sudo mount /dev/sda /media/alvaro/kobo
+sudo umount /media/alvaro/kobo
+
 '"
 
