@@ -93,8 +93,6 @@ alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias ssway="sway reload"
 
-alias mpv='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
-
 # show help
 alias hh="echo '\
 vieb - web browser
