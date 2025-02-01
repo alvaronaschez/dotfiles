@@ -43,7 +43,7 @@ include /etc/sway/config-vars.d/*
 # Default wallpaper (more resolutions are available in /usr/share/Documents/backgrounds/sway/)
 #output * bg /usr/share/Documents/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # set $bgimg "~/Documents/backgrounds/japanese.jpg"
-set $bgimg "~/Documents/m.jpg"
+set $bgimg "~/Documents/pictures/m.jpg"
 set $lockimg "~/Documents/backgrounds/deb1.png"
 output * bg $bgimg fill
 #
