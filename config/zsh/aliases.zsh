@@ -60,6 +60,8 @@ alias dprune="docker system prune -af && docker volume prune -af && docker image
 
 alias git-delete-all-branches-except-current='git branch -D $(git branch)'
 
+alias genctagsc="ctags /usr/include ."
+
 alias cdd="cd ~/dotfiles"
 alias cddot=cdd
 alias cdz="cd ~/.config/zsh"
@@ -75,9 +77,8 @@ alias cds="cd ~/Scripts"
 
 alias nvz="nv ~/.config/zsh/config.zsh"
 alias nvzsh=nvz
-alias nvalias="nv ~/.config/zsh/aliases.zsh"
-alias nvaliases=nvalias
-alias nval=nvalias
+alias nval="nv ~/.config/zsh/aliases.zsh"
+alias val="v ~/.config/zsh/aliases.zsh"
 alias nvsway="nv ~/.config/sway/config"
 alias nvfoot="nv ~/.config/foot/foot.ini"
 alias vvim="v ~/.config/vim/vimrc"
