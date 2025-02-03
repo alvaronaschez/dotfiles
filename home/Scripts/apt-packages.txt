@@ -12,7 +12,7 @@ neofetch
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
-vim vim-scripts vim-doc
+vim-athena vim-scripts vim-doc
 git
 
 gcc
