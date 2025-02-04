@@ -9,6 +9,9 @@ colorscheme default
 set number
 set mouse=a
 
+let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
+let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
+
 " Make the escape key more responsive by decreasing the wait time for an
 " escape sequence (e.g., arrow keys).
 set ttimeout
@@ -102,3 +105,8 @@ endif
 " tagbar
 nmap <F5> :TagbarToggle<CR>
 
+"ale
+let g:ale_linters = {'c': ['gcc']}
+let g:ale_c_cc_executable = 'gcc'
+"let g:ale_c_cc_options = '-std=c11 -Wall'
+let g:ale_c_cc_options = '-std=gnu11 -Wall'
