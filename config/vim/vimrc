@@ -5,7 +5,6 @@ set autoindent
 " set nowrap
 set encoding=utf8
 set clipboard=unnamedplus
-colorscheme default
 set number
 set mouse=a
 
@@ -29,10 +28,6 @@ set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 "listchars+=eol:¬,space:·
 
-" leader
-let mapleader = "\<space>"
-let maplocalleader = "\<space>"
-
 " improve navigation between windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -40,21 +35,29 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap ; :
-"set exrc " use local .vimrc files
-
-" reload vim configuration
-nmap <Leader>s :so $MYVIMRC<CR>
+set exrc " use local .vimrc files
 
 set hidden
+
+" highlight colors
+"hi MatchParen cterm=bold,underline ctermbg=gray ctermfg=red
+"hi Search cterm=bold,underline ctermbg=gray ctermfg=red
 
 " autopairs without a plugin
 " inoremap " ""<left>
 " inoremap ' ''<left>
-" inoremap ( ()<left>
-" inoremap [ []<left>
-" inoremap { {}<left>
-" inoremap {<CR> {<CR>}<ESC>O
-" inoremap {;<CR> {<CR>};<ESC>O
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+
+" leader
+let mapleader = "\<space>"
+let maplocalleader = "\<space>"
+" reload vim configuration
+nmap <Leader>s :so $MYVIMRC<CR>
 
 
 call plug#begin()
@@ -65,9 +68,9 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 
-"Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -76,6 +79,8 @@ Plug 'rhysd/vim-clang-format'
 Plug 'dense-analysis/ale'
 
 Plug 'ervandew/supertab'
+
+Plug 'chriskempson/base16-vim'
 
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'roxma/nvim-yarp'
@@ -90,15 +95,14 @@ call plug#end()
 
 " airline
 let g:airline_theme='monochrome'
+
 " are we in tty?
 "if $TERM != 'linux' " this will fail when running tmux from tty
-
-let colorscheme_default=1
-if !empty($DISPLAY) && !colorscheme_default
+if !empty($DISPLAY)
 	let g:airline_powerline_fonts = 1
-
-	let g:airline_theme='violet'
-	colorscheme slate
+	let base16colorspace=256
+	set termguicolors
+	let g:airline_theme='base16'
 endif
 
 
@@ -106,7 +110,14 @@ endif
 nmap <F5> :TagbarToggle<CR>
 
 "ale
+set path=.,/usr/include,/usr/include/x86_64-linux-gnu,,
 let g:ale_linters = {'c': ['gcc']}
 let g:ale_c_cc_executable = 'gcc'
 "let g:ale_c_cc_options = '-std=c11 -Wall'
 let g:ale_c_cc_options = '-std=gnu11 -Wall'
+
+
+"colorscheme - run after loading base16 plugin
+colorscheme base16-default-dark
+"colorscheme default
+
