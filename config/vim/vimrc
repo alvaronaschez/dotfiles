@@ -22,26 +22,10 @@ set hlsearch
 
 set smarttab
 
-" Use CTRL-L to clear the highlighting of 'hlsearch' (off by default) and call
-" :diffupdate 
-nnoremap <silent> <leader>l :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 "listchars+=eol:¬,space:·
-
-" improve navigation between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" improve tab management
-nnoremap t :tabnew<CR>
-" gt - go to next tab
-" gT - go to previous tab
-" gf - go to file under the cursor
-" <C-w>gf - go to file under the cursor in a new tab
 
 nnoremap ; :
 set exrc " use local .vimrc files
@@ -65,8 +49,25 @@ inoremap {;<CR> {<CR>};<ESC>O
 " leader
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
-" reload vim configuration 'source'
-nmap <Leader>s :so $MYVIMRC<CR>
+"ureload vim configuration
+nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
+nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+"nnoremap <leader>s <C-w>s
+nnoremap <leader>s :new<cr>
+nnoremap <leader>v :vnew<cr>
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+nnoremap <leader>n gt
+nnoremap <leader>p gT
+" improve tab management
+nnoremap <leader>t :tabnew<CR>
+" gt - go to next tab
+" gT - go to previous tab
+" gf - go to file under the cursor
+" <C-w>gf - go to file under the cursor in a new tab
+
 
 
 call plug#begin()
@@ -133,8 +134,5 @@ colorscheme base16-default-dark
 "colorscheme default
 
 "nerdtree
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
