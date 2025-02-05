@@ -19,20 +19,24 @@ set timeoutlen=500
 
 " hlsearch
 set hlsearch
-" Clear highlighting on escape in normal mode
-" The second line is needed for mapping to the escape key since Vim internally uses escape to represent special keys.
-nnoremap <esc> :noh<return><esc>
-nnoremap <esc>^[ <esc>^[
+
+set smarttab
+
+" Use CTRL-L to clear the highlighting of 'hlsearch' (off by default) and call
+" :diffupdate 
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 "listchars+=eol:¬,space:·
 
 " improve navigation between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
+
+nmap t :tabnew<CR>
 
 nnoremap ; :
 set exrc " use local .vimrc files
@@ -56,7 +60,7 @@ inoremap {;<CR> {<CR>};<ESC>O
 " leader
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
-" reload vim configuration
+" reload vim configuration 'source'
 nmap <Leader>s :so $MYVIMRC<CR>
 
 
@@ -120,4 +124,10 @@ let g:ale_c_cc_options = '-std=gnu11 -Wall'
 "colorscheme - run after loading base16 plugin
 colorscheme base16-default-dark
 "colorscheme default
+
+"nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
