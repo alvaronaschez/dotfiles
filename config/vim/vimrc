@@ -4,8 +4,9 @@ filetype plugin indent on
 set autoindent
 " set nowrap
 set encoding=utf8
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set number
+set cursorline
 set mouse=a
 
 let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
@@ -21,6 +22,7 @@ set timeoutlen=500
 set hlsearch
 
 set smarttab
+
 
 
 set list
@@ -39,14 +41,15 @@ set hidden
 " autopairs without a plugin
 " inoremap " ""<left>
 " inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
+"inoremap ( ()<left>
+"inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 
 " leader
+nnoremap <space> <nop>
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
 "ureload vim configuration
@@ -69,6 +72,15 @@ nnoremap <leader>t :tabnew<CR>
 " <C-w>gf - go to file under the cursor in a new tab
 
 
+" workaround to make system clipboard work in wayland
+"https://github.com/vim/vim/issues/5157
+if $XDG_SESSION_TYPE=='wayland'
+	augroup wl-clipboard
+	    autocmd!
+	    autocmd FocusLost * :call system('wl-copy --trim-newline', @+)
+	    autocmd FocusGained * :let @+ = system('wl-paste -n')
+	augroup END
+endif
 
 call plug#begin()
 
