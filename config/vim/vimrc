@@ -24,19 +24,24 @@ set smarttab
 
 " Use CTRL-L to clear the highlighting of 'hlsearch' (off by default) and call
 " :diffupdate 
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+nnoremap <silent> <leader>l :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 "listchars+=eol:¬,space:·
 
 " improve navigation between windows
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-nmap t :tabnew<CR>
+" improve tab management
+nnoremap t :tabnew<CR>
+" gt - go to next tab
+" gT - go to previous tab
+" gf - go to file under the cursor
+" <C-w>gf - go to file under the cursor in a new tab
 
 nnoremap ; :
 set exrc " use local .vimrc files
