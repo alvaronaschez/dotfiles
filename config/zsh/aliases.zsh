@@ -60,7 +60,7 @@ alias dprune="docker system prune -af && docker volume prune -af && docker image
 
 alias git-delete-all-branches-except-current='git branch -D $(git branch)'
 
-alias genctagsc="ctags /usr/include ."
+alias ctagsc="ctags -R /usr/include /usr/include/x86_64-linux-gnu ."
 
 alias cdd="cd ~/dotfiles"
 alias cddot=cdd
@@ -72,23 +72,24 @@ alias cdsway="cd ~/.config/sway"
 alias cdsy=cdsway
 alias cdsw=cdsway
 alias cdnv="cd ~/.config/nvim"
+alias cdv="cd ~/.config/vim"
 alias cds="cd ~/Scripts"
 # alias cdk="cd ~/Workspace/linux/kernel/stable"
 
-alias nvz="nv ~/.config/zsh/config.zsh"
-alias nvzsh=nvz
-alias nval="nv ~/.config/zsh/aliases.zsh"
+alias vz="v ~/.config/zsh/config.zsh"
+alias vzsh=vz
 alias val="v ~/.config/zsh/aliases.zsh"
-alias nvsway="nv ~/.config/sway/config"
-alias nvfoot="nv ~/.config/foot/foot.ini"
+alias val="v ~/.config/zsh/aliases.zsh"
+alias vsway="v ~/.config/sway/config"
+alias vfoot="v ~/.config/foot/foot.ini"
 alias vvim="v ~/.config/vim/vimrc"
 alias nvnvim="nv ~/.config/nvim/init.lua"
-alias nvtmux="nv ~/.config/tmux/tmux.conf"
-alias nvgit="nv ~/.config/git/config"
-alias nvranger="nv ~/.config/ranger/rifle.conf"
-alias nvneofetch="nv ~/.config/neofetch/config.conf"
-alias nvscratch="nv ~/scratchpad.txt"
-alias nvtofi="nv ~/.config/tofi/config"
+alias vtmux="v ~/.config/tmux/tmux.conf"
+alias vgit="v ~/.config/git/config"
+alias vranger="v ~/.config/ranger/rifle.conf"
+alias vneofetch="v ~/.config/neofetch/config.conf"
+alias vscratch="v ~/scratchpad.txt"
+alias vtofi="v ~/.config/tofi/config"
 alias vvieb="v ~/.config/Vieb/viebrc"
 
 alias szsh="source ~/.zshrc"
