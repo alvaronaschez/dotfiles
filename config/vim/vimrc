@@ -34,7 +34,8 @@ set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 nnoremap ; :
 set exrc " use local .vimrc files
 
-set hidden
+"set hidden
+set nohidden " this is the default value
 
 " highlight colors
 "hi MatchParen cterm=bold,underline ctermbg=gray ctermfg=red
