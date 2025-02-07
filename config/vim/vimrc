@@ -140,5 +140,5 @@ colorscheme base16-default-dark
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 "startify
-let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/vim-ascii-art.txt")
+let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-message.txt")
 
