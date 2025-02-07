@@ -7,6 +7,7 @@ set encoding=utf8
 set clipboard^=unnamed,unnamedplus
 set number
 set cursorline
+set colorcolumn=100
 set mouse=a
 set scrolloff=10
 set autoread
@@ -25,8 +26,6 @@ set hlsearch
 set incsearch
 
 set smarttab
-
-
 
 set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
