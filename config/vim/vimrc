@@ -8,6 +8,8 @@ set clipboard^=unnamed,unnamedplus
 set number
 set cursorline
 set mouse=a
+set scrolloff=10
+set autoread
 
 let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
 let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
@@ -20,6 +22,7 @@ set timeoutlen=500
 
 " hlsearch
 set hlsearch
+set incsearch
 
 set smarttab
 
@@ -84,31 +87,19 @@ endif
 
 call plug#begin()
 
-" List your plugins here
-" Plug 'tpope/vim-sensible'
-
+Plug 'mhinz/vim-startify'
+Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-"Plug 'jiangmiao/auto-pairs'
-
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'dense-analysis/ale'
 
 Plug 'rhysd/vim-clang-format'
 
-Plug 'dense-analysis/ale'
-
-Plug 'ervandew/supertab'
-
-Plug 'chriskempson/base16-vim'
-
-Plug 'mhinz/vim-startify'
-
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'roxma/nvim-yarp'
-"Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'maralla/completor.vim'
+"Plug 'ervandew/supertab'
 
 call plug#end()
 
