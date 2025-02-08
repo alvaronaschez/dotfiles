@@ -55,6 +55,7 @@ inoremap {;<CR> {<CR>};<ESC>O
 nnoremap <space> <nop>
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
+nnoremap <leader>? :tab :h quickref<CR>
 "ureload vim configuration
 nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
