@@ -56,6 +56,8 @@ sudo usermod -aG libvirt $USER && sudo usermod -aG kvm $USER\n
 # chrome
 #
 
+# this is stored in '~/.config/dconf/user' binary file, so no file backup possible
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 # stow -R .
 echo 'IMPORTANT: remember to edit /etc/network/interfaces comment out lines about wifi'
