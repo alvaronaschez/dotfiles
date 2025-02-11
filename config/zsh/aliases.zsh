@@ -31,12 +31,13 @@ alias rb=rs
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-alias rg="rg --color=always"
+alias rg="rg --color=auto"
 
 alias v=vim
 alias nv=nvim
 alias tx=tmux
 alias tm=tmux
+alias vmore="vim -u ~/.config/vim/vimrc.more -"
 alias bat=batcat
 alias luajit-repl="rlwrap luajit"
 alias untargz="tar xf"

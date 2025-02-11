@@ -3,4 +3,5 @@
 	email = alvarosanchezpalomino@gmail.com
 [init]
 	defaultBranch = master
-
+[core]
+	pager=less

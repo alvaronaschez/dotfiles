@@ -18,9 +18,8 @@ source ~/.config/zsh/omz.history.zsh
 
 # Set default editor/pager.
 # Preferred editor for local and remote sessions
-#export PAGER=batcat
-#export PAGER="vim -R -"
-export PAGER="vim +MANPAGER --not-a-term -"
+export PAGER=less
+#export PAGER="vim -u ~/.config/vim/vimrc.more -"
 export MANPAGER="vim +MANPAGER --not-a-term -"
 #export PAGER=batcat
 
