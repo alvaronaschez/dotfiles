@@ -1,0 +1,26 @@
+[ids]
+*
+
+[main]
+
+esc = capslock
+
+#capslock = overload(control, esc)
+capslock = overload(nav, esc)
+enter = overload(control, enter)
+
+#tab = overload(nav, tab)
+tab = overload(meta, tab)
+backslash = overload(meta, backslash)
+
+rightshift = overload(shift, backspace)
+
+#leftcontrol=layer(nav)
+
+[nav:C]
+# act as control if undefined
+h = left
+j = down
+k = up
+l = right
+* = control

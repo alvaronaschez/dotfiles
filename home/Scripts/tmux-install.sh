@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 git clone https://github.com/tmux/tmux.git
 mv tmux /tmp
 (cd /tmp/tmux

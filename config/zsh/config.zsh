@@ -18,7 +18,11 @@ source ~/.config/zsh/omz.history.zsh
 
 # Set default editor/pager.
 # Preferred editor for local and remote sessions
-export PAGER=batcat
+#export PAGER=batcat
+#export PAGER="vim -R -"
+export PAGER="vim +MANPAGER --not-a-term -"
+export MANPAGER="vim +MANPAGER --not-a-term -"
+#export PAGER=batcat
 
 export EDITOR='vim'
 # if [[ -n $SSH_CONNECTION || -z $DISPLAY ]]; then
@@ -93,5 +97,5 @@ bindkey -v # vi mode
 
 # neofetch
 # figlet alvaro sanchez
-fortune | cowsay -pf www
+# fortune | cowsay -pf www
 

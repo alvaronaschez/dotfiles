@@ -60,8 +60,8 @@ alias dprune="docker system prune -af && docker volume prune -af && docker image
 
 alias git-delete-all-branches-except-current='git branch -D $(git branch)'
 
-alias ctagsc="ctags -R /usr/include /usr/include/x86_64-linux-gnu ."
-
+#https://vim.fandom.com/wiki/Generate_ctags_file_for_a_C/C%2B%2B_source_file_with_all_of_their_dependencies_(standard_headers,_etc)
+alias ctagsc="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q /usr/include /usr/include/x86_64-linux-gnu/ ."
 alias cdd="cd ~/dotfiles"
 alias cddot=cdd
 alias cdz="cd ~/.config/zsh"
@@ -91,10 +91,12 @@ alias vneofetch="v ~/.config/neofetch/config.conf"
 alias vscratch="v ~/scratchpad.txt"
 alias vtofi="v ~/.config/tofi/config"
 alias vvieb="v ~/.config/Vieb/viebrc"
+alias vkeyd="v ~/.config/keyd/config"
 
 alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias ssway="sway reload"
+alias skeyd="sudo keyd reload"
 
 # show help
 alias hh="echo '\
