@@ -37,9 +37,6 @@ set exrc " use local .vimrc files
 "set hidden
 set nohidden " this is the default value
 
-" terminal mode
-" double tap esc to enter normal mode (inside terminal mode)
-tnoremap <Esc><Esc> <C-\><C-N>
 
 " highlight colors
 "hi MatchParen cterm=bold,underline ctermbg=gray ctermfg=red
@@ -62,9 +59,18 @@ let maplocalleader = "\<space>"
 " quit
 nnoremap <leader>q :q<CR>
 tnoremap <leader>q <C-\><C-N>:q!<CR>
-inoremap <leader>q <C-\><C-N>:q<CR>
 " quick help
 nnoremap <leader>? :tab :h quickref<CR>
+" terminal mode
+" double tap esc to enter normal mode (inside terminal mode)
+tnoremap <Esc><Esc> <C-\><C-N>
+" open terminal in current window
+"noremap <leader>t :ter ++curwin<CR>
+" open terminal in new window
+noremap <leader>t :new ter<CR>
+" open terminal in new tab
+noremap <leader>T :tab ter<CR>
+" :ter to open new terminal in split window
 " reload vim configuration
 nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
 " clear search
@@ -87,9 +93,7 @@ inoremap <leader>l <C-\><C-N><C-w>l
 " tabs
 " gt - go to next tab
 " gT - go to previous tab
-noremap <leader>t :tabnew<CR>
-noremap <leader>T :tab ter<CR>
-" :ter to open new terminal in split window
+"noremap <leader>t :tabnew<CR>
 nnoremap <leader>n gt
 nnoremap <leader>p gT
 " gf - go to file under the cursor
