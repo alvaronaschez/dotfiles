@@ -18,7 +18,7 @@ let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
 " Make the escape key more responsive by decreasing the wait time for an
 " escape sequence (e.g., arrow keys).
 set ttimeout
-set ttimeoutlen=100
+set ttimeoutlen=50
 set timeoutlen=500
 
 " hlsearch
@@ -77,7 +77,9 @@ nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " windows
 nnoremap <leader>s :new<cr>
-nnoremap <leader>v :vnew<cr>
+tnoremap <leader>s <C-\><C-N>:new<cr>
+nnoremap <leader>v vnew<cr>
+nnoremap <leader>v <C-\><C-N>vnew<cr>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
@@ -86,10 +88,11 @@ tnoremap <leader>h <C-\><C-N><C-w>h
 tnoremap <leader>j <C-\><C-N><C-w>j
 tnoremap <leader>k <C-\><C-N><C-w>k
 tnoremap <leader>l <C-\><C-N><C-w>l
-inoremap <leader>h <C-\><C-N><C-w>h
-inoremap <leader>j <C-\><C-N><C-w>j
-inoremap <leader>k <C-\><C-N><C-w>k
-inoremap <leader>l <C-\><C-N><C-w>l
+" not a great idea to use leader in insert mode...
+"inoremap <leader>h <C-\><C-N><C-w>h
+"inoremap <leader>j <C-\><C-N><C-w>j
+"inoremap <leader>k <C-\><C-N><C-w>k
+"inoremap <leader>l <C-\><C-N><C-w>l
 " tabs
 " gt - go to next tab
 " gT - go to previous tab
