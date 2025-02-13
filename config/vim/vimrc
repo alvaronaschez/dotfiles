@@ -1,48 +1,78 @@
-set nocompatible
-syntax on
-filetype plugin indent on
-set autoindent
-" set nowrap
-set encoding=utf8
+"
+" general configuration options
+"
+set nocompatible " use Vim settings, ragher than Vi settings
+"set hidden " use hidden buffers
+set nohidden " this is the default value
+set autoread " automatically re-read files if unmodified inside vim
 set clipboard^=unnamed,unnamedplus
-set number
-set cursorline
-set colorcolumn=80
-set mouse=a
-set scrolloff=10
-set autoread
-
-let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
-let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
-
 " Make the escape key more responsive by decreasing the wait time for an
 " escape sequence (e.g., arrow keys).
 set ttimeout
 set ttimeoutlen=50
 set timeoutlen=500
+set exrc " use local .vimrc files
 
-" hlsearch
-set hlsearch
-set incsearch
 
-set smarttab
+"
+" user interface options
+"
+set number " show line numbers on the sidebar
+set cursorline " highlight the line currently under the cursor
+"set relativenumber " set line numbers relative to the line of the cursor
+set colorcolumn=80 " highlight 80th column
+set wildmenu " display command line's tab autocomplete options as a menu
+set noerrorbells " disable beep on errors
+set visualbell " flash the screen instead of beeping on errors
+set mouse=a
+set background=dark " use colors that suit a dark background
 
+
+"
+" text rendering options
+"
+set encoding=utf8
+syntax on
+let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
+let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
+set scrolloff=10
+" set nowrap " don't wrap lines
+set linebreak " wrap lines at convenient points
 set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 "listchars+=eol:¬,space:·
 
-nnoremap ; :
-set exrc " use local .vimrc files
 
-"set hidden
-set nohidden " this is the default value
+"
+" indentation options
+"
+set autoindent " enable autoindenting
+filetype plugin indent on " enable indenting depending on file type
+set softtabstop=4
+"set smarttab
 
 
+"
+" search options
+"
+set hlsearch
+set incsearch
+set ignorecase " ignore case when searchihng...
+set smartcase " ...unless you type a capital
+
+
+"
+" misc options
+"
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 " highlight colors
 "hi MatchParen cterm=bold,underline ctermbg=gray ctermfg=red
 "hi Search cterm=bold,underline ctermbg=gray ctermfg=red
 
+
+"
 " autopairs without a plugin
+"
 " inoremap " ""<left>
 " inoremap ' ''<left>
 "inoremap ( ()<left>
@@ -52,13 +82,17 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 
+"
+" remappings
+"
+nnoremap ; :
+
 " leader
 nnoremap <space> <nop>
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
 " quit
 nnoremap <leader>q :q<CR>
-tnoremap <leader>q <C-\><C-N>:q!<CR>
 " quick help
 nnoremap <leader>? :tab :h quickref<CR>
 " terminal mode
@@ -77,22 +111,12 @@ nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " windows
 nnoremap <leader>s :new<cr>
-tnoremap <leader>s <C-\><C-N>:new<cr>
 nnoremap <leader>v vnew<cr>
 nnoremap <leader>v <C-\><C-N>vnew<cr>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
-tnoremap <leader>h <C-\><C-N><C-w>h
-tnoremap <leader>j <C-\><C-N><C-w>j
-tnoremap <leader>k <C-\><C-N><C-w>k
-tnoremap <leader>l <C-\><C-N><C-w>l
-" not a great idea to use leader in insert mode...
-"inoremap <leader>h <C-\><C-N><C-w>h
-"inoremap <leader>j <C-\><C-N><C-w>j
-"inoremap <leader>k <C-\><C-N><C-w>k
-"inoremap <leader>l <C-\><C-N><C-w>l
 " tabs
 " gt - go to next tab
 " gT - go to previous tab
@@ -114,6 +138,9 @@ if $XDG_SESSION_TYPE=='wayland'
 endif
 
 
+"
+" plugins
+"
 runtime ftplugin/man.vim
 
 call plug#begin()
