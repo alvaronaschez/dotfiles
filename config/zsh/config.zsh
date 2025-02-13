@@ -103,34 +103,35 @@ KEYTIMEOUT=1 # set ESC timeout to 0.01s (default value is 0.4s)
 # 4  ⇒  steady underline.
 # 5  ⇒  blinking bar, xterm.
 # 6  ⇒  steady bar, xterm.
-function _set_cursor() {
-    if [[ $TMUX = '' ]]; then
-      # echo '\e[6 q'
-      echo -ne "\e[$1 q"
-    else
-      # printf '\033[6 q'
-      printf "\033[$1 q"
-    fi
-}
-function _set_block_cursor() { _set_cursor 2 }
-function _set_bar_cursor() { _set_cursor 5 }
-#function _set_bar_cursor() { _set_cursor 1 }
+if [[ $DISPLAY != '' ]]; then # don't apply these settings in tty
+	function _set_cursor() {
+	  if [[ $TMUX = '' ]]; then
+	    # echo '\e[6 q'
+	    echo -ne "\e[$1 q"
+	  else
+	    # printf '\033[6 q'
+	    printf "\033[$1 q"
+	  fi
+	}
+	function _set_block_cursor() { _set_cursor 2 }
+	function _set_bar_cursor() { _set_cursor 5 }
+	#function _set_bar_cursor() { _set_cursor 1 }
 
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]]; then
-      _set_block_cursor
-  else
-      _set_bar_cursor
-  fi
-}
-zle -N zle-keymap-select
-# ensure beam cursor when starting new terminal
-precmd_functions+=(_set_bar_cursor) #
-# ensure insert mode and beam cursor when exiting vim
-zle-line-init() { zle -K viins; _set_bar_cursor }
-zle-line-finish() { _set_block_cursor }
-zle -N zle-line-finish
-
+	function zle-keymap-select {
+	  if [[ ${KEYMAP} == vicmd ]]; then
+	      _set_block_cursor
+	  else
+	      _set_bar_cursor
+	  fi
+	}
+	zle -N zle-keymap-select
+	# ensure beam cursor when starting new terminal
+	precmd_functions+=(_set_bar_cursor) #
+	# ensure insert mode and beam cursor when exiting vim
+	zle-line-init() { zle -K viins; _set_bar_cursor }
+	zle-line-finish() { _set_block_cursor }
+	zle -N zle-line-finish
+fi
 
 # Startup ------------------------------------------------------------------------------------------
 
