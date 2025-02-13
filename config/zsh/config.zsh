@@ -87,19 +87,13 @@ source ~/.config/zsh/omz.history.zsh
 # run 'bindkey' alone to print all keybindings
 
 bindkey -v # vi mode
+# bindkey -M vicmd '^[' undefined-key # bind ESC to undefined-key widget
 ### https://unix.stackexchange.com/a/593120
 # Remove mode switching delay.
-KEYTIMEOUT=5
+KEYTIMEOUT=1 # set ESC timeout to 0.01s (default value is 0.4s)
 #function _set_cursor() {
 #  echo -ne $1
 #}
-function _set_cursor() {
-    if [[ $TMUX = '' ]]; then
-      echo -ne $1
-    else
-      echo -ne "\ePtmux;\e\e$1\e\\"
-    fi
-}
 ## cursor style
 # Set cursor style (DECSCUSR), VT520.
 # 0  ⇒  blinking block.
@@ -109,8 +103,18 @@ function _set_cursor() {
 # 4  ⇒  steady underline.
 # 5  ⇒  blinking bar, xterm.
 # 6  ⇒  steady bar, xterm.
-function _set_block_cursor() { _set_cursor '\e[2 q' }
-function _set_bar_cursor() { _set_cursor '\e[5 q' }
+function _set_cursor() {
+    if [[ $TMUX = '' ]]; then
+      # echo '\e[6 q'
+      echo -ne "\e[$1 q"
+    else
+      # printf '\033[6 q'
+      printf "\033[$1 q"
+    fi
+}
+function _set_block_cursor() { _set_cursor 2 }
+function _set_bar_cursor() { _set_cursor 5 }
+#function _set_bar_cursor() { _set_cursor 1 }
 
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]]; then
