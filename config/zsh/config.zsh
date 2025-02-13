@@ -87,8 +87,45 @@ source ~/.config/zsh/omz.history.zsh
 # run 'bindkey' alone to print all keybindings
 
 bindkey -v # vi mode
-# bindkey -e # emacs mode
-# bindkey -r "^[" # disable esc mode
+### https://unix.stackexchange.com/a/593120
+# Remove mode switching delay.
+KEYTIMEOUT=5
+#function _set_cursor() {
+#  echo -ne $1
+#}
+function _set_cursor() {
+    if [[ $TMUX = '' ]]; then
+      echo -ne $1
+    else
+      echo -ne "\ePtmux;\e\e$1\e\\"
+    fi
+}
+## cursor style
+# Set cursor style (DECSCUSR), VT520.
+# 0  ⇒  blinking block.
+# 1  ⇒  blinking block (default).
+# 2  ⇒  steady block.
+# 3  ⇒  blinking underline.
+# 4  ⇒  steady underline.
+# 5  ⇒  blinking bar, xterm.
+# 6  ⇒  steady bar, xterm.
+function _set_block_cursor() { _set_cursor '\e[2 q' }
+function _set_bar_cursor() { _set_cursor '\e[5 q' }
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]]; then
+      _set_block_cursor
+  else
+      _set_bar_cursor
+  fi
+}
+zle -N zle-keymap-select
+# ensure beam cursor when starting new terminal
+precmd_functions+=(_set_bar_cursor) #
+# ensure insert mode and beam cursor when exiting vim
+zle-line-init() { zle -K viins; _set_bar_cursor }
+zle-line-finish() { _set_block_cursor }
+zle -N zle-line-finish
 
 
 # Startup ------------------------------------------------------------------------------------------
@@ -97,4 +134,5 @@ bindkey -v # vi mode
 # neofetch
 # figlet alvaro sanchez
 # fortune | cowsay -pf www
+
 
