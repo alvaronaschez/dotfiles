@@ -64,8 +64,8 @@ bindswitch --reload --locked lid:off output $laptop_screen enable
 # workspaces
 workspace 0 output $laptop_screen
 workspace 1 output $external_monitor
-workspace 2 output $external_monitor
-workspace 3 output $external_monitor
+# workspace 2 output $external_monitor
+# workspace 3 output $external_monitor
 # exec swaymsg "workspace 2; exec $browser"
 exec swaymsg "workspace 1; exec $term tmux"
 

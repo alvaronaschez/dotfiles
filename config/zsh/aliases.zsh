@@ -62,7 +62,7 @@ alias dprune="docker system prune -af && docker volume prune -af && docker image
 alias git-delete-all-branches-except-current='git branch -D $(git branch)'
 
 #https://vim.fandom.com/wiki/Generate_ctags_file_for_a_C/C%2B%2B_source_file_with_all_of_their_dependencies_(standard_headers,_etc)
-alias ctagsc="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q /usr/include /usr/include/x86_64-linux-gnu/ ."
+alias ctagsc="ctags -R --kinds-C=+p --fields=+iaS --extras=+q /usr/include /usr/include/x86_64-linux-gnu/ ."
 alias cdd="cd ~/dotfiles"
 alias cddot=cdd
 alias cdz="cd ~/.config/zsh"
