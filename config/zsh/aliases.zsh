@@ -39,6 +39,7 @@ alias tx=tmux
 alias tm=tmux
 alias vmore="vim -u ~/.config/vim/vimrc.more -"
 alias bat=batcat
+alias sbcl-repl="rlwrap sbcl"
 alias luajit-repl="rlwrap luajit"
 alias untargz="tar xf"
 
@@ -98,6 +99,9 @@ alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias ssway="sway reload"
 alias skeyd="sudo keyd reload"
+
+alias mount-kobo="sudo mount /dev/sda /media/alvaro/kobo"
+alias unmount-kobo="sudo umount /media/alvaro/kobo"
 
 # show help
 alias hh="echo '\
