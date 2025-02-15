@@ -7,30 +7,56 @@
 esc = capslock
 
 capslock = overload(control, esc)
-#capslock = overload(nav, esc)
 enter = overload(control, enter)
 
-#tab = overload(nav, tab)
-#tab = overload(meta, tab)
-#backslash = overload(meta, backslash)
 tab = overload(alt, tab)
 backslash = overload(alt, backslash)
 
 rightshift = overload(shift, backspace)
 
-#leftcontrol=layer(nav)
+a+s = esc
+#l+; = backspace
+l+; = enter
+#j+k+l = enter
+
+[main]
+r = lettermod(nav, r, 75, 200)
 #[nav:C]
 # act as control if undefined
-
-
-#s+d=layer(control)
-d+f = layer(nav)
-[nav:C]
+[nav]
 h = left
 j = down
 k = up
 l = right
-* = control
+
+[main]
+space = lettermod(sym, space, 100, 200)
+[sym]
+q = 1
+w = 2
+e = 3
+r = 4
+t = 5
+Q = !
+W = @
+E = \#
+R = $
+T = %
+
+y = 6
+u = 7
+i = 8
+o = 9
+p = 0
+Y = ^
+U = &
+O = \(
+P = \)
+
+[ = -
+] = =
+{ = _
+} = +
 
 #### homerow mods
 [main]
