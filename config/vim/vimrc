@@ -164,7 +164,7 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
-
+Plug 'luochen1990/rainbow'
 Plug 'rhysd/vim-clang-format'
 
 "Plug 'maralla/completor.vim'
@@ -208,9 +208,11 @@ nnoremap <leader>2 :colorscheme base16-seti<cr>
 " nnoremap <leader>6 :colorscheme desert<cr>
 
 "colorscheme - run after loading base16 plugin
-colorscheme base16-google-dark
-"colorscheme base16-seti
+"colorscheme base16-google-dark
+colorscheme base16-seti
 
+" rainbow
+let g:rainbow_active = 1
 
 "nerdtree
 nnoremap <C-t> :NERDTreeToggle<CR>
