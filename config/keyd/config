@@ -1,3 +1,5 @@
+[global]
+
 [ids]
 *
 # exclude builtin keyboard
@@ -9,64 +11,90 @@ esc = capslock
 capslock = overload(control, esc)
 enter = overload(control, enter)
 
-tab = overload(alt, tab)
-backslash = overload(alt, backslash)
+tab = overload(meta, tab)
+backslash = overload(meta, backslash)
 
 rightshift = overload(shift, backspace)
 
-a+s = esc
-#l+; = backspace
-l+; = enter
-#j+k+l = enter
 
+#### homerow mods
 [main]
-r = lettermod(nav, r, 75, 200)
-#[nav:C]
+a+s = esc
+#s+d = layer(symbols)
+s+d = overload(symbols, oneshot(symbols))
+#d+f = layer(control)
+d+f = layer(nav)
+#s+f = layer(meta)
+s+f = overload(meta, oneshot(meta))
+#
+j+k = layer(control)
+#k+l = layer(symbols)
+k+l = overload(symbols, oneshot(symbols))
+l+; = enter
+#j+l = layer(meta)
+j+l = overload(meta, oneshot(meta))
+
+
 # act as control if undefined
-[nav]
+[nav:C]
 h = left
 j = down
 k = up
 l = right
+u = home
+i = end
 
 [main]
-space = lettermod(sym, space, 100, 200)
-[sym]
-q = 1
-w = 2
-e = 3
-r = 4
-t = 5
-Q = !
-W = @
-E = \#
-R = $
-T = %
+[symbols]
+q = !
+w = @
+e = #
+r = $
+t = %
+#
+y = ^
+u = &
+i = *
+o = (
+p = )
 
-y = 6
-u = 7
-i = 8
-o = 9
-p = 0
-Y = ^
-U = &
-O = \(
-P = \)
+a = 1
+s = 2
+d = 3
+f = 4
+g = 5
+#
+h = "
+j = {
+k = }
+l = [
+; = ]
 
-[ = -
-] = =
-{ = _
-} = +
+z = 6
+x = 7
+c = 8
+v = 9
+b = 0
+#
+n = '
+m = -
+, = +
+. = =
+/ = _
+
+space = 0
+[ = \
+{ = |
 
 #### homerow mods
-[main]
-a = lettermod(meta, a, 75, 200)
-s = lettermod(alt, s, 75, 200)
-d = lettermod(shift, d, 75, 200)
-f = lettermod(control, f, 75, 200)
-
-j = lettermod(control, j, 75, 200)
-k = lettermod(shift, k, 75, 200)
-l = lettermod(alt, l, 75, 200)
-; = lettermod(meta, ;, 75, 200)
+#[main]
+#a = lettermod(meta, a, 75, 175)
+#s = lettermod(alt, s, 75, 175)
+#d = lettermod(shift, d, 75, 175)
+#f = lettermod(control, f, 75, 175)
+#
+#j = lettermod(control, j, 75, 175)
+#k = lettermod(shift, k, 75, 175)
+#l = lettermod(alt, l, 75, 175)
+#; = lettermod(meta, ;, 75, 175)
 
