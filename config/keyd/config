@@ -81,8 +81,8 @@ b = 0
 #
 n = '
 m = -
-, = +
-. = =
+, = =
+. = +
 / = _
 
 space = 0
@@ -91,6 +91,9 @@ space = 0
 
 ' = \
 " = |
+
+capslock = `
+capslock+shift = ~
 
 # noop
 # inactive keys
