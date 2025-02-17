@@ -34,6 +34,7 @@ alias grep="grep --color=auto"
 alias rg="rg --color=auto"
 
 alias v=vim
+alias em="emacs -nw"
 alias nv=nvim
 alias tx=tmux
 alias tm=tmux
