@@ -1,3 +1,7 @@
 tags
 tags.lock
 config/nvim/lazy-lock.json
+
+config/emacs/*
+!config/emacs/early-init.el
+!config/emacs/init.el
