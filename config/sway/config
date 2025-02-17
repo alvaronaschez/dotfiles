@@ -123,7 +123,7 @@ input "type:keyboard" {
     bindsym $mod+d exec $menu
 
     # lock screen
-    bindsym $mod+Escape exec 'swaylock -fFe -i $lockimg'
+    bindsym $mod+Shift+Escape exec 'swaylock -fFe -i $lockimg'
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
