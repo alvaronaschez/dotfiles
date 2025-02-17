@@ -92,8 +92,8 @@ space = 0
 ' = \
 " = |
 
-capslock = `
-capslock+shift = ~
+capslock = ~
+capslock+shift = `
 
 # noop
 # inactive keys
