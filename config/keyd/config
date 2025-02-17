@@ -12,10 +12,13 @@ capslock = overload(control, esc)
 enter = overload(control, enter)
 
 tab = overload(meta, tab)
-backslash = overload(meta, backslash)
+#backslash = overload(meta, backslash)
 
 rightshift = overload(shift, backspace)
 
+' = enter
+#[ = \
+[ = backspace
 
 #### homerow mods
 [main]
@@ -85,6 +88,31 @@ m = -
 space = 0
 [ = \
 { = |
+
+' = \
+" = |
+
+# noop
+# inactive keys
+[main]
+1 = noop
+2 = noop
+3 = noop
+4 = noop
+5 = noop
+6 = noop
+7 = noop
+8 = noop
+9 = noop
+0 = noop
+- = noop
+= = noop
+backspace = noop
+#
+] = noop
+\ = noop
+enter = noop
+
 
 #### homerow mods
 #[main]
