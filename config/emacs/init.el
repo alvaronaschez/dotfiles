@@ -12,7 +12,6 @@
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
 
-
 ;; Put all auto-generated configurations in a separate file
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file :no-error-if-file-is-missing)
@@ -38,7 +37,9 @@
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil) ;; needed by evil-collection
   (setq evil-want-C-u-scroll t
-evil-undo-system 'undo-redo)
+        evil-undo-system 'undo-redo
+	evil-split-window-below t
+	evil-vsplit-window-right t)
   :config
   (evil-mode 1))
 
@@ -57,30 +58,8 @@ evil-undo-system 'undo-redo)
 )
 (set-variable 'frame-background-mode 'dark)
 
-
-;; general keybindings
-(use-package general
-  :ensure t
-  :config
-  (general-evil-setup)
-
-  ;; set up 'SPC' as the global leader key
-  (general-create-definer dt/leader-keys
-    :states '(normal insert visual emacs)
-    :keymaps 'override
-    :prefix "SPC" ;; set leader
-    :global-prefix "M-SPC") ;; access leader in insert mode
-
-  (dt/leader-keys
-    "b" '(:ignore t :wk "buffer")
-    "bb" '(switch-to-buffer :wk "Switch buffer")
-    "bk" '(kill-this-buffer :wk "Kill this buffer")
-    "bn" '(next-buffer :wk "Next buffer")
-    "bp" '(previous-buffer :wk "Previous buffer")
-    "br" '(revert-buffer :wk "Reload buffer"))
-
-)
-
+;;(require 'keybindings "/home/alvaro/.config/emacs/alvaro/keybindings.el")
+(require 'keybindings "~/.config/emacs/alvaro/keybindings.el")
 
 
 ;; which key
