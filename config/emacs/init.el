@@ -29,6 +29,15 @@
       (package-refresh-contents))
     (package-install 'use-package)))
 
+;; minibuffer escape
+(global-set-key [escape] 'keyboard-escape-quit)
+
+;;(load-theme 'deeper-blue)
+;; dark mode
+(when (display-graphic-p)
+  (invert-face 'default)
+  )
+(set-variable 'frame-background-mode 'dark)
 
 ;; vim key bindings
 (use-package evil
@@ -49,14 +58,9 @@
   :ensure t
   :config
   (evil-collection-init))
+(evil-collection-swap-key nil 'evil-motion-state-map
+  ";" ":")
 
-
-;;(load-theme 'deeper-blue)
-;; dark mode
-(when (display-graphic-p)
-  (invert-face 'default)
-)
-(set-variable 'frame-background-mode 'dark)
 
 ;;(require 'keybindings "/home/alvaro/.config/emacs/alvaro/keybindings.el")
 (require 'keybindings "~/.config/emacs/alvaro/keybindings.el")
