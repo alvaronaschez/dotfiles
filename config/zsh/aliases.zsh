@@ -49,6 +49,7 @@ alias upgrade="sudo apt-get dist-upgrade"
 alias autoclean="sudo apt-get autoclean"
 alias autoremove="sudo apt autoremove"
 alias install="sudo apt-get install"
+alias install-backports="sudo apt-get install -t bookworm-backports"
 alias remove="sudo apt-get purge --autoremove"
 alias uninstall=remove
 alias search="apt-cache search"
@@ -98,7 +99,7 @@ alias vkeyd="v ~/.config/keyd/config"
 
 alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
-alias ssway="sway reload"
+alias ssway="swaymsg reload"
 alias skeyd="sudo keyd reload"
 
 alias mount-kobo="sudo mount /dev/sda /media/alvaro/kobo"
