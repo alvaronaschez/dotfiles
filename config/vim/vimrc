@@ -28,6 +28,8 @@ set visualbell " flash the screen instead of beeping on errors
 set mouse=a
 set background=dark " use colors that suit a dark background
 
+set splitright
+set splitbelow
 
 "
 " text rendering options
@@ -122,8 +124,7 @@ nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " windows
 nnoremap <leader>s :new<cr>
-nnoremap <leader>v vnew<cr>
-nnoremap <leader>v <C-\><C-N>vnew<cr>
+nnoremap <leader>v :vnew<cr>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
