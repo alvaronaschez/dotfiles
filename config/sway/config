@@ -115,6 +115,8 @@ input "type:keyboard" {
     bindsym $mod+Return exec $term
     bindsym $mod+Shift+Return exec $term tmux
 
+    bindsym $mod+Mod1+Return exec emacsclient -r
+
     # Kill focused window
     bindsym $mod+Shift+q kill
 

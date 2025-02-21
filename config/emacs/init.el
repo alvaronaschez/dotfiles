@@ -16,6 +16,9 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file :no-error-if-file-is-missing)
 
+;; Put backups in same directory
+(setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
+
 ;; minibuffer escape
 (global-set-key [escape] 'keyboard-escape-quit)
 
@@ -55,6 +58,7 @@
 
 (use-package rainbow-delimiters :ensure t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 
 (provide 'init)
 
