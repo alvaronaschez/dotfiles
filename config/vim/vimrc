@@ -5,12 +5,12 @@ set nocompatible " use Vim settings, ragher than Vi settings
 "set hidden " use hidden buffers
 set nohidden " this is the default value
 set autoread " automatically re-read files if unmodified inside vim
-set clipboard^=unnamed,unnamedplus
+set clipboard=unnamedplus
 " Make the escape key more responsive by decreasing the wait time for an
 " escape sequence (e.g., arrow keys).
 set ttimeout
 set ttimeoutlen=50
-set timeoutlen=500
+"set timeoutlen=500
 set exrc " use local .vimrc files
 
 
