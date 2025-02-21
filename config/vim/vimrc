@@ -106,7 +106,8 @@ nnoremap <space> <nop>
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
 " quit
-nnoremap <leader>q :q<CR>
+nnoremap <leader>qq :q<CR>
+"nnoremap <leader>q :q<CR>
 " quick help
 nnoremap <leader>? :tab :h quickref<CR>
 " terminal mode
@@ -168,6 +169,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
 Plug 'luochen1990/rainbow'
 Plug 'rhysd/vim-clang-format'
+Plug 'liuchengxu/vim-which-key'
 
 "Plug 'maralla/completor.vim'
 "Plug 'ervandew/supertab'
@@ -222,3 +224,5 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 "startify
 let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-message.txt")
 
+"whichkey
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
