@@ -34,7 +34,7 @@ alias grep="grep --color=auto"
 alias rg="rg --color=auto"
 
 alias v=vim
-alias em="emacs -nw"
+alias em="emacsclient -r"
 alias nv=nvim
 alias tx=tmux
 alias tm=tmux
@@ -71,6 +71,7 @@ alias cddot=cdd
 alias cdz="cd ~/.config/zsh"
 alias cdw="cd ~/Workspace"
 alias cdb="cd ~/Bookshelf"
+alias cddoc="cd ~/Documents"
 alias cddown="cd ~/Downloads"
 alias cdsway="cd ~/.config/sway"
 alias cdsy=cdsway
