@@ -33,7 +33,7 @@
 (use-package base16-theme
   :ensure t
   :config
-  (load-theme 'base16-default-dark t))
+  (load-theme 'base16-seti t))
 
 
 (require 'evil "~/.config/emacs/alvaro/evil.el")
