@@ -20,7 +20,7 @@ set exrc " use local .vimrc files
 "colorscheme desert
 set number " show line numbers on the sidebar
 set cursorline " highlight the line currently under the cursor
-"set relativenumber " set line numbers relative to the line of the cursor
+set relativenumber " set line numbers relative to the line of the cursor
 set colorcolumn=80 " highlight 80th column
 set wildmenu " display command line's tab autocomplete options as a menu
 set noerrorbells " disable beep on errors
@@ -100,6 +100,8 @@ inoremap {;<CR> {<CR>};<ESC>O
 "
 nnoremap ; :
 nnoremap : ;
+nnoremap <down> <C-e>
+nnoremap <up> <C-y>
 
 " leader
 nnoremap <space> <nop>

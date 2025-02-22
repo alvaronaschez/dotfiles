@@ -6,6 +6,7 @@
 ;;; Code:
 
 ;; gui tweaks
+(setq scroll-conservatively 101)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
