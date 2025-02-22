@@ -172,6 +172,7 @@ Plug 'dense-analysis/ale'
 Plug 'luochen1990/rainbow'
 Plug 'rhysd/vim-clang-format'
 Plug 'liuchengxu/vim-which-key'
+Plug 'easymotion/vim-easymotion'
 
 "Plug 'maralla/completor.vim'
 "Plug 'ervandew/supertab'
@@ -228,3 +229,6 @@ let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-
 
 "whichkey
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" bidirectional easymotion
+nnoremap <leader>w <plug>(easymotion-bd-w)
