@@ -2,8 +2,8 @@
 " general configuration options
 "
 set nocompatible " use Vim settings, ragher than Vi settings
-"set hidden " use hidden buffers
-set nohidden " this is the default value
+set hidden " use hidden buffers
+"set nohidden " this is the default value
 set autoread " automatically re-read files if unmodified inside vim
 set clipboard=unnamedplus
 " Make the escape key more responsive by decreasing the wait time for an
@@ -12,15 +12,15 @@ set ttimeout
 set ttimeoutlen=50
 "set timeoutlen=500
 set exrc " use local .vimrc files
-
+filetype plugin on
 
 "
 " user interface options
 "
 "colorscheme desert
-set number " show line numbers on the sidebar
-set cursorline " highlight the line currently under the cursor
+"set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
+set cursorline " highlight the line currently under the cursor
 set colorcolumn=80 " highlight 80th column
 set wildmenu " display command line's tab autocomplete options as a menu
 set noerrorbells " disable beep on errors
@@ -36,7 +36,7 @@ set splitbelow
 "
 set encoding=utf8
 syntax on
-set scrolloff=10
+set scrolloff=5
 " set nowrap " don't wrap lines
 set linebreak " wrap lines at convenient points
 set list
@@ -58,12 +58,26 @@ let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
 
 "
 " indentation options
+" see :h tabstop
 "
-set autoindent " enable autoindenting
 filetype plugin indent on " enable indenting depending on file type
+set autoindent " enable autoindenting
+"set tabstop=8
 "set softtabstop=4
+"set shiftwidth=4
 "set smarttab
-
+"https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
+augroup custom_indentation
+	autocmd!
+	"autocmd Filetype c,vim setlocal shiftwidth=4 tabstop=4 noexpandtab
+	autocmd Filetype vim setlocal shiftwidth=4 tabstop=4 noexpandtab
+	autocmd Filetype c setlocal shiftwidth=4 tabstop=4 noexpandtab
+	autocmd Filetype python setlocal shiftwidth=4 softtabstop=4 expandtab
+	autocmd Filetype javascript setlocal ts=2 sw=2 noet
+	"autocmd Filetype c,java set cindent noexpandtab
+	"autocmd BufRead,BufNewFile   *.c,*.h,*.java set cindent noexpandtab
+	"autocmd BufRead,BufNewFile   *.pl syntax on
+augroup END
 
 "
 " search options
@@ -78,21 +92,11 @@ set smartcase " ...unless you type a capital
 " misc options
 "
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-" highlight colors
-"hi MatchParen cterm=bold,underline ctermbg=gray ctermfg=red
-"hi Search cterm=bold,underline ctermbg=gray ctermfg=red
 
-
-"
-" autopairs without a plugin
-"
-" inoremap " ""<left>
-" inoremap ' ''<left>
-"inoremap ( ()<left>
-"inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+" This will look in the current directory for 'tags', and work up the tree
+" towards root until one is found.
+" From: http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+set tags=tags;/
 
 
 "
@@ -102,6 +106,9 @@ nnoremap ; :
 nnoremap : ;
 nnoremap <down> <C-e>
 nnoremap <up> <C-y>
+
+" Yank to end of line
+noremap Y y$
 
 " leader
 nnoremap <space> <nop>
@@ -147,9 +154,9 @@ nnoremap <leader>p gT
 "https://github.com/vim/vim/issues/5157
 if $XDG_SESSION_TYPE=='wayland'
 	augroup wl-clipboard
-	    autocmd!
-	    autocmd FocusLost * :call system('wl-copy --trim-newline', @+)
-	    autocmd FocusGained * :let @+ = system('wl-paste -n')
+		autocmd!
+		autocmd FocusLost * :call system('wl-copy --trim-newline', @+)
+		autocmd FocusGained * :let @+ = system('wl-paste -n')
 	augroup END
 endif
 
@@ -173,6 +180,9 @@ Plug 'luochen1990/rainbow'
 Plug 'rhysd/vim-clang-format'
 Plug 'liuchengxu/vim-which-key'
 Plug 'easymotion/vim-easymotion'
+Plug 'Raimondi/delimitMate'
+Plug 'mhinz/vim-signify'
+Plug 'preservim/vim-indent-guides'
 
 "Plug 'maralla/completor.vim'
 "Plug 'ervandew/supertab'
@@ -231,4 +241,7 @@ let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " bidirectional easymotion
-nnoremap <leader>w <plug>(easymotion-bd-w)
+" nnoremap <leader>w <plug>(easymotion-bd-w)
+
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
