@@ -180,7 +180,7 @@ Plug 'luochen1990/rainbow'
 Plug 'rhysd/vim-clang-format'
 Plug 'liuchengxu/vim-which-key'
 Plug 'easymotion/vim-easymotion'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-signify'
 Plug 'preservim/vim-indent-guides'
 
