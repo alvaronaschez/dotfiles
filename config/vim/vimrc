@@ -41,7 +41,7 @@ set scrolloff=5
 set linebreak " wrap lines at convenient points
 set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
-"listchars+=eol:¬,space:·
+set listchars+=eol:¬,space:·
 "
 " cursor style
 " Set cursor style (DECSCUSR), VT520.
@@ -172,7 +172,7 @@ Plug 'mhinz/vim-startify'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
@@ -232,7 +232,7 @@ colorscheme base16-seti
 let g:rainbow_active = 1
 
 "nerdtree
-nnoremap <C-t> :NERDTreeToggle<CR>
+"nnoremap <C-t> :NERDTreeToggle<CR>
 
 "startify
 let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-message.txt")
