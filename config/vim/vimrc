@@ -1,4 +1,3 @@
-"rToggle
 " 
 " general configuration options
 "
@@ -172,21 +171,28 @@ call plug#begin()
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'
 Plug 'preservim/tagbar'
 Plug 'liuchengxu/vim-which-key'
-Plug 'dense-analysis/ale'
-Plug 'jiangmiao/auto-pairs'
+Plug 'cohama/lexima.vim' " modern auto-pairs
 Plug 'luochen1990/rainbow'
 Plug 'preservim/vim-indent-guides'
 Plug 'mhinz/vim-signify'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'easymotion/vim-easymotion'
-Plug 'rhysd/vim-clang-format'
-Plug 'mhinz/vim-startify'
-"Plug 'preservim/nerdtree'
-
 "Plug 'maralla/completor.vim'
+"Plug 'lifepillar/vim-mucomplete'
 "Plug 'ervandew/supertab'
+" language specific
+" C, C++
+Plug 'xavierd/clang_complete'
+Plug 'rhysd/vim-clang-format'
+" Lisp
+" https://susam.net/lisp-in-vim.html
+Plug 'kovisoft/slimv'
+Plug 'preservim/nerdtree'
+Plug 'mhinz/vim-startify'
+
 
 call plug#end()
 
@@ -246,3 +252,5 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
+
+let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
