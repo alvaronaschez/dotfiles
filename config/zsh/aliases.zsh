@@ -103,8 +103,12 @@ alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias ssway="swaymsg reload"
 alias skeyd="sudo keyd reload"
 
-alias mount-kobo="sudo mount /dev/sda /media/alvaro/kobo"
-alias unmount-kobo="sudo umount /media/alvaro/kobo"
+alias mkb="sudo mount /dev/sda /media/alvaro/kobo"
+alias umkb="sudo umount /media/alvaro/kobo"
+alias cdkb="cd /media/alvaro/kobo"
+alias kobo-mount=mkb
+alias kobo-unmount=umkb
+alias kobo-cd=cdkb
 
 # show help
 alias hh="echo '\
