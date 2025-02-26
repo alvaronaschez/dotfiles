@@ -14,10 +14,11 @@ set ttimeoutlen=50
 set exrc " use local .vimrc files
 filetype plugin on
 
+
 "
 " user interface options
 "
-"colorscheme desert
+"colorscheme desert " use this colorscheme if not available colorscheme plugin
 set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
 set cursorline " highlight the line currently under the cursor
@@ -30,6 +31,8 @@ set background=dark " use colors that suit a dark background
 
 set splitright
 set splitbelow
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
 
 "
 " text rendering options
@@ -58,6 +61,7 @@ let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
 
 "
 " indentation options
+"
 " see :h tabstop
 "
 filetype plugin indent on " enable indenting depending on file type
@@ -79,6 +83,7 @@ augroup custom_indentation
 	"autocmd BufRead,BufNewFile   *.pl syntax on
 augroup END
 
+
 "
 " search options
 "
@@ -86,13 +91,6 @@ set hlsearch
 set incsearch
 set ignorecase " ignore case when searchihng...
 set smartcase " ...unless you type a capital
-
-
-"
-" misc options
-"
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-
 " This will look in the current directory for 'tags', and work up the tree
 " towards root until one is found.
 " From: http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
@@ -104,7 +102,9 @@ set tags=tags;/
 "
 nnoremap ; :
 nnoremap : ;
+" scroll down
 nnoremap <down> <C-e>
+" scroll up
 nnoremap <up> <C-y>
 
 " Yank to end of line
@@ -114,20 +114,14 @@ noremap Y y$
 nnoremap <space> <nop>
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
-" quit
-nnoremap <leader>qq :q<CR>
-"nnoremap <leader>q :q<CR>
-" quick help
-nnoremap <leader>? :tab :h quickref<CR>
-" terminal mode
 " double tap esc to enter normal mode (inside terminal mode)
 tnoremap <Esc><Esc> <C-\><C-N>
 " open terminal in current window
-noremap <leader>t :ter ++curwin<CR>
+"noremap <leader>T :ter ++curwin<CR>
 " open terminal in new window
 " noremap <leader>t :ter<CR>
 " open terminal in new tab
-" noremap <leader>T :tab ter<CR>
+noremap <leader>T :tab ter<CR>
 " :ter to open new terminal in split window
 " reload vim configuration
 nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
@@ -141,15 +135,18 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 " tabs
+noremap <leader>t :tabnew<CR>
 " gt - go to next tab
-" gT - go to previous tab
-noremap <leader>T :tabnew<CR>
 nnoremap <leader>n gt
+" gT - go to previous tab
 nnoremap <leader>p gT
 " gf - go to file under the cursor
 " <C-w>gf - go to file under the cursor in a new tab
 
 
+"
+" misc
+"
 " workaround to make system clipboard work in wayland
 "https://github.com/vim/vim/issues/5157
 if $XDG_SESSION_TYPE=='wayland'
@@ -191,7 +188,7 @@ Plug 'rhysd/vim-clang-format'
 " https://susam.net/lisp-in-vim.html
 Plug 'kovisoft/slimv'
 Plug 'preservim/nerdtree'
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 
 
 call plug#end()
@@ -231,26 +228,25 @@ let g:ale_c_cc_options = '-std=gnu11 -Wall'
 " nnoremap <leader>5 :colorscheme base16-darktooth<cr>
 " nnoremap <leader>6 :colorscheme desert<cr>
 
-"colorscheme - run after loading base16 plugin
+" base16
 "colorscheme base16-google-dark
 colorscheme base16-seti
-
 " rainbow
 let g:rainbow_active = 1
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+"whichkey
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 "nerdtree
 "nnoremap <C-t> :NERDTreeToggle<CR>
 
 "startify
-let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-message.txt")
+"let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-message.txt")
 
-"whichkey
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " bidirectional easymotion
 " nnoremap <leader>w <plug>(easymotion-bd-w)
 
-" indent guides
-let g:indent_guides_enable_on_vim_startup = 1
-
+" clang complete
 let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
