@@ -117,8 +117,8 @@ noremap Y y$
 
 " leader
 nnoremap <space> <nop>
-let mapleader = "\<space>"
-let maplocalleader = "\<space>"
+let g:mapleader = "\<space>"
+let g:maplocalleader = "\<space>"
 " double tap esc to enter normal mode (inside terminal mode)
 tnoremap <Esc><Esc> <C-\><C-N>
 " open terminal in current window
@@ -218,7 +218,7 @@ let g:airline_theme='monochrome'
 "if $TERM != 'linux' " this will fail when running tmux from tty
 if !empty($DISPLAY)
 	let g:airline_powerline_fonts = 1
-	let base16colorspace=256
+	let g:base16colorspace=256
 	set termguicolors
 	let g:airline_theme='base16'
 endif
