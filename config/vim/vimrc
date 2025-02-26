@@ -1,6 +1,18 @@
-" 
-" general configuration options
+"       _
+"__   _(_)_ __ ___  _ __ ___
+"\ \ / / | '_ ` _ \| '__/ __|
+" \ V /| | | | | | | | | (__
+"(_)_/ |_|_| |_| |_|_|  \___|
 "
+"
+" ':normal zr' to unfold everything
+" ':normal zm' to fold everything again
+" ':normal za' to toggle one fold
+"
+"
+
+
+" GENERAL CONFIGURATION OPTIONS {{{
 set nocompatible " use Vim settings, ragher than Vi settings
 set hidden " use hidden buffers
 "set nohidden " this is the default value
@@ -13,11 +25,10 @@ set ttimeoutlen=50
 "set timeoutlen=500
 set exrc " use local .vimrc files
 filetype plugin on
+"}}}
 
 
-"
-" user interface options
-"
+" USER INTERFACE OPTIONS {{{
 "colorscheme desert " use this colorscheme if not available colorscheme plugin
 set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
@@ -32,11 +43,10 @@ set background=dark " use colors that suit a dark background
 set splitright
 set splitbelow
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+" }}}
 
 
-"
-" text rendering options
-"
+" TEXT RENDERING OPTIONS {{{
 set encoding=utf8
 syntax on
 set scrolloff=5
@@ -57,13 +67,11 @@ set listchars+=eol:¬,space:·
 " 	6  ⇒  steady bar, xterm
 let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
 let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
+"}}}
 
 
-"
-" indentation options
-"
+" INDENTATION OPTIONS {{{
 " see :h tabstop
-"
 filetype plugin indent on " enable indenting depending on file type
 set autoindent " enable autoindenting
 "set tabstop=8
@@ -72,21 +80,19 @@ set autoindent " enable autoindenting
 "set smarttab
 "https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
 augroup custom_indentation
+	" :help autocmd-groups
 	autocmd!
-	"autocmd Filetype c,vim setlocal shiftwidth=4 tabstop=4 noexpandtab
-	autocmd Filetype vim setlocal shiftwidth=4 tabstop=4 noexpandtab
+	" use ':normal za' to colapse and uncolapse folds
+	autocmd Filetype vim setlocal shiftwidth=4 tabstop=4 noexpandtab 
+\		foldmethod=marker "nofoldenable
 	autocmd Filetype c setlocal shiftwidth=4 tabstop=4 noexpandtab
 	autocmd Filetype python setlocal shiftwidth=4 softtabstop=4 expandtab
 	autocmd Filetype javascript setlocal ts=2 sw=2 noet
-	"autocmd Filetype c,java set cindent noexpandtab
-	"autocmd BufRead,BufNewFile   *.c,*.h,*.java set cindent noexpandtab
-	"autocmd BufRead,BufNewFile   *.pl syntax on
 augroup END
+"}}}
 
 
-"
-" search options
-"
+" SEARCH OPTIONS {{{
 set hlsearch
 set incsearch
 set ignorecase " ignore case when searchihng...
@@ -95,11 +101,10 @@ set smartcase " ...unless you type a capital
 " towards root until one is found.
 " From: http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 set tags=tags;/
+"}}}
 
 
-"
-" remappings
-"
+" REMAPPINGS {{{
 nnoremap ; :
 nnoremap : ;
 " scroll down
@@ -124,7 +129,8 @@ tnoremap <Esc><Esc> <C-\><C-N>
 noremap <leader>T :tab ter<CR>
 " :ter to open new terminal in split window
 " reload vim configuration
-nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
+"nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
+nnoremap <silent> <Leader>. :so $MYVIMRC<CR> :nohls<cr><left>
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " windows
@@ -142,25 +148,24 @@ nnoremap <leader>n gt
 nnoremap <leader>p gT
 " gf - go to file under the cursor
 " <C-w>gf - go to file under the cursor in a new tab
+"}}}
 
 
-"
-" misc
-"
-" workaround to make system clipboard work in wayland
+" WORKAROUND TO MAKE SYSTEM CLIPBOARD WORK IN WAYLAND {{{
 "https://github.com/vim/vim/issues/5157
 if $XDG_SESSION_TYPE=='wayland'
 	augroup wl-clipboard
+	" :help autocmd-groups
 		autocmd!
 		autocmd FocusLost * :call system('wl-copy --trim-newline', @+)
 		autocmd FocusGained * :let @+ = system('wl-paste -n')
 	augroup END
 endif
 
+" }}}
 
-"
-" plugins
-"
+
+" PLUGINS {{{
 runtime ftplugin/man.vim
 
 call plug#begin()
@@ -192,7 +197,10 @@ Plug 'preservim/nerdtree'
 
 
 call plug#end()
+"}}}
 
+
+" PLUGIN SETTINGS {{{
 "let g:deoplete#enable_at_startup = 1
 
 "let g:ale_c_parse_makefile = 1
@@ -250,3 +258,4 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " clang complete
 let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
+"}}}
