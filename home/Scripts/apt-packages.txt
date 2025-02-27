@@ -13,8 +13,10 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 vim-athena vim-scripts vim-doc
 git
+btop
 
 gcc
+tcc # tiny c compiler
 clang-format
 cscope
 cmake
