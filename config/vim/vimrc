@@ -134,7 +134,8 @@ nnoremap <silent> <Leader>. :so $MYVIMRC<CR> :nohls<cr><left>
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " windows
-nnoremap <leader>s :new<cr>
+"nnoremap <leader>s :new<cr>
+nnoremap <leader>s <C-w>n
 nnoremap <leader>v :vnew<cr>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
@@ -146,7 +147,8 @@ nnoremap <leader>K <C-w>K
 nnoremap <leader>L <C-w>L
 
 " tabs
-noremap <leader>t :tabnew<CR>
+"noremap <leader>t :tabnew<CR>
+noremap <leader>t :tabe<CR>
 " gt - go to next tab
 nnoremap <leader>n gt
 " gT - go to previous tab
@@ -197,7 +199,7 @@ Plug 'rhysd/vim-clang-format'
 " Lisp
 " https://susam.net/lisp-in-vim.html
 Plug 'kovisoft/slimv'
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
 "Plug 'mhinz/vim-startify'
 
 
@@ -214,15 +216,6 @@ call plug#end()
 " airline
 let g:airline_theme='monochrome'
 
-" are we in tty?
-"if $TERM != 'linux' " this will fail when running tmux from tty
-if !empty($DISPLAY)
-	let g:airline_powerline_fonts = 1
-	let g:base16colorspace=256
-	set termguicolors
-	let g:airline_theme='base16'
-endif
-
 
 " tagbar
 nnoremap <leader>b :TagbarToggle<CR>
@@ -234,18 +227,13 @@ let g:ale_c_cc_executable = 'gcc'
 "let g:ale_c_cc_options = '-std=c11 -Wall'
 let g:ale_c_cc_options = '-std=gnu11 -Wall'
 
-" nnoremap <leader>1 :colorscheme base16-google-dark<cr>
-" nnoremap <leader>2 :colorscheme base16-seti<cr>
-" nnoremap <leader>3 :colorscheme base16-default-dark<cr>
-" nnoremap <leader>4 :colorscheme base16-irblack<cr>
-" nnoremap <leader>5 :colorscheme base16-darktooth<cr>
-" nnoremap <leader>6 :colorscheme desert<cr>
-
 " base16
 "colorscheme base16-google-dark
 colorscheme base16-seti
+
 " rainbow
 let g:rainbow_active = 1
+
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 "whichkey
@@ -257,10 +245,21 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 "startify
 "let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-message.txt")
 
-
 " bidirectional easymotion
 " nnoremap <leader>w <plug>(easymotion-bd-w)
 
 " clang complete
 let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
+"}}}
+
+
+" TTY SETTINGS {{{
+" are we in tty?
+"if $TERM != 'linux' " this will fail when running tmux from tty
+if !empty($DISPLAY)
+	let g:airline_powerline_fonts = 1
+	let g:base16colorspace=256
+	set termguicolors
+	let g:airline_theme='base16'
+endif
 "}}}
