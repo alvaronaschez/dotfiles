@@ -2,6 +2,8 @@ tags
 tags.lock
 config/nvim/lazy-lock.json
 
+config/vim/plugged
+
 config/emacs/*
 !config/emacs/init.el
 !config/emacs/alvaro
