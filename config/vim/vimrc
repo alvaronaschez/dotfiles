@@ -183,6 +183,7 @@ endif
 
 " PLUGINS {{{
 runtime ftplugin/man.vim
+packadd termdebug
 
 call plug#begin()
 
