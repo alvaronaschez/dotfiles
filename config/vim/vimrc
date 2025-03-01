@@ -33,7 +33,7 @@ filetype plugin on
 set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
 set cursorline " highlight the line currently under the cursor
-set colorcolumn=80 " highlight 80th column
+"set colorcolumn=80 " highlight 80th column
 set wildmenu " display command line's tab autocomplete options as a menu
 set noerrorbells " disable beep on errors
 set visualbell " flash the screen instead of beeping on errors
@@ -131,7 +131,15 @@ noremap <leader>T :tab ter<CR>
 " reload vim configuration
 "nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
 nnoremap <silent> <Leader>. :so $MYVIMRC<CR> :nohls<cr><left>
-nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!<cr>
+function ToggleColorcolumn()
+	if &colorcolumn ==# ""
+		"set colorcolumn=80
+		set colorcolumn=80,100,120
+	else
+		set colorcolumn=""
+	endif
+endfunction
+nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " windows
