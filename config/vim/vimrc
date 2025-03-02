@@ -43,7 +43,7 @@ set background=dark " use colors that suit a dark background
 set splitright
 set splitbelow
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-" }}}
+"}}}
 
 
 " TEXT RENDERING OPTIONS {{{
@@ -177,7 +177,7 @@ if $XDG_SESSION_TYPE=='wayland'
 	augroup END
 endif
 
-" }}}
+"}}}
 
 
 " PLUGINS {{{
