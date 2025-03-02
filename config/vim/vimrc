@@ -129,8 +129,7 @@ tnoremap <Esc><Esc> <C-\><C-N>
 noremap <leader>T :tab ter<CR>
 " :ter to open new terminal in split window
 " reload vim configuration
-"nnoremap <silent> <Leader>r :so $MYVIMRC<CR> :nohls<cr><left>
-nnoremap <silent> <Leader>. :so $MYVIMRC<CR> :nohls<cr><left>
+nnoremap <silent> <leader>. :so $MYVIMRC\|nohls\|AirlineRefresh<cr>
 function ToggleColorcolumn()
 	if &colorcolumn ==# ""
 		"set colorcolumn=80
