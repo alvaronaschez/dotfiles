@@ -58,13 +58,13 @@ set listchars+=eol:¬,space:·
 "
 " cursor style
 " Set cursor style (DECSCUSR), VT520.
-" 	0  ⇒  blinking block.
-" 	1  ⇒  blinking block (default).
-" 	2  ⇒  steady block.
-" 	3  ⇒  blinking underline.
-" 	4  ⇒  steady underline.
-" 	5  ⇒  blinking bar, xterm.
-" 	6  ⇒  steady bar, xterm
+"  0  blinking block.
+"  1  blinking block (default).
+"  2  steady block.
+"  3  blinking underline.
+"  4  steady underline.
+"  5  blinking bar, xterm.
+"  6  steady bar, xterm
 let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
 let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
 "}}}
@@ -80,14 +80,13 @@ set autoindent " enable autoindenting
 "set smarttab
 "https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
 augroup custom_indentation
-	" :help autocmd-groups
-	autocmd!
-	" use ':normal za' to colapse and uncolapse folds
-	autocmd Filetype vim setlocal shiftwidth=4 tabstop=4 noexpandtab
-\		foldmethod=marker "nofoldenable
-	autocmd Filetype c setlocal shiftwidth=4 tabstop=4 noexpandtab
-	autocmd Filetype python setlocal shiftwidth=4 softtabstop=4 expandtab
-	autocmd Filetype javascript setlocal ts=2 sw=2 noet
+  " :help autocmd-groups
+  autocmd!
+  autocmd Filetype vim setlocal shiftwidth=2 softtabstop=2 expandtab
+\    foldmethod=marker "nofoldenable
+  autocmd Filetype c setlocal shiftwidth=4 tabstop=4 noexpandtab
+  autocmd Filetype python setlocal sw=4 sts=4 et
+  autocmd Filetype javascript setlocal sw=2 ts=2 noet
 augroup END
 "}}}
 
@@ -131,12 +130,12 @@ noremap <leader>T :tab ter<CR>
 " reload vim configuration
 nnoremap <silent> <leader>. :so $MYVIMRC\|nohls\|AirlineRefresh<cr>
 function ToggleColorcolumn()
-	if &colorcolumn ==# ""
-		"set colorcolumn=80
-		set colorcolumn=80,100,120
-	else
-		set colorcolumn=""
-	endif
+  if &colorcolumn ==# ""
+    "set colorcolumn=80
+    set colorcolumn=80,100,120
+  else
+    set colorcolumn=""
+  endif
 endfunction
 nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
 " clear search
@@ -169,12 +168,12 @@ nnoremap <leader>p gT
 " WORKAROUND TO MAKE SYSTEM CLIPBOARD WORK IN WAYLAND {{{
 "https://github.com/vim/vim/issues/5157
 if $XDG_SESSION_TYPE=='wayland'
-	augroup wl-clipboard
-	" :help autocmd-groups
-		autocmd!
-		autocmd FocusLost * :call system('wl-copy --trim-newline', @+)
-		autocmd FocusGained * :let @+ = system('wl-paste -n')
-	augroup END
+  augroup wl-clipboard
+  " :help autocmd-groups
+    autocmd!
+    autocmd FocusLost * :call system('wl-copy --trim-newline', @+)
+    autocmd FocusGained * :let @+ = system('wl-paste -n')
+  augroup END
 endif
 
 "}}}
@@ -267,9 +266,9 @@ let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
 " are we in tty?
 "if $TERM != 'linux' " this will fail when running tmux from tty
 if !empty($DISPLAY)
-	let g:airline_powerline_fonts = 1
-	let g:base16colorspace=256
-	set termguicolors
-	let g:airline_theme='base16'
+  let g:airline_powerline_fonts = 1
+  let g:base16colorspace=256
+  set termguicolors
+  let g:airline_theme='base16'
 endif
 "}}}
