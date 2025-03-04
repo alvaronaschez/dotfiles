@@ -12,6 +12,35 @@
 "
 
 
+" PLUGINS {{{
+runtime ftplugin/man.vim
+packadd termdebug
+
+call plug#begin()
+  Plug 'dense-analysis/ale'
+  Plug 'chriskempson/base16-vim'
+  Plug 'itchyny/lightline.vim'
+  Plug 'cohama/lexima.vim' " modern auto-pairs
+  Plug 'luochen1990/rainbow'
+  Plug 'preservim/vim-indent-guides'
+  Plug 'liuchengxu/vim-which-key'
+  Plug 'preservim/tagbar'
+  Plug 'mhinz/vim-signify'
+  Plug 'tpope/vim-fugitive'
+  Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
+  "Plug 'easymotion/vim-easymotion'
+  "Plug 'ludovicchabant/vim-gutentags'
+  "Plug 'maralla/completor.vim'
+  "Plug 'lifepillar/vim-mucomplete'
+  "Plug 'ervandew/supertab'
+  "Plug 'xavierd/clang_complete'
+  "Plug 'rhysd/vim-clang-format'
+  "Plug 'preservim/nerdtree'
+  "Plug 'mhinz/vim-startify'
+call plug#end()
+"}}}
+
+
 " GENERAL CONFIGURATION OPTIONS {{{
 set nocompatible " use Vim settings, ragher than Vi settings
 set hidden " use hidden buffers
@@ -31,7 +60,6 @@ filetype plugin on
 
 
 " USER INTERFACE OPTIONS {{{
-"colorscheme desert " use this colorscheme if not available colorscheme plugin
 set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
 set cursorline " highlight the line currently under the cursor
@@ -40,7 +68,6 @@ set wildmenu " display command line's tab autocomplete options as a menu
 set noerrorbells " disable beep on errors
 set visualbell " flash the screen instead of beeping on errors
 set mouse=a
-set background=dark " use colors that suit a dark background
 
 set splitright
 set splitbelow
@@ -71,6 +98,53 @@ set listchars+=eol:¬,space:·
 "  6  steady bar, xterm
 let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
 let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
+
+" rainbow plugin
+let g:rainbow_active = 1
+
+"ale plugin
+set path=.,/usr/include,/usr/include/x86_64-linux-gnu,,
+let g:ale_linters = {'c': ['gcc']}
+let g:ale_c_cc_executable = 'gcc'
+"let g:ale_c_cc_options = '-std=c11 -Wall'
+let g:ale_c_cc_options = '-std=gnu11 -Wall'
+"}}}
+
+
+" COLORS {{{
+function SetLightTheme()
+  set background=light
+  colorscheme base16-atelier-dune-light
+  let g:lightline = {'colorscheme': 'Tomorrow'}
+  endfunction
+
+function SetDarkTheme()
+  set background=dark
+  colorscheme base16-tomorrow-night-eighties
+  let g:lightline = {'colorscheme': 'Tomorrow_Night_Eighties'}
+endfunction
+
+function ToggleTheme()
+  if &background ==# 'dark'
+    call SetLightTheme()
+  else
+    call SetDarkTheme()
+  endif
+  " force lightline to reload
+  call lightline#disable()
+  call lightline#enable()
+endfunction
+
+
+" are we in tty?
+"if $TERM != 'linux' " this will fail when running tmux from tty
+if !empty($DISPLAY)
+  set termguicolors
+  call SetDarkTheme()
+  "call SetLightTheme()
+else
+  colorscheme slate
+endif
 "}}}
 
 
@@ -132,7 +206,7 @@ tnoremap <Esc><Esc> <C-\><C-N>
 noremap <leader>T :tab ter<CR>
 " :ter to open new terminal in split window
 " reload vim configuration
-nnoremap <silent> <leader>. :so $MYVIMRC\|nohls<cr>
+nnoremap <silent> <leader>. :so $MYVIMRC\|nohls\|call lightline#disable()\|call lightline#enable()<cr>
 function ToggleColorcolumn()
   if &colorcolumn ==# ""
     "set colorcolumn=80
@@ -145,9 +219,10 @@ nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolu
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " windows
-"nnoremap <leader>s :new<cr>
-nnoremap <leader>s <C-w>n
-nnoremap <leader>v :vnew<cr>
+"nnoremap <leader>s <C-w>n
+"nnoremap <leader>v :vnew<cr>
+nnoremap <leader>s <C-w>s
+nnoremap <leader>v <C-w>v
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
@@ -166,6 +241,21 @@ nnoremap <leader>n gt
 nnoremap <leader>p gT
 " gf - go to file under the cursor
 " <C-w>gf - go to file under the cursor in a new tab
+
+" tagbar plugin
+nnoremap <leader>b :TagbarOpen jf<CR>
+
+" whichkey plugin
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" see COLORS section
+nnoremap <leader>c :call ToggleTheme()<cr>
+"}}}
+
+
+" PLUGIN SETTINGS {{{
+" clang complete
+"let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
 "}}}
 
 
@@ -180,115 +270,4 @@ if $XDG_SESSION_TYPE=='wayland'
   augroup END
 endif
 
-"}}}
-
-
-" PLUGINS {{{
-runtime ftplugin/man.vim
-packadd termdebug
-
-call plug#begin()
-
-Plug 'dense-analysis/ale'
-Plug 'chriskempson/base16-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'cohama/lexima.vim' " modern auto-pairs
-Plug 'luochen1990/rainbow'
-Plug 'preservim/vim-indent-guides'
-Plug 'liuchengxu/vim-which-key'
-Plug 'preservim/tagbar'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-" Lisp https://susam.net/lisp-in-vim.html
-Plug 'kovisoft/slimv'
-"Plug 'easymotion/vim-easymotion'
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'maralla/completor.vim'
-"Plug 'lifepillar/vim-mucomplete'
-"Plug 'ervandew/supertab'
-" C, C++
-"Plug 'xavierd/clang_complete'
-"Plug 'rhysd/vim-clang-format'
-"Plug 'preservim/nerdtree'
-"Plug 'mhinz/vim-startify'
-
-
-call plug#end()
-"}}}
-
-
-" PLUGIN SETTINGS {{{
-"let g:deoplete#enable_at_startup = 1
-
-"let g:ale_c_parse_makefile = 1
-"let g:ale_linters = {'c': ['gcc']}
-
-" tagbar
-nnoremap <leader>b :TagbarToggle<CR>
-
-"ale
-set path=.,/usr/include,/usr/include/x86_64-linux-gnu,,
-let g:ale_linters = {'c': ['gcc']}
-let g:ale_c_cc_executable = 'gcc'
-"let g:ale_c_cc_options = '-std=c11 -Wall'
-let g:ale_c_cc_options = '-std=gnu11 -Wall'
-
-" rainbow
-let g:rainbow_active = 1
-
-" indent guides
-"let g:indent_guides_enable_on_vim_startup = 1
-
-"whichkey
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-"nerdtree
-"nnoremap <C-t> :NERDTreeToggle<CR>
-
-"startify
-"let g:startify_custom_header = readfile($"{getenv('HOME')}/.config/vim/startify-message.txt")
-
-" bidirectional easymotion
-" nnoremap <leader>w <plug>(easymotion-bd-w)
-
-" clang complete
-let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
-"}}}
-
-
-function SetLightTheme()
-  set background=light
-  colorscheme base16-atelier-dune-light
-  let g:lightline = {'colorscheme': 'Tomorrow'}
-  endfunction
-
-function SetDarkTheme()
-  set background=dark
-  colorscheme base16-tomorrow-night-eighties
-  let g:lightline = {'colorscheme': 'Tomorrow_Night_Eighties'}
-endfunction
-
-function ToggleTheme()
-  if &background ==# 'dark'
-    call SetLightTheme()
-  else
-    call SetDarkTheme()
-  endif
-  " force lightline to reload
-  call lightline#disable()
-  call lightline#enable()
-endfunction
-
-nnoremap <leader>c :call ToggleTheme()<cr>
-
-" TTY SETTINGS {{{
-" are we in tty?
-"if $TERM != 'linux' " this will fail when running tmux from tty
-if !empty($DISPLAY)
-  set termguicolors
-  call SetDarkTheme()
-  "call SetLightTheme()
-else
-  colorscheme slate
-endif
 "}}}
