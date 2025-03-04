@@ -25,6 +25,8 @@ set ttimeoutlen=50
 "set timeoutlen=500
 set exrc " use local .vimrc files
 filetype plugin on
+"set directory="~/.vim/swap//"
+"set backupdir="~/.vim/backup//"
 "}}}
 
 
@@ -42,7 +44,9 @@ set background=dark " use colors that suit a dark background
 
 set splitright
 set splitbelow
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+set laststatus=2
+set noshowmode " since it is shown in lightline anyways
+"set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 "}}}
 
 
@@ -186,8 +190,7 @@ packadd termdebug
 call plug#begin()
 
 Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'dense-analysis/ale'
 Plug 'preservim/tagbar'
 Plug 'liuchengxu/vim-which-key'
@@ -231,9 +234,6 @@ let g:ale_c_cc_executable = 'gcc'
 "let g:ale_c_cc_options = '-std=c11 -Wall'
 let g:ale_c_cc_options = '-std=gnu11 -Wall'
 
-" base16
-colorscheme base16-eighties
-
 " rainbow
 let g:rainbow_active = 1
 
@@ -261,11 +261,10 @@ let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
 " are we in tty?
 "if $TERM != 'linux' " this will fail when running tmux from tty
 if !empty($DISPLAY)
-  let g:airline_powerline_fonts = 1
-  let g:base16colorspace=256
   set termguicolors
-  let g:airline_theme='base16'
+  colorscheme base16-tomorrow-night-eighties
+  let g:lightline = {'colorscheme': 'Tomorrow_Night_Eighties'}
 else
-  let g:airline_theme='monochrome'
+  colorscheme slate
 endif
 "}}}
