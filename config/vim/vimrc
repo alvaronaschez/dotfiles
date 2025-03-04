@@ -18,7 +18,6 @@ packadd termdebug
 
 call plug#begin()
   Plug 'dense-analysis/ale'
-  Plug 'chriskempson/base16-vim'
   Plug 'itchyny/lightline.vim'
   Plug 'cohama/lexima.vim' " modern auto-pairs
   Plug 'luochen1990/rainbow'
@@ -28,6 +27,7 @@ call plug#begin()
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
   Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
+  "Plug 'chriskempson/base16-vim'
   "Plug 'easymotion/vim-easymotion'
   "Plug 'ludovicchabant/vim-gutentags'
   "Plug 'maralla/completor.vim'
@@ -42,7 +42,7 @@ call plug#end()
 
 
 " GENERAL CONFIGURATION OPTIONS {{{
-set nocompatible " use Vim settings, ragher than Vi settings
+set nocompatible " use Vim settings, rather than Vi settings
 set hidden " use hidden buffers
 "set nohidden " this is the default value
 set autoread " automatically re-read files if unmodified inside vim
@@ -56,6 +56,7 @@ set exrc " use local .vimrc files
 filetype plugin on
 "set directory="~/.vim/swap//"
 "set backupdir="~/.vim/backup//"
+set updatetime=500
 "}}}
 
 
@@ -114,14 +115,16 @@ let g:ale_c_cc_options = '-std=gnu11 -Wall'
 " COLORS {{{
 function SetLightTheme()
   set background=light
-  colorscheme base16-atelier-dune-light
-  let g:lightline = {'colorscheme': 'Tomorrow'}
+  colorscheme shine
+  let g:lightline = {'colorscheme': 'wombat'}
   endfunction
 
 function SetDarkTheme()
   set background=dark
-  colorscheme base16-tomorrow-night-eighties
-  let g:lightline = {'colorscheme': 'Tomorrow_Night_Eighties'}
+  "colorscheme base16-tomorrow-night-eighties
+  "let g:lightline = {'colorscheme': 'Tomorrow_Night_Eighties'}
+  colorscheme slate
+  let g:lightline = {'colorscheme': 'wombat'}
 endfunction
 
 function ToggleTheme()
