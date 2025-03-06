@@ -22,10 +22,21 @@ call plug#begin()
   Plug 'cohama/lexima.vim' " modern auto-pairs
   Plug 'luochen1990/rainbow'
   Plug 'preservim/vim-indent-guides'
+  Plug 'liuchengxu/vim-which-key'
   Plug 'preservim/tagbar'
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
   Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
+  "Plug 'chriskempson/base16-vim'
+  "Plug 'easymotion/vim-easymotion'
+  "Plug 'ludovicchabant/vim-gutentags'
+  "Plug 'maralla/completor.vim'
+  "Plug 'lifepillar/vim-mucomplete'
+  "Plug 'ervandew/supertab'
+  "Plug 'xavierd/clang_complete'
+  "Plug 'rhysd/vim-clang-format'
+  "Plug 'preservim/nerdtree'
+  "Plug 'mhinz/vim-startify'
 call plug#end()
 "}}}
 
@@ -53,10 +64,12 @@ set updatetime=500
 set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
 set cursorline " highlight the line currently under the cursor
+"set colorcolumn=80 " highlight 80th column
 set wildmenu " display command line's tab autocomplete options as a menu
 set noerrorbells " disable beep on errors
 set visualbell " flash the screen instead of beeping on errors
 set mouse=a
+
 set splitright
 set splitbelow
 set laststatus=2
@@ -69,7 +82,7 @@ set noshowmode " since it is shown in lightline anyways
 set encoding=utf8
 syntax on
 set scrolloff=5
-set nowrap " don't wrap lines
+" set nowrap " don't wrap lines
 set linebreak " wrap lines at convenient points
 "set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
@@ -100,16 +113,38 @@ let g:ale_c_cc_options = '-std=gnu11 -Wall'
 
 
 " COLORS {{{
+function SetLightTheme()
+  set background=light
+  colorscheme shine
+  let g:lightline = {'colorscheme': 'wombat'}
+  endfunction
+
 function SetDarkTheme()
   set background=dark
+  "colorscheme base16-tomorrow-night-eighties
+  "let g:lightline = {'colorscheme': 'Tomorrow_Night_Eighties'}
   colorscheme slate
   let g:lightline = {'colorscheme': 'wombat'}
 endfunction
 
+function ToggleTheme()
+  if &background ==# 'dark'
+    call SetLightTheme()
+  else
+    call SetDarkTheme()
+  endif
+  " force lightline to reload
+  call lightline#disable()
+  call lightline#enable()
+endfunction
+
+
 " are we in tty?
+"if $TERM != 'linux' " this will fail when running tmux from tty
 if !empty($DISPLAY)
   set termguicolors
   call SetDarkTheme()
+  "call SetLightTheme()
 else
   colorscheme slate
 endif
@@ -152,11 +187,10 @@ set tags=tags;/
 " REMAPPINGS {{{
 nnoremap ; :
 nnoremap : ;
-" scroll up and down
-nnoremap <down> <C-e><down>
-nnoremap <up> <C-y><up>
-nnoremap <A-down> <C-e>
-nnoremap <A-up> <C-y>
+" scroll down
+nnoremap <down> <C-e>
+" scroll up
+nnoremap <up> <C-y>
 
 " Yank to end of line
 noremap Y y$
@@ -167,7 +201,11 @@ let g:mapleader = "\<space>"
 let g:maplocalleader = "\<space>"
 " double tap esc to enter normal mode (inside terminal mode)
 tnoremap <Esc><Esc> <C-\><C-N>
-
+" open terminal in current window
+"noremap <leader>T :ter ++curwin<CR>
+" open terminal in new window
+" noremap <leader>t :ter<CR>
+" open terminal in new tab
 noremap <leader>T :tab ter<CR>
 " :ter to open new terminal in split window
 " reload vim configuration
@@ -183,9 +221,44 @@ endfunction
 nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+" windows
+"nnoremap <leader>s <C-w>n
+"nnoremap <leader>v :vnew<cr>
+nnoremap <leader>s <C-w>s
+nnoremap <leader>v <C-w>v
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+nnoremap <leader>H <C-w>H
+nnoremap <leader>J <C-w>J
+nnoremap <leader>K <C-w>K
+nnoremap <leader>L <C-w>L
+
+" tabs
+"noremap <leader>t :tabnew<CR>
+noremap <leader>t :tabe<CR>
+" gt - go to next tab
+nnoremap <leader>n gt
+" gT - go to previous tab
+nnoremap <leader>p gT
+" gf - go to file under the cursor
+" <C-w>gf - go to file under the cursor in a new tab
 
 " tagbar plugin
 nnoremap <leader>b :TagbarOpen jf<CR>
+
+" whichkey plugin
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" see COLORS section
+nnoremap <leader>c :call ToggleTheme()<cr>
+"}}}
+
+
+" PLUGIN SETTINGS {{{
+" clang complete
+"let g:clang_library_path='/usr/lib/llvm-19/lib/libclang-19.so.1'
 "}}}
 
 
@@ -199,4 +272,5 @@ if $XDG_SESSION_TYPE=='wayland'
     autocmd FocusGained * :let @+ = system('wl-paste -n')
   augroup END
 endif
+
 "}}}
