@@ -91,27 +91,22 @@ let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
 let g:rainbow_active = 1
 
 "ale plugin
-set path=.,/usr/include,/usr/include/x86_64-linux-gnu,,
-let g:ale_linters = {'c': ['gcc']}
-let g:ale_c_cc_executable = 'gcc'
+"set path=.,/usr/include,/usr/include/x86_64-linux-gnu,,
+"let g:ale_linters = {'c': ['gcc']}
+"let g:ale_c_cc_executable = 'gcc'
 "let g:ale_c_cc_options = '-std=c11 -Wall'
-let g:ale_c_cc_options = '-std=gnu11 -Wall'
+"let g:ale_c_cc_options = '-std=gnu11 -Wall'
+let g:ale_c_parse_makefile = 1
 "}}}
 
 
 " COLORS {{{
-function SetDarkTheme()
-  set background=dark
-  colorscheme slate
-  let g:lightline = {'colorscheme': 'wombat'}
-endfunction
-
+" set background=dark " not needed, the colorscheme will set it
+colorscheme slate
+let g:lightline = {'colorscheme': 'wombat'}
 " are we in tty?
 if !empty($DISPLAY)
   set termguicolors
-  call SetDarkTheme()
-else
-  colorscheme slate
 endif
 "}}}
 
@@ -120,10 +115,6 @@ endif
 " see :h tabstop
 filetype plugin indent on " enable indenting depending on file type
 set autoindent " enable autoindenting
-"set tabstop=8
-"set softtabstop=4
-"set shiftwidth=4
-"set smarttab
 "https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
 augroup custom_indentation
   " :help autocmd-groups
