@@ -141,8 +141,8 @@ set tags=tags;/
 
 
 " REMAPPINGS {{{
-"nnoremap ; :
-"nnoremap : ;
+nnoremap ; :
+nnoremap : ;
 " scroll up and down
 nnoremap <down> <C-e><down>
 nnoremap <up> <C-y><up>
