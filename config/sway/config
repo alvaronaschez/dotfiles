@@ -51,8 +51,8 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/Documents/backgrounds/sway/)
 #output * bg /usr/share/Documents/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-set $bg1 "~/Documents/backgrounds/batman3.jpg"
-set $bg2 "~/Documents/backgrounds/japanese.jpg"
+set $bg1 "~/Documents/backgrounds/chill.jpg"
+set $bg2 "~/Documents/backgrounds/lofi.jpg"
 set $lockimg "~/Documents/backgrounds/deb1.png"
 #output * bg $bgimg fill
 
@@ -78,9 +78,9 @@ workspace 1 output $external_monitor
 # exec swaymsg "workspace 2; exec $browser"
 exec swaymsg "workspace 1; exec $term tmux"
 
-#output $laptop_screen bg $bg1 fill
-#output $external_monitor bg $bg2 fill
-output * bg $bg1 fill
+output $laptop_screen bg $bg1 fill
+output $external_monitor bg $bg2 fill
+#output * bg $bg1 fill
 
 ### Idle configuration
 #
