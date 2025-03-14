@@ -46,6 +46,8 @@ return {
 		require('lspconfig').lua_ls.setup{
 			settings = {Lua = {diagnostics = {globals = {"vim"}}}}
 		}
+		require('lspconfig').ccls.setup{}
+
 		local cmp = require('cmp')
 
 		cmp.setup({
