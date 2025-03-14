@@ -12,24 +12,6 @@
 "
 
 
-" PLUGINS {{{
-runtime ftplugin/man.vim
-packadd termdebug
-
-call plug#begin()
-  Plug 'dense-analysis/ale'
-  Plug 'itchyny/lightline.vim'
-  Plug 'cohama/lexima.vim' " modern auto-pairs
-  Plug 'luochen1990/rainbow'
-  Plug 'preservim/vim-indent-guides'
-  Plug 'preservim/tagbar'
-  Plug 'mhinz/vim-signify'
-  Plug 'tpope/vim-fugitive'
-  Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
-call plug#end()
-"}}}
-
-
 " GENERAL CONFIGURATION OPTIONS {{{
 set nocompatible " use Vim settings, rather than Vi settings
 set hidden " use hidden buffers
@@ -86,24 +68,12 @@ set listchars+=eol:¬,space:·
 "  6  steady bar, xterm
 let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
 let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
-
-" rainbow plugin
-let g:rainbow_active = 1
-
-"ale plugin
-"set path=.,/usr/include,/usr/include/x86_64-linux-gnu,,
-"let g:ale_linters = {'c': ['gcc']}
-"let g:ale_c_cc_executable = 'gcc'
-"let g:ale_c_cc_options = '-std=c11 -Wall'
-"let g:ale_c_cc_options = '-std=gnu11 -Wall'
-let g:ale_c_parse_makefile = 1
 "}}}
 
 
 " COLORS {{{
 " set background=dark " not needed, the colorscheme will set it
 colorscheme slate
-let g:lightline = {'colorscheme': 'wombat'}
 " are we in tty?
 if !empty($DISPLAY)
   set termguicolors
@@ -174,9 +144,6 @@ endfunction
 nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-
-" tagbar plugin
-nnoremap <leader>b :TagbarOpen jf<CR>
 "}}}
 
 
@@ -190,4 +157,60 @@ if $XDG_SESSION_TYPE=='wayland'
     autocmd FocusGained * :let @+ = system('wl-paste -n')
   augroup END
 endif
+"}}}
+
+
+" PLUGINS {{{
+runtime ftplugin/man.vim
+packadd termdebug
+
+call plug#begin()
+  Plug 'dense-analysis/ale'
+  Plug 'itchyny/lightline.vim'
+  Plug 'cohama/lexima.vim' " modern auto-pairs
+  Plug 'luochen1990/rainbow'
+  Plug 'preservim/vim-indent-guides'
+  Plug 'preservim/tagbar'
+  Plug 'mhinz/vim-signify'
+  Plug 'tpope/vim-fugitive'
+  "Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
+call plug#end()
+
+" rainbow plugin
+let g:rainbow_active = 1
+
+" lightline plugin
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
+
+" tagbar plugin
+"let g:tagbar_width = max([25, winwidth(0) / 5])
+autocmd FileType vim,c,cpp nested :TagbarOpen
+let g:tagbar_width = 25
+nnoremap <leader>b :TagbarToggle jf<CR>
+"nnoremap <leader>b :TagbarOpen jf<CR>
+
+"ale plugin
+"let g:ale_c_cc_executable = 'gcc'
+"let g:ale_c_cc_executable = 'clang'
+"let g:ale_linters = {'c': ['cc']}
+"let g:ale_linters = {'c': ['clangd'], 'cpp': ['clangd']}
+let g:ale_linters = {'c': ['ccls'], 'cpp': ['ccls']}
+"see :h c.vim " .h files as c files instead of cpp
+let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
+let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
+"let g:ale_c_cc_options = '-std=c11 -Wall' " default value
+"let g:ale_c_cc_options = '-c -I. -Iproto -DHAVE_CONFIG_H -O2 -fno-strength-reduce -Wall -Wno-deprecated-declarations -D_REENTRANT -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
+"\ -L/usr/local/lib -Wl,--as-needed -o /dev/null -lSM -lICE -lXt -lX11 -lXdmcp -lSM -lICE -lm -ltinfo'
+"" some unused options and flags
+"let g:ale_c_always_make = 1
+"let g:ale_c_parse_compile_commands = 0
+"let g:ale_c_parse_compile_commands = 1
+"let g:ale_c_parse_makefile = 1
+"let g:ale_c_cc_use_header_lang_flag = 0
+"set path=.,/usr/include,/usr/include/x86_64-linux-gnu,/usr/include/linux,,
 "}}}
