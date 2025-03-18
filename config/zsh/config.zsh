@@ -81,6 +81,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/git.plugin.zsh
 source ~/.config/zsh/omz.directories.zsh
 source ~/.config/zsh/omz.history.zsh
+source ~/.config/zsh/pyenv.zsh
 
 
 # Keybindings --------------------------------------------------------------------------------------

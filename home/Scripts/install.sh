@@ -52,7 +52,7 @@ sudo usermod -aG libvirt $USER && sudo usermod -aG kvm $USER\n
 
 
 ### manual install
-# docker
+# docker ## better use podman
 # balena-etcher
 # chrome
 #

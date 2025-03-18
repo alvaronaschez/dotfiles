@@ -33,6 +33,7 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias rg="rg --color=auto"
 
+alias v="VIMRUNTIME=~/src/vim/runtime ~/src/vim/src/vim"
 alias em="emacsclient -r"
 alias nv=nvim
 alias tx=tmux
@@ -42,6 +43,8 @@ alias bat=batcat
 alias sbcl-repl="rlwrap sbcl"
 alias luajit-repl="rlwrap luajit"
 alias untargz="tar xf"
+alias sound="pavucontrol"
+alias audio="pavucontrol"
 
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get dist-upgrade"
@@ -102,12 +105,12 @@ alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias ssway="swaymsg reload"
 alias skeyd="sudo keyd reload"
 
-alias mkb="sudo mount /dev/sda /media/alvaro/kobo"
-alias umkb="sudo umount /media/alvaro/kobo"
-alias cdkb="cd /media/alvaro/kobo"
-alias kobo-mount=mkb
-alias kobo-unmount=umkb
-alias kobo-cd=cdkb
+alias rrb="ranger ~/Bookshelf"
+alias rrw="ranger ~/Documents/backgrounds"
+
+alias kbm="sudo mount /dev/sda /media/alvaro/kobo"
+alias kbum="sudo umount /media/alvaro/kobo"
+alias kbcd="cd /media/alvaro/kobo"
 
 # show help
 alias hh="echo '\

@@ -16,6 +16,7 @@ git
 btop
 
 gcc
+manpages-dev manpages-posix-dev
 gdb gdb-doc
 tcc # tiny c compiler
 clang-format
