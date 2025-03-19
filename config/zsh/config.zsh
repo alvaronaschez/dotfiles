@@ -82,6 +82,7 @@ source ~/.config/zsh/git.plugin.zsh
 source ~/.config/zsh/omz.directories.zsh
 source ~/.config/zsh/omz.history.zsh
 source ~/.config/zsh/pyenv.zsh
+source ~/.config/zsh/nvm.zsh
 
 
 # Keybindings --------------------------------------------------------------------------------------
