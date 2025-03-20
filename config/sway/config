@@ -16,12 +16,14 @@ set $up k
 set $right l
 
 # lock and screen-off timeouts
-#set $lock_timeout 10
-#set $screen_off_timeout 20
-set $lock_timeout 120
-set $screen_off_timeout 180
-#set $lock_timeout 600
-#set $screen_off_timeout 900
+#set $lock_timeout 10 # for testing
+#set $screen_off_timeout 20 # for testing
+#set $lock_timeout 120
+#set $screen_off_timeout 180
+set $lock_timeout 600
+set $screen_off_timeout 900
+#set $lock_timeout 12000 # for presentations
+#set $screen_off_timeout 13000 # for presentations
 
 # Your preferred terminal emulator
 set $term foot

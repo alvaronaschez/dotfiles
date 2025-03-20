@@ -34,11 +34,13 @@ mkdir -p ~/Documents
 
 ## run installation scripts
 ~/dotfiles/Scripts/tmux-install-or-update.sh
-~/dotfiles/Scripts/vieb-install-or-update.sh
-~/dotfiles/Scripts/qutebrowser-install.sh
+#~/dotfiles/Scripts/vieb-install-or-update.sh
+#~/dotfiles/Scripts/qutebrowser-install.sh
 ~/dotfiles/Scripts/hacker-font-install.sh
 ~/dotfiles/Scripts/vim-plug-install.sh
 # ~/dotfiles/Scripts/luajit-install.sh
+# pyenv
+# nvm
 
 # this is needed so virt-manager works properly
 sudo usermod -aG libvirt $USER && sudo usermod -aG kvm $USER\n

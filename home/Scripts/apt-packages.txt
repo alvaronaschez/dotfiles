@@ -18,6 +18,7 @@ btop
 gcc
 manpages-dev manpages-posix-dev
 gdb gdb-doc
+valgrind
 tcc # tiny c compiler
 clang-format
 cscope
