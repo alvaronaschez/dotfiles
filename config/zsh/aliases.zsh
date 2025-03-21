@@ -125,6 +125,7 @@ mpv - video player
 grep
 sed
 awk
+btop
 
 remember to use \"sudoedit foo\" or \"sudo -e foo\" instead of \"sudo vim foo\"
 
