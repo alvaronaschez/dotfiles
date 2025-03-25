@@ -173,6 +173,7 @@ call plug#begin()
   Plug 'preservim/tagbar'
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
+  Plug 'vimwiki/vimwiki'
   "Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
 call plug#end()
 
