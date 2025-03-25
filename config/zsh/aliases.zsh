@@ -31,7 +31,7 @@ alias rb=rs
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-alias rg="rg --color=auto"
+alias hl="rg --passthru"
 
 alias v="VIMRUNTIME=~/src/vim/runtime ~/src/vim/src/vim"
 alias em="emacsclient -r"

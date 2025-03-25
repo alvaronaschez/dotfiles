@@ -1,0 +1,4 @@
+// remove this line and rename the file as .ccls and copy it in vim folder
+%compile_commands.json
+%h %hpp --include=vim.h
+--gcc-toolchain=/usr

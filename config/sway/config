@@ -54,7 +54,7 @@ include /etc/sway/config-vars.d/*
 # Default wallpaper (more resolutions are available in /usr/share/Documents/backgrounds/sway/)
 #output * bg /usr/share/Documents/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 set $bg1 "~/Documents/backgrounds/forest.png"
-set $bg2 "~/Documents/backgrounds/reading.png"
+set $bg2 "~/Documents/backgrounds/study.jpg"
 set $lockimg "~/Documents/backgrounds/deb1.png"
 #output * bg $bgimg fill
 
@@ -292,4 +292,20 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 # brightness
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+bindsym {
+    # Capture the currently active output
+    Print       exec grimshot save output
+    # Capture the currently active window
+    Alt+Print   exec grimshot save active
+    # Select and capture a custom rectangular area
+    Ctrl+Print  exec grimshot save area
+    # capture all screens to clipboard
+    #Shift+Print exec grim - | wl-copy
+    # capture the specified screen area to clipboard
+    #Shift+Alt+Print exec grim -g "$(slurp)" - | wl-copy
+    # capture the focused monitor to clipboard
+    #Shift+Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+}
+
 
