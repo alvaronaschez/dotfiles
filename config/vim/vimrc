@@ -36,6 +36,7 @@ set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
 set cursorline " highlight the line currently under the cursor
 set wildmenu " display command line's tab autocomplete options as a menu
+set wildoptions=pum " display the completion matches using the popup menu
 set noerrorbells " disable beep on errors
 set visualbell " flash the screen instead of beeping on errors
 set mouse=a
