@@ -23,6 +23,7 @@ set clipboard=unnamedplus
 set ttimeout
 set ttimeoutlen=50
 "set timeoutlen=500
+"set ttyfast " default on
 set exrc " use local .vimrc files
 filetype plugin on
 "set directory="~/.vim/swap//"
@@ -201,7 +202,7 @@ nnoremap <leader>b :TagbarToggle jf<CR>
 "let g:ale_c_cc_executable = 'clang'
 "let g:ale_linters = {'c': ['cc']}
 "let g:ale_linters = {'c': ['clangd'], 'cpp': ['clangd']}
-let g:ale_linters = {'c': ['ccls'], 'cpp': ['ccls']}
+let g:ale_linters = {'c': ['ccls'], 'cpp': ['ccls'], 'java':['javac']}
 "see :h c.vim " .h files as c files instead of cpp
 let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
 let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
@@ -215,4 +216,5 @@ let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on th
 "let g:ale_c_parse_makefile = 1
 "let g:ale_c_cc_use_header_lang_flag = 0
 "set path=.,/usr/include,/usr/include/x86_64-linux-gnu,/usr/include/linux,,
+let g:ale_java_javac_classpath='../'
 "}}}

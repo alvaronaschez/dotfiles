@@ -105,6 +105,8 @@ alias stmux="tmux source ~/.config/tmux/tmux.conf"
 alias ssway="swaymsg reload"
 alias skeyd="sudo keyd reload"
 
+alias wk="vim ~/vimwiki/index.wiki"
+
 alias rrb="ranger ~/Bookshelf"
 alias rrw="ranger ~/Documents/backgrounds"
 

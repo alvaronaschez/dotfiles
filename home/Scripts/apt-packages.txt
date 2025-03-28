@@ -62,7 +62,7 @@ virt-manager
 
 podman distrobox
 
-neofetch fortune cowsay figlet toilet cmatrix
+librewolf neofetch fortune cowsay figlet toilet cmatrix
 
 # optional lisp dev deps
 # sbcl sbcl-doc guile-3.0 guile-3.0-doc
