@@ -97,6 +97,7 @@ KEYTIMEOUT=1 # set ESC timeout to 0.01s (default value is 0.4s)
 #function _set_cursor() {
 #  echo -ne $1
 #}
+
 ## cursor style
 # Set cursor style (DECSCUSR), VT520.
 # 0  ⇒  blinking block.
@@ -135,6 +136,12 @@ if [[ $DISPLAY != '' ]]; then # don't apply these settings in tty
 	zle-line-finish() { _set_block_cursor }
 	zle -N zle-line-finish
 fi
+
+## add new line after each command
+#https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command
+precmd(){
+	precmd() { echo }
+}
 
 # Startup ------------------------------------------------------------------------------------------
 
