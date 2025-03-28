@@ -83,6 +83,7 @@ source ~/.config/zsh/omz.directories.zsh
 source ~/.config/zsh/omz.history.zsh
 source ~/.config/zsh/pyenv.zsh
 source ~/.config/zsh/nvm.zsh
+source ~/.config/zsh/sdkman.zsh
 
 
 # Keybindings --------------------------------------------------------------------------------------
