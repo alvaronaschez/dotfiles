@@ -3,6 +3,7 @@ tags.lock
 config/nvim/lazy-lock.json
 
 config/vim/plugged
+config/vim/.netrwhist
 
 config/emacs/*
 !config/emacs/init.el
