@@ -107,6 +107,7 @@ alias skeyd="sudo keyd reload"
 
 alias wk="vim ~/vimwiki/index.wiki"
 
+alias rr=ranger
 alias rrb="ranger ~/Bookshelf"
 alias rrw="ranger ~/Documents/backgrounds"
 
