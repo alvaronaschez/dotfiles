@@ -25,6 +25,7 @@ function __confirm() {
 
 
 alias start="exec sway"
+alias st=start
 alias sd="__confirm shutdown now"
 alias rs="__confirm shutdown -r now"
 alias rb=rs

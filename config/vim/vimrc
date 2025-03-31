@@ -97,6 +97,7 @@ augroup custom_indentation
   autocmd Filetype python setlocal sw=4 sts=4 et
   autocmd Filetype javascript setlocal sw=2 ts=2 noet
   autocmd Filetype java setlocal sw=2 ts=2 noet
+  autocmd Filetype lua setlocal sw=2 ts=2 noet
 augroup END
 "}}}
 
@@ -170,7 +171,7 @@ packadd termdebug
 call plug#begin()
   Plug 'dense-analysis/ale'
   Plug 'itchyny/lightline.vim'
-  Plug 'cohama/lexima.vim' " modern auto-pairs
+  "Plug 'cohama/lexima.vim' " modern auto-pairs
   Plug 'luochen1990/rainbow'
   Plug 'preservim/vim-indent-guides'
   Plug 'preservim/tagbar'
@@ -193,7 +194,7 @@ let g:lightline = {
 
 " tagbar plugin
 "let g:tagbar_width = max([25, winwidth(0) / 5])
-autocmd FileType vim,c,cpp nested :TagbarOpen
+"autocmd FileType vim,c,cpp,java,python nested :TagbarOpen
 let g:tagbar_width = 25
 nnoremap <leader>b :TagbarToggle jf<CR>
 "nnoremap <leader>b :TagbarOpen jf<CR>
