@@ -148,6 +148,10 @@ endfunction
 nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+
+inoremap {<cr> {}<left><cr><up><esc>o
+
+inoremap {% {%%}<left><left>
 "}}}
 
 
@@ -168,6 +172,8 @@ endif
 runtime ftplugin/man.vim
 packadd termdebug
 
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
 call plug#begin()
   Plug 'dense-analysis/ale'
   Plug 'itchyny/lightline.vim'
@@ -179,6 +185,8 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'vimwiki/vimwiki'
   "Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
+  Plug 'sheerun/vim-polyglot'
+  Plug 'lepture/vim-jinja'
 call plug#end()
 
 " rainbow plugin
@@ -200,23 +208,18 @@ nnoremap <leader>b :TagbarToggle jf<CR>
 "nnoremap <leader>b :TagbarOpen jf<CR>
 
 "ale plugin
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
+set omnifunc=ale#completion#OmniFunc
+imap <C-c> <Plug>(ale_complete)
 "let g:ale_c_cc_executable = 'gcc'
 "let g:ale_c_cc_executable = 'clang'
-"let g:ale_linters = {'c': ['cc']}
-"let g:ale_linters = {'c': ['clangd'], 'cpp': ['clangd']}
-let g:ale_linters = {'c': ['ccls'], 'cpp': ['ccls'], 'java':['javac']}
-"see :h c.vim " .h files as c files instead of cpp
+let g:ale_linters = {'c': ['ccls'], 'cpp': ['ccls'], 'java':['javac'], 'python':['ruff', 'pylsp']}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"\   'javascript': ['eslint'],
+\}
 let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
 let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
-"let g:ale_c_cc_options = '-std=c11 -Wall' " default value
-"let g:ale_c_cc_options = '-c -I. -Iproto -DHAVE_CONFIG_H -O2 -fno-strength-reduce -Wall -Wno-deprecated-declarations -D_REENTRANT -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
-"\ -L/usr/local/lib -Wl,--as-needed -o /dev/null -lSM -lICE -lXt -lX11 -lXdmcp -lSM -lICE -lm -ltinfo'
-"" some unused options and flags
-"let g:ale_c_always_make = 1
-"let g:ale_c_parse_compile_commands = 0
-"let g:ale_c_parse_compile_commands = 1
-"let g:ale_c_parse_makefile = 1
-"let g:ale_c_cc_use_header_lang_flag = 0
-"set path=.,/usr/include,/usr/include/x86_64-linux-gnu,/usr/include/linux,,
 let g:ale_java_javac_classpath='../'
 "}}}

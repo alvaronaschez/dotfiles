@@ -26,6 +26,10 @@ cmake
 universal-ctags
 python3-pygments
 
+# language servers
+python3-pylsp
+ccls
+
 # not sure if needed
 pm-utils # power management
 
