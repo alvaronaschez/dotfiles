@@ -155,19 +155,6 @@ inoremap {% {%%}<left><left>
 "}}}
 
 
-" WORKAROUND TO MAKE SYSTEM CLIPBOARD WORK IN WAYLAND {{{
-"https://github.com/vim/vim/issues/5157
-if $XDG_SESSION_TYPE=='wayland'
-  augroup wl-clipboard
-  " :help autocmd-groups
-    autocmd!
-    autocmd FocusLost * :call system('wl-copy --trim-newline', @+)
-    autocmd FocusGained * :let @+ = system('wl-paste -n')
-  augroup END
-endif
-"}}}
-
-
 " PLUGINS {{{
 runtime ftplugin/man.vim
 packadd termdebug
@@ -175,6 +162,7 @@ packadd termdebug
 " This setting must be set before ALE is loaded.
 let g:ale_completion_enabled = 1
 call plug#begin()
+  Plug 'jasonccox/vim-wayland-clipboard' " integrates wayland clipboard
   Plug 'dense-analysis/ale'
   Plug 'itchyny/lightline.vim'
   "Plug 'cohama/lexima.vim' " modern auto-pairs
@@ -214,7 +202,7 @@ set omnifunc=ale#completion#OmniFunc
 imap <C-c> <Plug>(ale_complete)
 "let g:ale_c_cc_executable = 'gcc'
 "let g:ale_c_cc_executable = 'clang'
-let g:ale_linters = {'c': ['ccls'], 'cpp': ['ccls'], 'java':['javac'], 'python':['ruff', 'pylsp']}
+let g:ale_linters = {'c': ['ccls'], 'cpp': ['ccls'], 'java':['javac', 'eclipselsp'], 'python':['ruff', 'pylsp']}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 "\   'javascript': ['eslint'],
@@ -222,4 +210,6 @@ let g:ale_fixers = {
 let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
 let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
 let g:ale_java_javac_classpath='../'
+
+"let g:ale_java_exlipselsp_path = '~/Downloads/javals/bin/jdtls'
 "}}}
