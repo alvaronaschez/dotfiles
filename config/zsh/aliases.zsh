@@ -6,6 +6,11 @@
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 
+function run() {
+	# run in background and write logs to ~/log file
+	eval "$@ &>> ~/log &"
+}
+alias clean-logs="echo '' > ~/log"
 
 function __confirm() {
 	echo "About to execute '${@:1}'"
@@ -52,6 +57,7 @@ alias luajit-repl="rlwrap luajit"
 alias untargz="tar xf"
 alias sound="pavucontrol"
 alias audio="pavucontrol"
+alias lw="run librewolf"
 
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get dist-upgrade"
