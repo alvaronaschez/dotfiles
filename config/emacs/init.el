@@ -6,6 +6,8 @@
 ;;; Code:
 
 ;; gui tweaks
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 (setq scroll-conservatively 101)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -30,16 +32,16 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 ;; Load theme
-;;(load-theme 'deeper-blue)
-(use-package base16-theme
-  :ensure t
-  :config
-  (load-theme 'base16-seti t))
+(load-theme 'deeper-blue)
+;;(use-package base16-theme
+;;  :ensure t
+;;  :config
+;;  (load-theme 'base16-seti t))
 
 
 (require 'evil "~/.config/emacs/alvaro/evil.el")
 
-(require 'keybindings "~/.config/emacs/alvaro/keybindings.el")
+;;(require 'keybindings "~/.config/emacs/alvaro/keybindings.el")
 
 
 ;;(require 'whichkey "~/.config/emacs/alvaro/whichkey.el")

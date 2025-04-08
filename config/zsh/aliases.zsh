@@ -35,7 +35,13 @@ alias grep="grep --color=auto"
 alias hl="rg --passthru"
 
 alias v="VIMRUNTIME=~/src/vim/runtime ~/src/vim/src/vim"
-alias em="emacsclient -r"
+# https://www.rahuljuliato.com/posts/launching-emacs-terminal
+alias emd="emacs --daemon"
+#alias em="emacsclient -t"
+#alias emg="emacsclient -c"
+# using the following aliases you don't need to start the daemon beforehand
+alias em="emacsclient -t -a ''"
+alias emg="emacsclient -c -a ''"
 alias nv=nvim
 alias tx=tmux
 alias tm=tmux
