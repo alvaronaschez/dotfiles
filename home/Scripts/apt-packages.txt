@@ -68,6 +68,8 @@ podman distrobox
 
 librewolf neofetch fortune cowsay figlet toilet cmatrix
 
+xonsh xonsh-doc
+
 # optional lisp dev deps
 # sbcl sbcl-doc guile-3.0 guile-3.0-doc
 

@@ -211,5 +211,7 @@ let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
 let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
 let g:ale_java_javac_classpath='../'
 
-"let g:ale_java_exlipselsp_path = '~/Downloads/javals/bin/jdtls'
+let g:ale_java_eclipselsp_path = '~/Downloads/javals/bin/jdtls'
+
+let g:ale_java_eclipselsp_workspace_path = '.'
 "}}}

@@ -56,8 +56,8 @@ sudo usermod -aG libvirt $USER && sudo usermod -aG kvm $USER\n
 ### manual install
 # docker ## better use podman
 # balena-etcher
-# chrome
-#
+# chrome ## better use firefox and librewolf
+# pyenv ipython nvm sdkman
 
 # this is stored in '~/.config/dconf/user' binary file, so no file backup possible
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
