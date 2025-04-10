@@ -26,6 +26,10 @@ cmake
 universal-ctags
 python3-pygments
 
+# swig: simple wrapper and interface generator
+# https://www.swig.org/tutorial.html
+swig swig-doc swig-examples
+
 # language servers
 python3-pylsp
 ccls

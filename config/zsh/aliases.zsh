@@ -39,6 +39,9 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias hl="rg --passthru"
 
+alias repl=rlwrap
+alias xsh=xonsh
+
 alias v="VIMRUNTIME=~/src/vim/runtime ~/src/vim/src/vim"
 # https://www.rahuljuliato.com/posts/launching-emacs-terminal
 alias emd="emacs --daemon"

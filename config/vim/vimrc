@@ -175,6 +175,7 @@ call plug#begin()
   "Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
   Plug 'sheerun/vim-polyglot'
   Plug 'lepture/vim-jinja'
+  Plug 'meatballs/vim-xonsh'
 call plug#end()
 
 " rainbow plugin
