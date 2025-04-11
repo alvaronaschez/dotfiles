@@ -2,15 +2,28 @@ $VI_MODE = True
 $PROMPT = "{env_name}{BOLD_BLUE} {cwd}{branch_color}{curr_branch: {}}{RESET} {RED}{last_return_code_if_nonzero:[{BOLD_INTENSE_RED}{}{RED}] }{RESET}\n{BOLD_BLUE}{prompt_end}{RESET} "
 
 def confirm(command: str):
-    confirmation = input(f"are you sure you want to run: '{command}'? (y/N)")
-    if(confirmation in {'y', 'Y'}):
+    #confirmation = input()
+    confirmation = input('y/N?')
+    if(confirmation == 'y'):
         @(command.split())
-    return
+
+#@aliases.register('tst')
+#def test(args):
+#    @('echo hola'.split())
+#
+#@aliases.register('sd')
+#def _sd():
+#    #@(confirmation = input(f"are you sure you want to run: 'shutdown now'? (y/N)"))
+#    if(input('y/N?') == 'y'):
+#        shutdown now
+
 
 custom_aliases = {
 	'xsh': 'xonsh',
   'cdd': 'cd ~/dotfiles',
+  'cdw': 'cd ~/Workspace',
 	'vxsh': 'vim ~/dotfiles/config/xonsh/xonshrc.xsh',
+  'sxsh': 'source ~/dotfiles/config/xonsh/xonshrc.xsh',
 
   'gss': 'git status --short',
   'gst': 'git status',
@@ -35,13 +48,12 @@ custom_aliases = {
   'lal': 'ls -al',
   'lal': 'ls -al',
 
-  'sd': '@(confirm("shutdown now"))',
-  'rb': '@(confirm("shutdown -r now"))',
+  'sd': lambda: confirm("shutdown now"),
+  'rb': lambda: confirm("shutdown -r now"),
 }
 
 if not aliases.keys().isdisjoint(custom_aliases.keys()):
-    aliases['vxsh'] = custom_aliases['vxsh'] # useful alias for fixing the problem
-    raise Exception('aliases overridding')
+    print('aliases overridding')
 
 aliases.update(custom_aliases)
 
