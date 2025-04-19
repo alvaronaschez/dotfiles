@@ -137,11 +137,11 @@ if [[ $DISPLAY != '' ]]; then # don't apply these settings in tty
 	zle -N zle-line-finish
 fi
 
-## add new line after each command
-#https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command
-precmd(){
-	precmd() { echo }
-}
+### add new line after each command
+##https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command
+#precmd(){
+#	precmd() { echo }
+#}
 
 # Startup ------------------------------------------------------------------------------------------
 

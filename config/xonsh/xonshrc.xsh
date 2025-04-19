@@ -20,10 +20,14 @@ def confirm(command: str):
 
 custom_aliases = {
 	'xsh': 'xonsh',
+  'v': 'vim',
   'cdd': 'cd ~/dotfiles',
   'cdw': 'cd ~/Workspace',
 	'vxsh': 'vim ~/dotfiles/config/xonsh/xonshrc.xsh',
   'sxsh': 'source ~/dotfiles/config/xonsh/xonshrc.xsh',
+
+  'net': 'nmtui',
+  'sound': 'pavucontrol',
 
   'gss': 'git status --short',
   'gst': 'git status',

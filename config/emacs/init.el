@@ -1,7 +1,8 @@
 ;;; init.el --- init file for emacs
 
 ;;; Commentary:
-;; 
+;; to reload this config file, run:
+;; M-x eval-buffer
 
 ;;; Code:
 
@@ -14,6 +15,7 @@
 (scroll-bar-mode -1)
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
+(setq scroll-margin 5)
 
 ;; Put all auto-generated configurations in a separate file
 (setq custom-file (locate-user-emacs-file "custom.el"))
@@ -33,13 +35,33 @@
 
 ;; Load theme
 (load-theme 'deeper-blue)
-;;(use-package base16-theme
-;;  :ensure t
-;;  :config
-;;  (load-theme 'base16-seti t))
+;;(load-theme 'modus-vivendi-deuteranopia)
 
+;;(require 'evil "~/.config/emacs/alvaro/evil.el")
+;; vim key bindings
+(provide 'evil)
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil) ;; needed by evil-collection
+  (setq evil-want-C-u-scroll t
+        evil-undo-system 'undo-redo
+	evil-split-window-below t
+	evil-vsplit-window-right t)
+  (add-hook 'evil-insert-state-entry-hook (lambda () (send-string-to-terminal "\033[5 q")))
+  (add-hook 'evil-insert-state-exit-hook  (lambda () (send-string-to-terminal "\033[2 q")))
+  :config
+  (evil-mode 1))
 
-(require 'evil "~/.config/emacs/alvaro/evil.el")
+;; vim key bindings everywhere
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
+(evil-collection-swap-key nil 'evil-motion-state-map
+  ";" ":")
 
 ;;(require 'keybindings "~/.config/emacs/alvaro/keybindings.el")
 
