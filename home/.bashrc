@@ -123,4 +123,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
 PS0="\e[2 q" # restore cursor to block before entering app (eg. vim)
-PROMPT_COMMAND="printf '\n';$PROMPT_COMMAND"
+# PROMPT_COMMAND="printf '\n';$PROMPT_COMMAND"

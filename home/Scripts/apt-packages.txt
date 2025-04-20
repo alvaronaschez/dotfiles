@@ -1,25 +1,29 @@
 # tmux
 stow
 curl
-foot foot-themes
+foot
+foot-themes
 manpages-dev
 info
 make
 build-essential
-ranger # if version<1.9.4 and image setup doesn't work, use Scripts/ranger-git-install.sh instead
-# qutebrowser # install using installation script, apt version very outdated
+#ranger# if version<1.9.4 and image setup doesn't work, use Scripts/ranger-git-install.sh instead
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
-vim-athena vim-scripts vim-doc
+vim-gtk3
+vim-scripts
+vim-doc
 git
 btop
 
 gcc
-manpages-dev manpages-posix-dev
-gdb gdb-doc
+manpages-dev
+manpages-posix-dev
+gdb
+gdb-doc
 valgrind
-tcc # tiny c compiler
+tcc# tiny c compiler
 clang-format
 cscope
 cmake
@@ -28,49 +32,77 @@ python3-pygments
 
 # swig: simple wrapper and interface generator
 # https://www.swig.org/tutorial.html
-swig swig-doc swig-examples
+swig
+swig-doc
+swig-examples
 
 # language servers
 python3-pylsp
 ccls
 
 # not sure if needed
-pm-utils # power management
+pm-utils# power management
 
 zip
 unzip
 xz-utils
-trash-cli # https://github.com/andreafrancia/trash-cli
+trash-cli# https://github.com/andreafrancia/trash-cli
 rlwrap
 
 # transmission-gtk
 
-ripgrep less fzf bat
+ripgrep
+less
+fzf
+bat
 
-network-manager network-manager-config-connectivity-debian
-swaylock xdg-desktop-portal-wlr xwayland wdisplays tofi swayidle brightnessctl
-sway-notification-center swayimg grimshot
-blueman libspa-0.2-bluetooth # https://askubuntu.com/a/1480049
+sway
+qtwayland5
+swaylock
+xdg-desktop-portal-wlr
+xwayland
+wdisplays
+tofi
+swayidle
+brightnessctl
+sway-notification-center
+swayimg
+grimshot
+blueman
+libspa-0.2-bluetooth# https://askubuntu.com/a/1480049
 
 software-properties-common
-mpv yt-dlp/bookworm-backports
+#mpv yt-dlp/bookworm-backports
 
 pulseaudio-utils
 pavucontrol
 pamixer
 net-tools
 
-vlc obs-studio evince nautilus foliate
+vlc
+obs-studio
+evince
+nautilus
+foliate
 
-luarocks
+#luarocks
 
 qemu-system
 libvirt-daemon-system
 virt-manager
 
-podman distrobox
+podman
+#distrobox
 
-librewolf neofetch fortune cowsay figlet toilet cmatrix
+#librewolf
+firefox-esr
+chromium
+#neofetch
+#fortune
+#cowsay
+#figlet
+#toilet
+#cmatrix
 
 #xonsh xonsh-doc
 # outdated
@@ -82,3 +114,9 @@ librewolf neofetch fortune cowsay figlet toilet cmatrix
 # printer drivers
 printer-driver-gutenprint
 
+# this should go at the end
+# we will lose internet connection afterwards
+# IMPORTANT: remember to edit /etc/network/interfaces comment out lines about wifi
+# otherwise network manager is not going to be able to manage your internet connection properly
+network-manager
+network-manager-config-connectivity-debian

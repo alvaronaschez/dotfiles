@@ -1,12 +1,12 @@
 #!/usr/bin/zsh
 
-git clone https://github.com/tmux/tmux.git
-mv tmux /tmp
-(cd /tmp/tmux
+git clone --depth 1 https://github.com/tmux/tmux.git
+sudo apt-get install -qq autoconf automake pkg-config -y
+sudo apt-get install -qq libevent-dev ncurses-dev build-essential bison pkg-config -y
+mv tmux ~/.local/src
+cd ~/.local/src/tmux
 sh autogen.sh
-sudo apt-get install libevent-dev byacc
-./configure --enable-sixel && make)
+./configure --enable-sixel && make
+# sudo make uninstall # if we have to uninstall previous version
 sudo make install
-# sudo cp /tmp/tmux /usr/local/bin
-rm -drf /tmp/tmux
 

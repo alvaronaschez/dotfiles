@@ -17,9 +17,10 @@ sudo apt-get update -yq && sudo apt-get dist-upgrade -yq
 # or just delete it:
 sudo rm /etc/network/interfaces
 
-sudo apt-add-repository contrib non-free non-free-firmware
-sudo add-apt-repository -y "deb http://deb.debian.org/debian bookworm-backports main"
-sudo apt-get update -yq
+sudo apt install -yqq software-properties-common
+sudo add-apt-repository -y contrib non-free non-free-firmware
+#sudo add-apt-repository -y "deb http://deb.debian.org/debian bookworm-backports main"
+sudo apt-get update -yqq
 
 ~/dotfiles/Scripts/apt-install.sh
 
