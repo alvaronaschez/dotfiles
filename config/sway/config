@@ -71,7 +71,7 @@ set $laptop_screen eDP-1
 set $external_monitor DP-2
 #set $external_monitor $tv
 
-output $laptop_screen pos 0 1200 res 1920x1200
+output $laptop_screen pos 0 1080 res 1920x1200
 output $external_monitor pos 0 0 res 1920x1080
 
 #output $laptop_screen pos 0 0 res 1280x800
