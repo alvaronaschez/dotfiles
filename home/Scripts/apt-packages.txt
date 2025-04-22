@@ -92,6 +92,7 @@ libvirt-daemon-system
 virt-manager
 
 podman
+pipx
 #distrobox
 
 #librewolf

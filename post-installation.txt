@@ -5,11 +5,12 @@
 #~/dotfiles/home/Scripts/vim-install.sh
 # generate git ssh key
 git remote set-url origin git@github.com:alvaronaschez/dotfiles.git
-# install pyenv
-# install jdkman
-# install nvm
+pipx install 'xonsh[full]'
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 # this is needed so virt-manager works properly
 sudo usermod -aG libvirt $USER && sudo usermod -aG kvm $USER
 # set zsh as the default shell
 chsh -s $(which zsh)
+# install pyenv
+# install jdkman
+# install nvm
