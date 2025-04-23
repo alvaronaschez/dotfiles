@@ -131,10 +131,10 @@ alias kbm="sudo mount /dev/sda /media/alvaro/kobo"
 alias kbum="sudo umount /media/alvaro/kobo"
 alias kbcd="cd /media/alvaro/kobo"
 
+alias config-kb="sudo dpkg-reconfigure keyboard-configuration"
+
 # show help
 alias hh="echo '\
-vieb - web browser
-qutebrowser - web browser
 blueman-manager - bluetooth
 pavucontrol - sound
 nmtui - network
