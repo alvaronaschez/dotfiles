@@ -13,17 +13,17 @@
 
 
 " GENERAL CONFIGURATION OPTIONS {{{
-set nocompatible " use Vim settings, rather than Vi settings
-set hidden " use hidden buffers
-"set nohidden " this is the default value
-set autoread " automatically re-read files if unmodified inside vim
+
+if !has('nvim')
+  set nocompatible " use Vim settings, rather than Vi settings
+  set hidden " use hidden buffers
+  set autoread " automatically re-read files if unmodified inside vim
+  set ttimeout
+  set ttimeoutlen=50
+  " Make the escape key more responsive by decreasing the wait time for an
+  " escape sequence (e.g., arrow keys).
+endif
 set clipboard=unnamedplus
-" Make the escape key more responsive by decreasing the wait time for an
-" escape sequence (e.g., arrow keys).
-set ttimeout
-set ttimeoutlen=50
-"set timeoutlen=500
-"set ttyfast " default on
 set exrc " use local .vimrc files
 filetype plugin on
 "set directory="~/.vim/swap//"
@@ -33,60 +33,63 @@ set updatetime=500
 
 
 " USER INTERFACE OPTIONS {{{
+if !has('nvim')
+  set wildmenu " display command line's tab autocomplete options as a menu
+  set wildoptions=pum,tagfile " display the completion matches using the popup menu
+  set noerrorbells " disable beep on errors
+  set laststatus=2
+  set mouse=nv
+endif
 set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
 set cursorline " highlight the line currently under the cursor
-set wildmenu " display command line's tab autocomplete options as a menu
-set wildoptions=pum " display the completion matches using the popup menu
-set noerrorbells " disable beep on errors
 set visualbell " flash the screen instead of beeping on errors
-set mouse=a
 set splitright
 set splitbelow
-set laststatus=2
 set noshowmode " since it is shown in lightline anyways
 "set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 "}}}
 
 
 " TEXT RENDERING OPTIONS {{{
-set encoding=utf8
-syntax on
+if !has('nvim')
+  set encoding=utf8
+  syntax on
+  " cursor style
+  " Set cursor style (DECSCUSR), VT520.
+  "  0  blinking block.
+  "  1  blinking block (default).
+  "  2  steady block.
+  "  3  blinking underline.
+  "  4  steady underline.
+  "  5  blinking bar, xterm.
+  "  6  steady bar, xterm
+  let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
+  let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
+endif
 set scrolloff=5
 set nowrap " don't wrap lines
 set linebreak " wrap lines at convenient points
 "set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 set listchars+=eol:¬,space:·
-"
-" cursor style
-" Set cursor style (DECSCUSR), VT520.
-"  0  blinking block.
-"  1  blinking block (default).
-"  2  steady block.
-"  3  blinking underline.
-"  4  steady underline.
-"  5  blinking bar, xterm.
-"  6  steady bar, xterm
-let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
-let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
 "}}}
 
 
 " COLORS {{{
-" set background=dark " not needed, the colorscheme will set it
 colorscheme slate
 " are we in tty?
-if !empty($DISPLAY)
+if !has('nvim') && !empty($DISPLAY)
   set termguicolors
 endif
 "}}}
 
 
 " INDENTATION OPTIONS {{{
+if !has('nvim')
+  set autoindent " enable autoindenting
+endif
 " see :h tabstop
-filetype plugin indent on " enable indenting depending on file type
-set autoindent " enable autoindenting
 "https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
 augroup custom_indentation
   " :help autocmd-groups
@@ -103,8 +106,10 @@ augroup END
 
 
 " SEARCH OPTIONS {{{
-set hlsearch
-set incsearch
+if !has('nvim')
+  set hlsearch
+  set incsearch
+endif
 set ignorecase " ignore case when searchihng...
 set smartcase " ...unless you type a capital
 " This will look in the current directory for 'tags', and work up the tree
@@ -117,6 +122,7 @@ set tags=tags;/
 " REMAPPINGS {{{
 nnoremap ; :
 nnoremap : ;
+
 " scroll up and down
 nnoremap <down> <C-e><down>
 nnoremap <up> <C-y><up>
@@ -171,6 +177,7 @@ call plug#begin()
   Plug 'luochen1990/rainbow'
   Plug 'preservim/vim-indent-guides'
   Plug 'preservim/tagbar'
+  Plug 'preservim/nerdtree'
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
   Plug 'vimwiki/vimwiki'

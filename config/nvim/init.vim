@@ -1,0 +1,1 @@
+/home/alvaro/dotfiles/config/vim/vimrc
