@@ -157,15 +157,15 @@ inoremap {% {%%}<left><left>
 
 " PLUGINS {{{
 runtime ftplugin/man.vim
-packadd termdebug
+if !has('nvim')
+  packadd termdebug
+endif
 
-" This setting must be set before ALE is loaded.
-"let g:ale_completion_enabled = 1
-"set omnifunc=ale#completion#OmniFunc
 call plug#begin()
-  Plug 'jasonccox/vim-wayland-clipboard' " integrates wayland clipboard
-  Plug 'dense-analysis/ale'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  if !has('nvim')
+    Plug 'jasonccox/vim-wayland-clipboard' " integrates wayland clipboard
+  endif
+  "Plug 'dense-analysis/ale'
   Plug 'itchyny/lightline.vim'
   "Plug 'cohama/lexima.vim' " modern auto-pairs
   Plug 'luochen1990/rainbow'
@@ -174,10 +174,14 @@ call plug#begin()
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
   Plug 'vimwiki/vimwiki'
-  "Plug 'kovisoft/slimv' " https://susam.net/lisp-in-vim.html
   Plug 'sheerun/vim-polyglot'
   Plug 'lepture/vim-jinja'
   Plug 'meatballs/vim-xonsh'
+  " lsp
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 " rainbow plugin
@@ -198,47 +202,35 @@ let g:tagbar_width = 25
 nnoremap <leader>b :TagbarToggle jf<CR>
 "nnoremap <leader>b :TagbarOpen jf<CR>
 
+
+" lsp plugin
+let g:lsp_diagnostics_float_insert_mode_enabled = 0
+let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
+let g:lsp_diagnostics_signs_insert_mode_enabled = 0
+
+
 "ale plugin
 "let g:ale_enabled = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 0
-imap <C-c> <Plug>(ale_complete)
-"let g:ale_c_cc_executable = 'gcc'
-"let g:ale_c_cc_executable = 'clang'
-let g:ale_linters = {
-                    \ 'c': ['ccls'],
-                    \ 'cpp': ['ccls'],
-                    \ 'java':['javac', 'eclipselsp'],
-                    \ 'python':['ruff', 'pylsp']
-                    \}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-"\   'javascript': ['eslint'],
-\}
-
-let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
-let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
-
-let g:ale_java_javac_classpath='../'
-let g:ale_java_eclipselsp_path = '~/Downloads/javals/bin/jdtls'
-let g:ale_java_eclipselsp_workspace_path = '.'
-
-let g:ale_python_auto_virtualenv = 1
-let g:ale_python_auto_poetry = 1
-let g:ale_python_auto_uv = 1
+"let g:ale_lint_on_text_changed = 0
+"let g:ale_lint_on_insert_leave = 0
+"imap <C-c> <Plug>(ale_complete)
+""let g:ale_c_cc_executable = 'gcc'
+""let g:ale_c_cc_executable = 'clang'
+"                    \ 'java':['javac', 'eclipselsp'],
+"let g:ale_linters = {
+"                    \ 'c': ['ccls'],
+"                    \ 'cpp': ['ccls'],
+"                    \ 'java':['eclipselsp'],
+"                    \ 'python':['ruff', 'pylsp']
+"                    \}
+"let g:ale_fixers = {
+"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+""\   'javascript': ['eslint'],
+"\}
+"
+"let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
+"let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
 
 
-" coc plugin
-" GoTo code navigation
-nmap <silent><nowait> gd <Plug>(coc-definition)
-nmap <silent><nowait> gy <Plug>(coc-type-definition)
-nmap <silent><nowait> gi <Plug>(coc-implementation)
-nmap <silent><nowait> gr <Plug>(coc-references)
-
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 "}}}
 
