@@ -31,9 +31,7 @@ set $screen_off_timeout 900
 set $term foot
 # set $term sakura
 
-set $browser google-chrome
-# set $browser qutebrowser
-# set $browser vieb
+set $browser firefox
 
 default_border pixel 2
 
@@ -87,8 +85,8 @@ workspace 1 output $laptop_screen
 workspace 2 output $external_monitor
 # workspace 2 output $external_monitor
 # workspace 3 output $external_monitor
-# exec swaymsg "workspace 2; exec $browser"
 exec swaymsg "workspace 2; exec $term tmux"
+#exec swaymsg "workspace 2; exec $term"
 
 output $laptop_screen bg $bg1 fill
 output $external_monitor bg $bg2 fill
