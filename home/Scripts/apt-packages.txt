@@ -37,8 +37,8 @@ swig-doc
 swig-examples
 
 # language servers
-python3-pylsp
-ccls
+# python3-pylsp # not working well, better install it inside venv, uv, poetry or using pipx (for system-wide installation)
+# ccls
 
 # not sure if needed
 pm-utils# power management
