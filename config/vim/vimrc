@@ -206,9 +206,12 @@ let g:lightline = {
 "let g:tagbar_width = max([25, winwidth(0) / 5])
 "autocmd FileType vim,c,cpp,java,python nested :TagbarOpen
 let g:tagbar_width = 25
-nnoremap <leader>b :TagbarToggle jf<CR>
-"nnoremap <leader>b :TagbarOpen jf<CR>
+nnoremap <c-t> :TagbarToggle jf<cr>
+nnoremap <A-t> :TagbarToggle jf<cr>
 
+" nertree plugin
+nnoremap <c-n> :NERDTreeToggle<cr>
+nnoremap <A-n> :NERDTreeToggle<cr>
 
 " lsp plugin
 let g:lsp_diagnostics_float_insert_mode_enabled = 0
