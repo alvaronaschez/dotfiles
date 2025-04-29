@@ -39,6 +39,10 @@ swig-examples
 # language servers
 # python3-pylsp # not working well, better install it inside venv, uv, poetry or using pipx (for system-wide installation)
 # ccls
+clangd
+bear
+# bear -- <your-build-command>
+# https://github.com/rizsotto/Bear
 
 # not sure if needed
 pm-utils# power management

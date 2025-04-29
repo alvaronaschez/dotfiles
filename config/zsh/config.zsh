@@ -5,6 +5,12 @@ export -U PATH=$PATH:~/.local/bin
 # disable Ctrl-S stop signal
 stty stop ""
 
+
+#https://unix.stackexchange.com/questions/20298/home-key-not-working-in-terminal
+bindkey '[H'    beginning-of-line  # gnome-terminal
+bindkey '[F'    end-of-line        # gnome-terminal
+
+
 ## https://github.com/NNBnh/kickstart.zsh/tree/main
 # A launch point for your personal .zshrc
 

@@ -38,14 +38,14 @@ if !has('nvim')
   set wildoptions=pum,tagfile " display the completion matches using the popup menu
   set noerrorbells " disable beep on errors
   set laststatus=2
-  set mouse=nv
+  set mouse=nv " mouse available in normal and visual modes
 endif
 set number " show line numbers on the sidebar
 set relativenumber " set line numbers relative to the line of the cursor
 set cursorline " highlight the line currently under the cursor
 set visualbell " flash the screen instead of beeping on errors
-set splitright
-set splitbelow
+set splitright " split windows right when :vsplit
+set splitbelow " split windows below when :split
 set noshowmode " since it is shown in lightline anyways
 "set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 "}}}
@@ -78,8 +78,9 @@ set listchars+=eol:¬,space:·
 
 " COLORS {{{
 colorscheme slate
-" are we in tty?
 if !has('nvim') && !empty($DISPLAY)
+  " we dont want to enable termguicolors if we are in tty
+  " it is enabled by default in nvim
   set termguicolors
 endif
 "}}}
@@ -161,38 +162,6 @@ inoremap {% {%%}<left><left>
 "}}}
 
 
-" TMUX INTEGRATION {{{
-" :h tmux-integration
-if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-  " Better mouse support, see  :help 'ttymouse'
-  set ttymouse=sgr
-
-  " Enable true colors, see  :help xterm-true-color
-  let &termguicolors = v:true
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-  " Enable bracketed paste mode, see  :help xterm-bracketed-paste
-  let &t_BE = "\<Esc>[?2004h"
-  let &t_BD = "\<Esc>[?2004l"
-  let &t_PS = "\<Esc>[200~"
-  let &t_PE = "\<Esc>[201~"
-
-  " Enable focus event tracking, see  :help xterm-focus-event
-  let &t_fe = "\<Esc>[?1004h"
-  let &t_fd = "\<Esc>[?1004l"
-  execute "set <FocusGained>=\<Esc>[I"
-  execute "set <FocusLost>=\<Esc>[O"
-
-  " Enable modified arrow keys, see  :help arrow_modifiers
-  execute "silent! set <xUp>=\<Esc>[@;*A"
-  execute "silent! set <xDown>=\<Esc>[@;*B"
-  execute "silent! set <xRight>=\<Esc>[@;*C"
-  execute "silent! set <xLeft>=\<Esc>[@;*D"
-endif
-"}}}
-
-
 " PLUGINS {{{
 runtime ftplugin/man.vim
 if !has('nvim')
@@ -227,12 +196,13 @@ call plug#end()
 let g:rainbow_active = 1
 
 " lightline plugin
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
-      \ }
-      \ }
+let g:lightline = {'colorscheme':'wombat','active':{'left':[[ 'mode','paste'],['readonly', 'absolutepath','modified']],}}
+"let g:lightline = {
+"      \ 'colorscheme': 'wombat',
+"      \ 'active': {
+"      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+"      \ }
+"      \ }
 
 " tagbar plugin
 "let g:tagbar_width = max([25, winwidth(0) / 5])
@@ -240,7 +210,11 @@ let g:lightline = {
 let g:tagbar_width = 25
 
 "https://stackoverflow.com/questions/35330381/getting-alt-to-work-in-the-terminal-with-tmux-and-vim
+"https://github.com/tmux/tmux/wiki/Modifier-Keys
+"https://vim.fandom.com/wiki/Get_Alt_key_to_work_in_terminal
+":h tmux-integration
 if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+  "where  is inserted in Vim by pressing <C-v><Esc>	
   nnoremap b :TagbarToggle jf<cr>
 else
   nnoremap <A-b> :TagbarToggle jf<cr>
@@ -283,4 +257,5 @@ let g:lsp_diagnostics_signs_insert_mode_enabled = 0
 
 
 "}}}
+
 

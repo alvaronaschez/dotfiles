@@ -29,7 +29,7 @@ function __confirm() {
 # function untargz() { tar xf $1 }
 
 
-alias start="exec sway"
+alias start="sway"
 alias st=start
 alias sd="__confirm shutdown now"
 alias rs="__confirm shutdown -r now"

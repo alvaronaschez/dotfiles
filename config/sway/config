@@ -85,8 +85,8 @@ workspace 1 output $laptop_screen
 workspace 2 output $external_monitor
 # workspace 2 output $external_monitor
 # workspace 3 output $external_monitor
-exec swaymsg "workspace 2; exec $term tmux"
-#exec swaymsg "workspace 2; exec $term"
+# exec swaymsg "workspace 2; exec $term tmux"
+exec swaymsg "workspace 2; exec $term"
 
 output $laptop_screen bg $bg1 fill
 output $external_monitor bg $bg2 fill
