@@ -232,6 +232,19 @@ let g:lsp_diagnostics_float_insert_mode_enabled = 0
 let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 let g:lsp_diagnostics_signs_insert_mode_enabled = 0
 
+nmap <buffer> gd <plug>(lsp-definition)
+nmap <buffer> gs <plug>(lsp-document-symbol-search)
+nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+nmap <buffer> gr <plug>(lsp-references)
+nmap <buffer> gi <plug>(lsp-implementation)
+nmap <buffer> gt <plug>(lsp-type-definition)
+"nmap <buffer> <leader>rn <plug>(lsp-rename)
+"nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+"nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+nmap <buffer> K <plug>(lsp-hover)
+"nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+"nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
 
 "ale plugin
 "let g:ale_enabled = 0
@@ -254,7 +267,6 @@ let g:lsp_diagnostics_signs_insert_mode_enabled = 0
 "
 "let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
 "let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
-
 
 "}}}
 
