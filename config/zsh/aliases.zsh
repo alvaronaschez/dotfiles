@@ -133,6 +133,9 @@ alias kbcd="cd /media/alvaro/kobo"
 
 alias config-kb="sudo dpkg-reconfigure keyboard-configuration"
 
+#https://github.com/williamboman/mason.nvim/issues/1323
+alias nvim-purge="rm -rf ~/.local/share/nvim ~/.cache/nvim ~/.local/state/nvim" 
+
 # show help
 alias hh="echo '\
 blueman-manager - bluetooth
