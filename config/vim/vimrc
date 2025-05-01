@@ -47,7 +47,6 @@ if !has('nvim')
   let &t_SI = "\e[6 q" " set cursor to a vertical bar in insert mode
 endif
 set clipboard=unnamedplus " copy to system clipboard
-set exrc " use local .vimrc files
 filetype plugin on " enable file type detection
 "set directory="~/.vim/swap//"
 "set backupdir="~/.vim/backup//"
@@ -71,19 +70,13 @@ set smartcase " ...unless you type a capital
 " towards root until one is found.
 " From: http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 set tags=tags;/
-"set showmode statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+set showmode statusline=[%F]%m%r%h%w%=[%{&ff}/%Y]\ [line\ %l\/%L,\ col\ %c]
 "}}}
 
 
 " KEY MAPPINGS {{{
 nnoremap ; :
 nnoremap : ;
-
-" scroll up and down
-nnoremap <down> <C-e><down>
-nnoremap <up> <C-y><up>
-nnoremap <A-down> <C-e>
-nnoremap <A-up> <C-y>
 
 " Yank to end of line
 noremap Y y$
@@ -96,10 +89,9 @@ let g:maplocalleader = "\<space>"
 " double tap esc to enter normal mode (inside terminal mode)
 tnoremap <Esc><Esc> <C-\><C-N>
 
-noremap <leader>T :tab ter<CR>
-" :ter to open new terminal in split window
 " reload vim configuration
 nnoremap <silent> <leader>. :so $MYVIMRC\|nohls\|call lightline#disable()\|call lightline#enable()<cr>
+
 function ToggleColorcolumn()
   if &colorcolumn ==# ""
     "set colorcolumn=80
@@ -109,6 +101,7 @@ function ToggleColorcolumn()
   endif
 endfunction
 nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
+
 " clear search
 nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
@@ -119,6 +112,12 @@ inoremap {% {%%}<left><left>
 " fold everything but selection
 "https://stackoverflow.com/questions/674613/vim-folds-for-everything-except-something
 vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
+
+" scroll up and down
+nnoremap <down> <C-e><down>
+nnoremap <up> <C-y><up>
+nnoremap <A-down> <C-e>
+nnoremap <A-up> <C-y>
 "}}}
 
 
@@ -140,6 +139,7 @@ augroup END
 
 
 " PROJECT DEPENDENT OPTIONS {{{
+set exrc " use local .vimrc files
 let g:c_syntax_for_h = 1 " this should be adjusted depending on the project: c -> 1, cpp -> 0
 "}}}
 
@@ -153,33 +153,34 @@ endif
 call plug#begin()
   if !has('nvim')
     Plug 'jasonccox/vim-wayland-clipboard' " integrates wayland clipboard
-    Plug 'sheerun/vim-polyglot'
-    Plug 'rhysd/vim-healthcheck'
+    Plug 'sheerun/vim-polyglot' " a collection of language packs for vim
+    Plug 'rhysd/vim-healthcheck' " instead of Neovim's standard :checkhealth command, it provides :CheckHealth command on vim
   endif
-  Plug 'itchyny/lightline.vim'
-  Plug 'luochen1990/rainbow'
-  Plug 'preservim/vim-indent-guides'
   Plug 'preservim/tagbar'
   Plug 'preservim/nerdtree'
-  Plug 'mhinz/vim-signify'
-  Plug 'tpope/vim-fugitive'
-  Plug 'vimwiki/vimwiki'
-  Plug 'lepture/vim-jinja'
-  "Plug 'dense-analysis/ale'
-  "Plug 'meatballs/vim-xonsh'
-  " lsp
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'mattn/vim-lsp-settings'
+  Plug 'vimwiki/vimwiki' " a personal wiki for vim
+  Plug 'luochen1990/rainbow' " rainbow parentheses improved
+  Plug 'preservim/vim-indent-guides' " visually display indent levels
+  Plug 'tpope/vim-fugitive' " a git plugin so awesome it should be illegal
+  Plug 'mhinz/vim-signify' " show differences with style
+  Plug 'prabirshrestha/vim-lsp' " lsp
+  Plug 'mattn/vim-lsp-settings' " lsp autoconfiguration
   Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim' " lsp autocompletion
+
+  "Plug 'lepture/vim-jinja' " jinja templates plugin
+  "Plug 'meatballs/vim-xonsh' " xonsh python-based shell plugin
+  "Plug 'itchyny/lightline.vim'
+  "Plug 'dense-analysis/ale'
+
 call plug#end()
 
 " rainbow plugin
 let g:rainbow_active = 1
 
 " lightline plugin
-set noshowmode " since it is shown in lightline anyways
-let g:lightline = {'colorscheme':'wombat','active':{'left':[[ 'mode','paste'],['readonly', 'absolutepath','modified']],}}
+"set noshowmode " since it is shown in lightline anyways
+"let g:lightline = {'colorscheme':'wombat','active':{'left':[[ 'mode','paste'],['readonly', 'absolutepath','modified']],}}
 
 " tagbar plugin
 let g:tagbar_width = max([25, winwidth(0) / 5])
@@ -193,6 +194,8 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
 else
   nnoremap <A-b> :TagbarToggle jf<cr>
 endif
+let g:tagbar_map_showproto="<space><space>"
+nnoremap <leader>t :TagbarToggle jf<cr>
 
 " nertree plugin
 if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
@@ -200,6 +203,7 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
 else
   nnoremap <A-n> :NERDTreeToggle<cr>
 endif
+nnoremap <leader>n :NERDTreeToggle<cr>
 
 " lsp plugin
 let g:lsp_diagnostics_float_insert_mode_enabled = 0
