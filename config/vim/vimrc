@@ -55,6 +55,7 @@ set noshowmode " since it is shown in lightline anyways
 if !has('nvim')
   set encoding=utf8
   syntax on
+  set autoindent " enable autoindenting
   " cursor style
   " Set cursor style (DECSCUSR), VT520.
   "  0  blinking block.
@@ -86,10 +87,7 @@ endif
 "}}}
 
 
-" INDENTATION OPTIONS {{{
-if !has('nvim')
-  set autoindent " enable autoindenting
-endif
+" LANGUAGE DEPENDENT OPTIONS {{{
 " see :h tabstop
 "https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
 augroup custom_indentation
@@ -103,6 +101,11 @@ augroup custom_indentation
   autocmd Filetype java setlocal sw=2 ts=2 noet
   autocmd Filetype lua setlocal sw=2 ts=2 noet
 augroup END
+"}}}
+
+
+" PROJECT DEPENDENT OPTIONS {{{
+let g:c_syntax_for_h = 1 " this should be adjusted depending on the project: c -> 1, cpp -> 0
 "}}}
 
 
@@ -171,10 +174,10 @@ endif
 call plug#begin()
   if !has('nvim')
     Plug 'jasonccox/vim-wayland-clipboard' " integrates wayland clipboard
+    Plug 'sheerun/vim-polyglot'
+    Plug 'rhysd/vim-healthcheck'
   endif
-  "Plug 'dense-analysis/ale'
   Plug 'itchyny/lightline.vim'
-  "Plug 'cohama/lexima.vim' " modern auto-pairs
   Plug 'luochen1990/rainbow'
   Plug 'preservim/vim-indent-guides'
   Plug 'preservim/tagbar'
@@ -182,9 +185,9 @@ call plug#begin()
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
   Plug 'vimwiki/vimwiki'
-  Plug 'sheerun/vim-polyglot'
   Plug 'lepture/vim-jinja'
-  Plug 'meatballs/vim-xonsh'
+  "Plug 'dense-analysis/ale'
+  "Plug 'meatballs/vim-xonsh'
   " lsp
   Plug 'prabirshrestha/vim-lsp'
   Plug 'mattn/vim-lsp-settings'
@@ -245,8 +248,22 @@ nmap K <plug>(lsp-hover)
 "nnoremap <expr><c-f> lsp#scroll(+4)
 "nnoremap <expr><c-d> lsp#scroll(-4)
 
+" Register ccls C++ lanuage server.
+if executable('ccls')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'ccls',
+      \ 'cmd': {server_info->['ccls']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+      \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
+      \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
+" use ccls instead of clangd
+let g:lsp_settings = {
+      \ 'clangd': {'disabled': 1}
+\}
 
-"ale plugin
+""ale plugin
 "let g:ale_enabled = 0
 "let g:ale_lint_on_text_changed = 0
 "let g:ale_lint_on_insert_leave = 0
