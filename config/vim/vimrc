@@ -5,9 +5,11 @@
 "(_)_/ |_|_| |_| |_|_|  \___|
 "
 "
-" ':normal zr' to unfold everything
-" ':normal zm' to fold everything again
-" ':normal za' to toggle one fold
+" ':normal zr' unfold one level (reduce folding)
+" ':normal zR' unfold everything
+" ':normal zm' fold one more level (fold more)
+" ':normal zM' fold everything
+" ':normal za' toggle one fold (fold around)
 "
 "
 
@@ -18,18 +20,15 @@ if !has('nvim')
   set nocompatible " use Vim settings, rather than Vi settings
   set hidden " use hidden buffers
   set autoread " automatically re-read files if unmodified inside vim
-  set ttimeout
+  set ttimeout " time out on key codes (but not on :mappings)
   set ttimeoutlen=50
-  " Make the escape key more responsive by decreasing the wait time for an
-  " escape sequence (e.g., arrow keys).
 endif
-set clipboard=unnamedplus
+set clipboard=unnamedplus " copy to system clipboard
 set exrc " use local .vimrc files
-filetype plugin on
+filetype plugin on " enable file type detection
 "set directory="~/.vim/swap//"
 "set backupdir="~/.vim/backup//"
 set updatetime=500
-"}}}
 
 
 " USER INTERFACE OPTIONS {{{
@@ -37,7 +36,7 @@ if !has('nvim')
   set wildmenu " display command line's tab autocomplete options as a menu
   set wildoptions=pum,tagfile " display the completion matches using the popup menu
   set noerrorbells " disable beep on errors
-  set laststatus=2
+  set laststatus=2 " the last window will always(2) have a status line
   set mouse=nv " mouse available in normal and visual modes
 endif
 set number " show line numbers on the sidebar
@@ -53,8 +52,8 @@ set noshowmode " since it is shown in lightline anyways
 
 " TEXT RENDERING OPTIONS {{{
 if !has('nvim')
-  set encoding=utf8
-  syntax on
+  set encoding=utf8 " set character encoding
+  syntax on " switch on syntax highlighting
   set autoindent " enable autoindenting
   " cursor style
   " Set cursor style (DECSCUSR), VT520.
@@ -65,13 +64,13 @@ if !has('nvim')
   "  4  steady underline.
   "  5  blinking bar, xterm.
   "  6  steady bar, xterm
-  let &t_EI = "\e[2 q"  " Set cursor to a block in normal mode
-  let &t_SI = "\e[6 q"  " Set cursor to a vertical bar in insert mode
+  let &t_EI = "\e[2 q" " set cursor to a block in normal mode
+  let &t_SI = "\e[6 q" " set cursor to a vertical bar in insert mode
 endif
-set scrolloff=5
+set scrolloff=5 " minimal number of screen lines to keep above and below the cursor.
 set nowrap " don't wrap lines
 set linebreak " wrap lines at convenient points
-"set list
+"set list " display hidden characters
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 set listchars+=eol:¬,space:·
 "}}}
@@ -87,32 +86,10 @@ endif
 "}}}
 
 
-" LANGUAGE DEPENDENT OPTIONS {{{
-" see :h tabstop
-"https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
-augroup custom_indentation
-  " :help autocmd-groups
-  autocmd!
-  autocmd Filetype vim setlocal shiftwidth=2 softtabstop=2 expandtab
-\    foldmethod=marker "nofoldenable
-  autocmd Filetype c setlocal shiftwidth=4 tabstop=4 noexpandtab
-  autocmd Filetype python setlocal sw=4 sts=4 et
-  autocmd Filetype javascript setlocal sw=2 ts=2 noet
-  autocmd Filetype java setlocal sw=2 ts=2 noet
-  autocmd Filetype lua setlocal sw=2 ts=2 noet
-augroup END
-"}}}
-
-
-" PROJECT DEPENDENT OPTIONS {{{
-let g:c_syntax_for_h = 1 " this should be adjusted depending on the project: c -> 1, cpp -> 0
-"}}}
-
-
 " SEARCH OPTIONS {{{
 if !has('nvim')
-  set hlsearch
-  set incsearch
+  set hlsearch " when there is a previous search pattern, highlight all its matches
+  set incsearch " while typing a search command, show where the pattern, as it was typed so far, matches
 endif
 set ignorecase " ignore case when searchihng...
 set smartcase " ...unless you type a capital
@@ -122,8 +99,10 @@ set smartcase " ...unless you type a capital
 set tags=tags;/
 "}}}
 
+"}}}
 
-" REMAPPINGS {{{
+
+" KEY MAPPINGS {{{
 nnoremap ; :
 nnoremap : ;
 
@@ -140,6 +119,7 @@ noremap Y y$
 nnoremap <space> <nop>
 let g:mapleader = "\<space>"
 let g:maplocalleader = "\<space>"
+
 " double tap esc to enter normal mode (inside terminal mode)
 tnoremap <Esc><Esc> <C-\><C-N>
 
@@ -166,6 +146,28 @@ inoremap {% {%%}<left><left>
 " fold everything but selection
 "https://stackoverflow.com/questions/674613/vim-folds-for-everything-except-something
 vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
+"}}}
+
+
+" LANGUAGE DEPENDENT OPTIONS {{{
+" see :h tabstop
+"https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
+augroup custom_indentation
+  " :help autocmd-groups
+  autocmd!
+  autocmd Filetype vim setlocal shiftwidth=2 softtabstop=2 expandtab
+\    foldmethod=marker "nofoldenable
+  autocmd Filetype c setlocal shiftwidth=4 tabstop=4 noexpandtab
+  autocmd Filetype python setlocal sw=4 sts=4 et
+  autocmd Filetype javascript setlocal sw=2 ts=2 noet
+  autocmd Filetype java setlocal sw=2 ts=2 noet
+  autocmd Filetype lua setlocal sw=2 ts=2 noet
+augroup END
+"}}}
+
+
+" PROJECT DEPENDENT OPTIONS {{{
+let g:c_syntax_for_h = 1 " this should be adjusted depending on the project: c -> 1, cpp -> 0
 "}}}
 
 
@@ -215,7 +217,6 @@ let g:lightline = {'colorscheme':'wombat','active':{'left':[[ 'mode','paste'],['
 "let g:tagbar_width = max([25, winwidth(0) / 5])
 "autocmd FileType vim,c,cpp,java,python nested :TagbarOpen
 let g:tagbar_width = 25
-
 "https://stackoverflow.com/questions/35330381/getting-alt-to-work-in-the-terminal-with-tmux-and-vim
 "https://github.com/tmux/tmux/wiki/Modifier-Keys
 "https://vim.fandom.com/wiki/Get_Alt_key_to_work_in_terminal
