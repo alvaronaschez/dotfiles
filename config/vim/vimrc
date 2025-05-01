@@ -15,46 +15,25 @@
 
 
 " GENERAL CONFIGURATION OPTIONS {{{
-
 if !has('nvim')
   set nocompatible " use Vim settings, rather than Vi settings
+  set encoding=utf8 " set character encoding
   set hidden " use hidden buffers
   set autoread " automatically re-read files if unmodified inside vim
   set ttimeout " time out on key codes (but not on :mappings)
   set ttimeoutlen=50
-endif
-set clipboard=unnamedplus " copy to system clipboard
-set exrc " use local .vimrc files
-filetype plugin on " enable file type detection
-"set directory="~/.vim/swap//"
-"set backupdir="~/.vim/backup//"
-set updatetime=500
-
-
-" USER INTERFACE OPTIONS {{{
-if !has('nvim')
+  syntax on " switch on syntax highlighting
+  set autoindent " enable autoindenting
+  if !empty($DISPLAY) " we dont want to enable termguicolors if we are in tty
+    set termguicolors " use 24-bit color
+  endif
   set wildmenu " display command line's tab autocomplete options as a menu
   set wildoptions=pum,tagfile " display the completion matches using the popup menu
   set noerrorbells " disable beep on errors
   set laststatus=2 " the last window will always(2) have a status line
   set mouse=nv " mouse available in normal and visual modes
-endif
-set number " show line numbers on the sidebar
-set relativenumber " set line numbers relative to the line of the cursor
-set cursorline " highlight the line currently under the cursor
-set visualbell " flash the screen instead of beeping on errors
-set splitright " split windows right when :vsplit
-set splitbelow " split windows below when :split
-set noshowmode " since it is shown in lightline anyways
-"set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-"}}}
-
-
-" TEXT RENDERING OPTIONS {{{
-if !has('nvim')
-  set encoding=utf8 " set character encoding
-  syntax on " switch on syntax highlighting
-  set autoindent " enable autoindenting
+  set hlsearch " when there is a previous search pattern, highlight all its matches
+  set incsearch " while typing a search command, show where the pattern, as it was typed so far, matches
   " cursor style
   " Set cursor style (DECSCUSR), VT520.
   "  0  blinking block.
@@ -67,38 +46,32 @@ if !has('nvim')
   let &t_EI = "\e[2 q" " set cursor to a block in normal mode
   let &t_SI = "\e[6 q" " set cursor to a vertical bar in insert mode
 endif
+set clipboard=unnamedplus " copy to system clipboard
+set exrc " use local .vimrc files
+filetype plugin on " enable file type detection
+"set directory="~/.vim/swap//"
+"set backupdir="~/.vim/backup//"
+set updatetime=500
+colorscheme slate
+set number " show line numbers on the sidebar
+set relativenumber " set line numbers relative to the line of the cursor
+set cursorline " highlight the line currently under the cursor
+set visualbell " flash the screen instead of beeping on errors
+set splitright " split windows right when :vsplit
+set splitbelow " split windows below when :split
 set scrolloff=5 " minimal number of screen lines to keep above and below the cursor.
 set nowrap " don't wrap lines
 set linebreak " wrap lines at convenient points
 "set list " display hidden characters
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
 set listchars+=eol:¬,space:·
-"}}}
-
-
-" COLORS {{{
-colorscheme slate
-if !has('nvim') && !empty($DISPLAY)
-  " we dont want to enable termguicolors if we are in tty
-  " it is enabled by default in nvim
-  set termguicolors
-endif
-"}}}
-
-
-" SEARCH OPTIONS {{{
-if !has('nvim')
-  set hlsearch " when there is a previous search pattern, highlight all its matches
-  set incsearch " while typing a search command, show where the pattern, as it was typed so far, matches
-endif
 set ignorecase " ignore case when searchihng...
 set smartcase " ...unless you type a capital
 " This will look in the current directory for 'tags', and work up the tree
 " towards root until one is found.
 " From: http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 set tags=tags;/
-"}}}
-
+"set showmode statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 "}}}
 
 
@@ -205,18 +178,11 @@ call plug#end()
 let g:rainbow_active = 1
 
 " lightline plugin
+set noshowmode " since it is shown in lightline anyways
 let g:lightline = {'colorscheme':'wombat','active':{'left':[[ 'mode','paste'],['readonly', 'absolutepath','modified']],}}
-"let g:lightline = {
-"      \ 'colorscheme': 'wombat',
-"      \ 'active': {
-"      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
-"      \ }
-"      \ }
 
 " tagbar plugin
-"let g:tagbar_width = max([25, winwidth(0) / 5])
-"autocmd FileType vim,c,cpp,java,python nested :TagbarOpen
-let g:tagbar_width = 25
+let g:tagbar_width = max([25, winwidth(0) / 5])
 "https://stackoverflow.com/questions/35330381/getting-alt-to-work-in-the-terminal-with-tmux-and-vim
 "https://github.com/tmux/tmux/wiki/Modifier-Keys
 "https://vim.fandom.com/wiki/Get_Alt_key_to_work_in_terminal
