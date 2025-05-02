@@ -90,7 +90,7 @@ let g:maplocalleader = "\<space>"
 tnoremap <Esc><Esc> <C-\><C-N>
 
 " reload vim configuration
-nnoremap <silent> <leader>. :so $MYVIMRC\|nohls\|call lightline#disable()\|call lightline#enable()<cr>
+nnoremap <silent> <leader>. :so $MYVIMRC\|nohls\<cr>
 
 function ToggleColorcolumn()
   if &colorcolumn ==# ""
@@ -155,6 +155,11 @@ call plug#begin()
     Plug 'jasonccox/vim-wayland-clipboard' " integrates wayland clipboard
     Plug 'sheerun/vim-polyglot' " a collection of language packs for vim
     Plug 'rhysd/vim-healthcheck' " instead of Neovim's standard :checkhealth command, it provides :CheckHealth command on vim
+    " lsp
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings' " lsp autoconfiguration
+    Plug 'prabirshrestha/asyncomplete.vim' " lsp autocompletion dependency
+    Plug 'prabirshrestha/asyncomplete-lsp.vim' " lsp autocompletion
   endif
   Plug 'preservim/tagbar'
   Plug 'preservim/nerdtree'
@@ -163,17 +168,11 @@ call plug#begin()
   Plug 'preservim/vim-indent-guides' " visually display indent levels
   Plug 'tpope/vim-fugitive' " a git plugin so awesome it should be illegal
   Plug 'mhinz/vim-signify' " show differences with style
-  if !has('nvim') " lsp
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings' " lsp autoconfiguration
-    Plug 'prabirshrestha/asyncomplete.vim' " lsp autocompletion dependency
-    Plug 'prabirshrestha/asyncomplete-lsp.vim' " lsp autocompletion
-  endif
+  " some interesting plugins I'm currently not using
   "Plug 'lepture/vim-jinja' " jinja templates plugin
   "Plug 'meatballs/vim-xonsh' " xonsh python-based shell plugin
   "Plug 'itchyny/lightline.vim'
   "Plug 'dense-analysis/ale'
-
 call plug#end()
 
 " rainbow plugin
@@ -206,60 +205,6 @@ else
 endif
 nnoremap <leader>n :NERDTreeToggle<cr>
 
-" lsp plugin
-let g:lsp_diagnostics_float_insert_mode_enabled = 0
-let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
-let g:lsp_diagnostics_signs_insert_mode_enabled = 0
-
-nmap gd <plug>(lsp-definition)
-nmap gs <plug>(lsp-document-symbol-search)
-nmap gS <plug>(lsp-workspace-symbol-search)
-nmap gr <plug>(lsp-references)
-nmap gi <plug>(lsp-implementation)
-nmap gt <plug>(lsp-type-definition)
-"nmap <leader>rn <plug>(lsp-rename)
-"nmap [g <plug>(lsp-previous-diagnostic)
-"nmap ]g <plug>(lsp-next-diagnostic)
-nmap K <plug>(lsp-hover)
-"nnoremap <expr><c-f> lsp#scroll(+4)
-"nnoremap <expr><c-d> lsp#scroll(-4)
-
-" register ccls C/C++ lanuage server
-if executable('ccls')
-   au User lsp_setup call lsp#register_server({
-      \ 'name': 'ccls',
-      \ 'cmd': {server_info->['ccls']},
-      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-      \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
-      \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-      \ })
-endif
-" use ccls instead of clangd
-let g:lsp_settings = {
-      \ 'clangd': {'disabled': 1}
-\}
-
-"https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ccls.lua
-"let ccls_conf = {
-"  \ 'cmd': ['ccls'],
-"  \ 'filetypes': ['c', 'cpp', 'objc', 'objcpp', 'cuda'],
-"  \ 'root_markers': ['compile_commands.json', '.ccls', '.git'],
-"  \ 'offset_encoding': 'utf-32',
-"  \ 'workspace_required': 1,
-"  \ }
-"
-"call v:lua.vim.lsp.config('ccls', ccls_conf)
-if has('nvim')
-  call v:lua.vim.lsp.config('ccls', {
-    \ 'cmd': ['ccls'],
-    \ 'filetypes': ['c', 'cpp', 'objc', 'objcpp', 'cuda'],
-    \ 'root_markers': ['compile_commands.json', '.ccls', '.git'],
-    \ 'offset_encoding': 'utf-32',
-    \ 'workspace_required': 1,
-    \ })
-  call v:lua.vim.lsp.enable('ccls')
-endif
-
 ""ale plugin
 "let g:ale_enabled = 0
 "let g:ale_lint_on_text_changed = 0
@@ -282,6 +227,55 @@ endif
 "let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
 "let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
 
+"}}}
+
+
+" LSP CONFIGURATION {{{
+if !has('nvim')
+  " lsp plugin
+  let g:lsp_diagnostics_float_insert_mode_enabled = 0
+  let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
+  let g:lsp_diagnostics_signs_insert_mode_enabled = 0
+
+  nmap gd <plug>(lsp-definition)
+  nmap gs <plug>(lsp-document-symbol-search)
+  nmap gS <plug>(lsp-workspace-symbol-search)
+  nmap gr <plug>(lsp-references)
+  nmap gi <plug>(lsp-implementation)
+  nmap gt <plug>(lsp-type-definition)
+  "nmap <leader>rn <plug>(lsp-rename)
+  "nmap [g <plug>(lsp-previous-diagnostic)
+  "nmap ]g <plug>(lsp-next-diagnostic)
+  nmap K <plug>(lsp-hover)
+  "nnoremap <expr><c-f> lsp#scroll(+4)
+  "nnoremap <expr><c-d> lsp#scroll(-4)
+
+  " register ccls C/C++ lanuage server
+  if executable('ccls')
+     au User lsp_setup call lsp#register_server({
+        \ 'name': 'ccls',
+        \ 'cmd': {server_info->['ccls']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
+        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ })
+  endif
+  " use ccls instead of clangd
+  let g:lsp_settings = {
+        \ 'clangd': {'disabled': 1}
+  \}
+
+elseif has('nvim')
+  "https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ccls.lua
+  call v:lua.vim.lsp.config('ccls', {
+    \ 'cmd': ['ccls'],
+    \ 'filetypes': ['c', 'cpp', 'objc', 'objcpp', 'cuda'],
+    \ 'root_markers': ['compile_commands.json', '.ccls', '.git'],
+    \ 'offset_encoding': 'utf-32',
+    \ 'workspace_required': 1,
+    \ })
+  call v:lua.vim.lsp.enable('ccls')
+endif
 "}}}
 
 
