@@ -163,11 +163,12 @@ call plug#begin()
   Plug 'preservim/vim-indent-guides' " visually display indent levels
   Plug 'tpope/vim-fugitive' " a git plugin so awesome it should be illegal
   Plug 'mhinz/vim-signify' " show differences with style
-  Plug 'prabirshrestha/vim-lsp' " lsp
-  Plug 'mattn/vim-lsp-settings' " lsp autoconfiguration
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim' " lsp autocompletion
-
+  if !has('nvim') " lsp
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings' " lsp autoconfiguration
+    Plug 'prabirshrestha/asyncomplete.vim' " lsp autocompletion dependency
+    Plug 'prabirshrestha/asyncomplete-lsp.vim' " lsp autocompletion
+  endif
   "Plug 'lepture/vim-jinja' " jinja templates plugin
   "Plug 'meatballs/vim-xonsh' " xonsh python-based shell plugin
   "Plug 'itchyny/lightline.vim'
@@ -223,7 +224,7 @@ nmap K <plug>(lsp-hover)
 "nnoremap <expr><c-f> lsp#scroll(+4)
 "nnoremap <expr><c-d> lsp#scroll(-4)
 
-" Register ccls C++ lanuage server.
+" register ccls C/C++ lanuage server
 if executable('ccls')
    au User lsp_setup call lsp#register_server({
       \ 'name': 'ccls',
@@ -237,6 +238,27 @@ endif
 let g:lsp_settings = {
       \ 'clangd': {'disabled': 1}
 \}
+
+"https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ccls.lua
+"let ccls_conf = {
+"  \ 'cmd': ['ccls'],
+"  \ 'filetypes': ['c', 'cpp', 'objc', 'objcpp', 'cuda'],
+"  \ 'root_markers': ['compile_commands.json', '.ccls', '.git'],
+"  \ 'offset_encoding': 'utf-32',
+"  \ 'workspace_required': 1,
+"  \ }
+"
+"call v:lua.vim.lsp.config('ccls', ccls_conf)
+if has('nvim')
+  call v:lua.vim.lsp.config('ccls', {
+    \ 'cmd': ['ccls'],
+    \ 'filetypes': ['c', 'cpp', 'objc', 'objcpp', 'cuda'],
+    \ 'root_markers': ['compile_commands.json', '.ccls', '.git'],
+    \ 'offset_encoding': 'utf-32',
+    \ 'workspace_required': 1,
+    \ })
+  call v:lua.vim.lsp.enable('ccls')
+endif
 
 ""ale plugin
 "let g:ale_enabled = 0
