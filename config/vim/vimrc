@@ -9,144 +9,109 @@
 " ':normal zR' unfold everything
 " ':normal zm' fold one more level (fold more)
 " ':normal zM' fold everything
-" ':normal za' toggle one fold (fold around)
+" ':normal za' toggle one fold
 "
 "
 
 
-" GENERAL CONFIGURATION OPTIONS {{{
+" options {{{
 if !has('nvim')
-  set nocompatible " use Vim settings, rather than Vi settings
-  set encoding=utf8 " set character encoding
-  set hidden " use hidden buffers
-  set autoread " automatically re-read files if unmodified inside vim
-  set ttimeout " time out on key codes (but not on :mappings)
-  set ttimeoutlen=50
-  syntax on " switch on syntax highlighting
-  set autoindent " enable autoindenting
-  if !empty($DISPLAY) " we dont want to enable termguicolors if we are in tty
-    set termguicolors " use 24-bit color
+  set nocompatible
+  syntax on
+  set encoding=utf8 hidden autoread ttimeout ttimeoutlen=50 autoindent wildmenu
+    \ wildoptions=pum,tagfile noerrorbells laststatus=2 mouse=nv hlsearch incsearch
+  if !empty($DISPLAY)
+    set termguicolors
   endif
-  set wildmenu " display command line's tab autocomplete options as a menu
-  set wildoptions=pum,tagfile " display the completion matches using the popup menu
-  set noerrorbells " disable beep on errors
-  set laststatus=2 " the last window will always(2) have a status line
-  set mouse=nv " mouse available in normal and visual modes
-  set hlsearch " when there is a previous search pattern, highlight all its matches
-  set incsearch " while typing a search command, show where the pattern, as it was typed so far, matches
-  " cursor style
-  " Set cursor style (DECSCUSR), VT520.
-  "  0  blinking block.
-  "  1  blinking block (default).
-  "  2  steady block.
-  "  3  blinking underline.
-  "  4  steady underline.
-  "  5  blinking bar, xterm.
-  "  6  steady bar, xterm
+  " see: XTerm Control Sequences (DECSCUSR)
   let &t_EI = "\e[2 q" " set cursor to a block in normal mode
   let &t_SI = "\e[6 q" " set cursor to a vertical bar in insert mode
 endif
-set clipboard=unnamedplus " copy to system clipboard
-filetype plugin on " enable file type detection
-"set directory="~/.vim/swap//"
-"set backupdir="~/.vim/backup//"
-set updatetime=500
 colorscheme slate
-set number " show line numbers on the sidebar
-set relativenumber " set line numbers relative to the line of the cursor
-set cursorline " highlight the line currently under the cursor
-set visualbell " flash the screen instead of beeping on errors
-set splitright " split windows right when :vsplit
-set splitbelow " split windows below when :split
-set scrolloff=5 " minimal number of screen lines to keep above and below the cursor.
-set nowrap " don't wrap lines
-set linebreak " wrap lines at convenient points
-"set list " display hidden characters
-set listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•
-set listchars+=eol:¬,space:·
-set ignorecase " ignore case when searchihng...
-set smartcase " ...unless you type a capital
-" This will look in the current directory for 'tags', and work up the tree
-" towards root until one is found.
-" From: http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
-set tags=tags;/
-set showmode statusline=[%F]%m%r%h%w%=[%{&ff}/%Y]\ [line\ %l\/%L,\ col\ %c]
+set clipboard=unnamedplus number relativenumber cursorline splitright splitbelow
+  \ visualbell scrolloff=5 nowrap linebreak ignorecase smartcase updatetime=500
+  \ listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•,eol:¬,space:·
+  \ showmode statusline=[%F]%m%r%h%w%=[%{&ff}/%Y]\ [line\ %l\/%L,\ col\ %c]
 "}}}
 
 
-" KEY MAPPINGS {{{
-nnoremap ; :
-nnoremap : ;
+" key-mapping {{{
+" swap ; and : behavior in normal mode
+nn ; :
+nn : ;
 
-" Yank to end of line
-noremap Y y$
+if !has('nvim')
+  nn Y y$
+  nn <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
+end
 
 " leader
-nnoremap <space> <nop>
+nn <space> <nop>
 let g:mapleader = "\<space>"
 let g:maplocalleader = "\<space>"
 
-" double tap esc to enter normal mode (inside terminal mode)
-tnoremap <Esc><Esc> <C-\><C-N>
+" open help for word under the cursor
+nn <leader>h :h <c-r><c-w><cr>
+nn <leader>H yiW:h <c-r>"<cr>
+
+" from terminal insert mode to terminal normal mode
+tnoremap <C-n> <C-\><C-n>
 
 " reload vim configuration
-nnoremap <silent> <leader>. :so $MYVIMRC\|nohls\<cr>
+nm <silent> <leader>. :so $MYVIMRC<CR>:normal <C-L><CR>
 
 function ToggleColorcolumn()
   if &colorcolumn ==# ""
-    "set colorcolumn=80
     set colorcolumn=80,100,120
   else
     set colorcolumn=""
   endif
 endfunction
-nnoremap <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
+nn <silent> <Leader>, :IndentGuidesToggle\|set list!\|call ToggleColorcolumn()<cr>
 
 " clear search
-nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+if !has('nvim')
+  nn <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+end
 
-inoremap {<cr> {}<left><cr><up><esc>o
+" autopair curly brackets
+ino {<cr> {}<left><cr><up><esc>o
 
-inoremap {% {%%}<left><left>
+" autopair for jinja templates
+ino {% {%%}<left><left>
 
 " fold everything but selection
 "https://stackoverflow.com/questions/674613/vim-folds-for-everything-except-something
-vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
+vn <Leader>za <Esc>`<kzfgg`>jzfG`<
 
 " scroll up and down
-nnoremap <down> <C-e><down>
-nnoremap <up> <C-y><up>
-nnoremap <A-down> <C-e>
-nnoremap <A-up> <C-y>
+nn <down> <C-e><down>
+nn <up> <C-y><up>
+nn <A-j> <C-e>
+nn <A-k> <C-y>
 "}}}
 
 
-" LANGUAGE DEPENDENT OPTIONS {{{
-" see :h tabstop
-"https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
+" language dependent options {{{
 augroup custom_indentation
-  " :help autocmd-groups
   autocmd!
-  autocmd Filetype vim setlocal shiftwidth=2 softtabstop=2 expandtab
-\    foldmethod=marker "nofoldenable
-  autocmd Filetype c setlocal shiftwidth=4 tabstop=4 noexpandtab
+  autocmd Filetype vim setlocal sw=2 sts=2 et fdm=marker
+  autocmd Filetype c setlocal sw=4 ts=4 noet
   autocmd Filetype python setlocal sw=4 sts=4 et
-  autocmd Filetype javascript setlocal sw=2 ts=2 noet
-  autocmd Filetype java setlocal sw=2 ts=2 noet
-  autocmd Filetype lua setlocal sw=2 ts=2 noet
+  autocmd Filetype javascript\|java\|lua setlocal sw=2 ts=2 noet
 augroup END
 "}}}
 
 
-" PROJECT DEPENDENT OPTIONS {{{
+" project dependent options {{{
 set exrc " use local .vimrc files
 let g:c_syntax_for_h = 1 " this should be adjusted depending on the project: c -> 1, cpp -> 0
 "}}}
 
 
-" PLUGINS {{{
-runtime ftplugin/man.vim
+" plugins {{{
 if !has('nvim')
+  runtime ftplugin/man.vim
   packadd termdebug
 endif
 
@@ -160,6 +125,9 @@ call plug#begin()
     Plug 'mattn/vim-lsp-settings' " lsp autoconfiguration
     Plug 'prabirshrestha/asyncomplete.vim' " lsp autocompletion dependency
     Plug 'prabirshrestha/asyncomplete-lsp.vim' " lsp autocompletion
+  else
+    Plug 'neovim/nvim-lspconfig' " quickstart configs for Nvim LSP
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   endif
   Plug 'preservim/tagbar'
   Plug 'preservim/nerdtree'
@@ -177,60 +145,17 @@ call plug#end()
 
 " rainbow plugin
 let g:rainbow_active = 1
-
-" lightline plugin
-"set noshowmode " since it is shown in lightline anyways
-"let g:lightline = {'colorscheme':'wombat','active':{'left':[[ 'mode','paste'],['readonly', 'absolutepath','modified']],}}
-
 " tagbar plugin
 let g:tagbar_width = max([25, winwidth(0) / 5])
-"https://stackoverflow.com/questions/35330381/getting-alt-to-work-in-the-terminal-with-tmux-and-vim
-"https://github.com/tmux/tmux/wiki/Modifier-Keys
-"https://vim.fandom.com/wiki/Get_Alt_key_to_work_in_terminal
-":h tmux-integration
-if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-  "where  is inserted in Vim by pressing <C-v><Esc>	
-  nnoremap b :TagbarToggle jf<cr>
-else
-  nnoremap <A-b> :TagbarToggle jf<cr>
-endif
 let g:tagbar_map_showproto="<space><space>"
 nnoremap <leader>t :TagbarToggle jf<cr>
-
+nnoremap <leader>b :TagbarToggle jf<cr>
 " nertree plugin
-if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-  nnoremap n :NERDTreeToggle<cr>
-else
-  nnoremap <A-n> :NERDTreeToggle<cr>
-endif
 nnoremap <leader>n :NERDTreeToggle<cr>
-
-""ale plugin
-"let g:ale_enabled = 0
-"let g:ale_lint_on_text_changed = 0
-"let g:ale_lint_on_insert_leave = 0
-"imap <C-c> <Plug>(ale_complete)
-""let g:ale_c_cc_executable = 'gcc'
-""let g:ale_c_cc_executable = 'clang'
-"                    \ 'java':['javac', 'eclipselsp'],
-"let g:ale_linters = {
-"                    \ 'c': ['ccls'],
-"                    \ 'cpp': ['ccls'],
-"                    \ 'java':['eclipselsp'],
-"                    \ 'python':['ruff', 'pylsp']
-"                    \}
-"let g:ale_fixers = {
-"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-""\   'javascript': ['eslint'],
-"\}
-"
-"let g:c_syntax_for_h = 1 " this should be adjusted depending on the project
-"let g:ale_c_cc_use_header_exts = ['h'] " this should be adjusted depending on the project
-
 "}}}
 
 
-" LSP CONFIGURATION {{{
+" lsp configuration {{{
 if !has('nvim')
   " lsp plugin
   let g:lsp_diagnostics_float_insert_mode_enabled = 0
@@ -266,15 +191,9 @@ if !has('nvim')
   \}
 
 elseif has('nvim')
-  "https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ccls.lua
-  call v:lua.vim.lsp.config('ccls', {
-    \ 'cmd': ['ccls'],
-    \ 'filetypes': ['c', 'cpp', 'objc', 'objcpp', 'cuda'],
-    \ 'root_markers': ['compile_commands.json', '.ccls', '.git'],
-    \ 'offset_encoding': 'utf-32',
-    \ 'workspace_required': 1,
-    \ })
-  call v:lua.vim.lsp.enable('ccls')
+  "call v:lua.vim.lsp.enable('ccls')
+  call v:lua.vim.lsp.enable('clangd')
+  call v:lua.vim.lsp.enable('pyright')
 endif
 "}}}
 
