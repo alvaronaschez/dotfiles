@@ -11,9 +11,10 @@ build-essential
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
-vim-gtk3
-vim-scripts
-vim-doc
+"vim-gtk3
+"vim-scripts
+"vim-doc
+vim-athena
 git
 btop
 
