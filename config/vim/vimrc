@@ -19,7 +19,7 @@ if !has('nvim')
   set nocompatible
   syntax on
   set autoindent autoread encoding=utf8 hidden hlsearch incsearch laststatus=2
-    \ mouse=nv noerrorbells ttimeout ttimeoutlen=50 wildmenu wildoptions=pum,tagfile
+    \ mouse=nv noerrorbells showcmd ttimeout ttimeoutlen=50 wildmenu wildoptions=pum,tagfile
 
   if !empty($DISPLAY)
     set termguicolors
@@ -29,7 +29,7 @@ if !has('nvim')
   let &t_SI = "\e[6 q" " set cursor to a vertical bar in insert mode
 endif
 filetype plugin indent on
-colorscheme slate
+color habamax
 set clipboard=unnamedplus cursorline ignorecase linebreak nowrap number
   \ relativenumber scrolloff=5 showmode smartcase splitbelow splitright
   \ updatetime=500 visualbell
