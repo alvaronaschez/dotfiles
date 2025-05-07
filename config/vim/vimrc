@@ -144,6 +144,7 @@ call plug#begin()
   "Plug 'meatballs/vim-xonsh' " xonsh python-based shell plugin
   "Plug 'itchyny/lightline.vim'
   "Plug 'dense-analysis/ale'
+  Plug 'ap/vim-css-color'
 call plug#end()
 
 "fugitive plugin
