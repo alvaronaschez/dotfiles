@@ -1,1 +1,67 @@
-= hola =
+= vim =
+
+== modes ==
+(:h vim-modes)
+- normal
+- visual: charwise-visual, linewise-visual, blockwise-visual
+- select
+- insert
+- cmdline
+- ex
+- terminal
+- operator-pending
+- replace
+- virtual replace
+- insert normal
+- insert visual
+- insert select
+
+The most important ones are: normal, insert and cmdline. And maybe visual.
+
+== definitions ==
+(:h definitions)
+- buffer: Contains lines of text, usually from a file.
+- screen: The whole area that Vim uses to display things.
+- window: A view on a buffer.  There can be multiple windows for one buffer.
+- frame: (only in nvim docs) Windows are kept in a tree of frames.  Each frame contains a column,
+  row, or window ("leaf" frame).
+- tabpage: A tab page holds one or more windows. (:h tabpage)
+
+A screen contains one or more windows, separated by status lines and with the
+command line at the bottom.
+>
+        +-------------------------------+
+ screen | window 1      | window 2      |
+        |               |               |
+        |               |               |
+        |= status line =|= status line =|
+        | window 3                      |
+        |                               |
+        |                               |
+        |==== status line ==============|
+        |command line                   |
+        +-------------------------------+
+
+The command line is also used for messages.  It scrolls up the screen when
+there is not enough room in the command line.
+
+A difference is made between four types of lines:
+
+- buffer lines:  The lines in the buffer.  This is the same as the
+                 lines as they are read from/written to a file.  They
+                 can be thousands of characters long.
+- logical lines: The buffer lines with folding applied.  Buffer lines
+                 in a closed fold are changed to a single logical line:
+                 "+-- 99 lines folded".  They can be thousands of
+                 characters long.
+- window lines:  The lines displayed in a window: A range of logical
+                 lines with wrapping, line breaks, etc.  applied.  They
+                 can only be as long as the width of the window allows,
+                 longer lines are wrapped or truncated.
+- screen lines:  The lines of the screen that Nvim uses.  Consists of
+                 the window lines of all windows, with status lines
+                 and the command line added.  They can only be as long
+                 as the width of the screen allows.  When the command
+                 line gets longer it wraps and lines are scrolled to
+                 make room.
+

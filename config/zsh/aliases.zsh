@@ -42,7 +42,10 @@ alias hl="rg --passthru"
 alias repl=rlwrap
 alias xsh=xonsh
 
-alias v="VIMRUNTIME=~/src/vim/runtime ~/src/vim/src/vim"
+#alias v="VIMRUNTIME=~/src/vim/runtime ~/src/vim/src/vim"
+alias v=vim
+alias nv=nvim
+alias vv=nvim
 # https://www.rahuljuliato.com/posts/launching-emacs-terminal
 alias emd="emacs --daemon"
 #alias em="emacsclient -t"
@@ -50,7 +53,6 @@ alias emd="emacs --daemon"
 # using the following aliases you don't need to start the daemon beforehand
 alias em="emacsclient -t -a ''"
 alias emg="emacsclient -c -a ''"
-alias nv=nvim
 alias tx=tmux
 alias tm=tmux
 alias vmore="vim -u ~/.config/vim/vimrc.more -"
@@ -72,7 +74,7 @@ alias remove="sudo apt-get purge --autoremove"
 alias uninstall=remove
 alias search="apt-cache search"
 # see 'man 5 sources.list'
-alias edit-sources="sudo vim /etc/apt/sources.list"
+alias edit-sources="sudoedit /etc/apt/sources.list"
 # alias installed="apt list --installed"
 # alias showmanual="apt-mark showmanual"
 # alias showauto="apt-mark showauto"
@@ -99,23 +101,24 @@ alias cdv="cd ~/.config/vim"
 alias cds="cd ~/Scripts"
 # alias cdk="cd ~/Workspace/linux/kernel/stable"
 
-alias vz="vi ~/.config/zsh/config.zsh"
+alias vvim="vim ~/.config/vim/vimrc"
+alias nvnv="nv ~/.config/nvim/init.vim"
+#alias nvnv="nv ~/.config/vim/vimrc"
+
+alias vz="$EDITOR ~/.config/zsh/config.zsh"
 alias vzsh=vz
-alias val="vi ~/.config/zsh/aliases.zsh"
-alias val="vi ~/.config/zsh/aliases.zsh"
-alias vsway="vi ~/.config/sway/config"
-alias vfoot="vi ~/.config/foot/foot.ini"
-alias vvim="vi ~/.config/vim/vimrc"
-#alias nvnv="nv ~/.config/nvim/init.vim"
-alias nvnv="nv ~/.config/vim/vimrc"
-alias vtmux="vi ~/.config/tmux/tmux.conf"
-alias vgit="vi ~/.config/git/config"
-alias vranger="vi ~/.config/ranger/rifle.conf"
-alias vneofetch="vi ~/.config/neofetch/config.conf"
-alias vscratch="vi ~/scratchpad.txt"
-alias vtofi="vi ~/.config/tofi/config"
-alias vvieb="vi ~/.config/Vieb/viebrc"
-alias vkeyd="vi ~/.config/keyd/config"
+alias val="$EDITOR ~/.config/zsh/aliases.zsh"
+alias val="$EDITOR ~/.config/zsh/aliases.zsh"
+alias vsway="$EDITOR ~/.config/sway/config"
+alias vfoot="$EDITOR ~/.config/foot/foot.ini"
+alias vtmux="$EDITOR ~/.config/tmux/tmux.conf"
+alias vgit="$EDITOR ~/.config/git/config"
+alias vranger="$EDITOR ~/.config/ranger/rifle.conf"
+alias vneofetch="$EDITOR ~/.config/neofetch/config.conf"
+alias vscratch="$EDITOR ~/scratchpad.txt"
+alias vtofi="$EDITOR ~/.config/tofi/config"
+alias vvieb="$EDITOR ~/.config/Vieb/viebrc"
+alias vkeyd="$EDITOR ~/.config/keyd/config"
 
 alias szsh="source ~/.zshrc"
 alias stmux="tmux source ~/.config/tmux/tmux.conf"
@@ -131,6 +134,9 @@ alias rrw="ranger ~/Documents/backgrounds"
 alias kbm="sudo mount /dev/sda /media/alvaro/kobo"
 alias kbum="sudo umount /media/alvaro/kobo"
 alias kbcd="cd /media/alvaro/kobo"
+
+alias showmethekey-enable="sudo usermod -a -G wheel $USER"
+alias showmethekey-disable="sudo gpasswd -d $USER wheel"
 
 alias config-kb="sudo dpkg-reconfigure keyboard-configuration"
 

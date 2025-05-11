@@ -27,9 +27,11 @@ if !has('nvim')
   " see: XTerm Control Sequences (DECSCUSR)
   let &t_EI = "\e[2 q" " set cursor to a block in normal mode
   let &t_SI = "\e[6 q" " set cursor to a vertical bar in insert mode
+else
+  set sidescroll=0
 endif
 filetype plugin indent on
-color habamax
+color slate
 set clipboard=unnamedplus cursorline ignorecase linebreak nowrap number
   \ relativenumber scrolloff=5 showmode smartcase splitbelow splitright
   \ updatetime=500 visualbell
@@ -200,6 +202,17 @@ elseif has('nvim')
   "call v:lua.vim.lsp.enable('ccls')
   call v:lua.vim.lsp.enable('clangd')
   call v:lua.vim.lsp.enable('pyright')
+  call v:lua.vim.lsp.enable('gopls')
+
+  nn gd :lua vim.lsp.buf.definition()<cr>
+  nn gs :lua vim.lsp.buf.document_symbol()<cr>
+  nn gS :lua vim.lsp.buf.workspace_symbol()<cr>
+  nn gr :lua vim.lsp.buf.references()<cr>
+  nn gi :lua vim.lsp.buf.implementation()<cr>
+  nn gt :lua vim.lsp.buf.type_definition()<cr>
+lua << EOF
+  x =  vim.lsp.buf
+EOF
 endif
 "}}}
 

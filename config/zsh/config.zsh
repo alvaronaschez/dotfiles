@@ -1,6 +1,7 @@
 
 export -U PATH=$PATH:/usr/sbin
 export -U PATH=$PATH:~/.local/bin
+export -U PATH=$PATH:~/go/bin
 
 # disable Ctrl-S stop signal
 stty stop ""
@@ -29,13 +30,13 @@ export PAGER=less
 export MANPAGER="vim +MANPAGER --not-a-term -"
 #export PAGER=batcat
 
-export EDITOR='vim'
-# if [[ -n $SSH_CONNECTION || -z $DISPLAY ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
+#export EDITOR='vim'
+if [[ -n $SSH_CONNECTION || -z $DISPLAY ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+export VISUAL=nvim
 
 # Options ------------------------------------------------------------------------------------------
 # # Completion.
