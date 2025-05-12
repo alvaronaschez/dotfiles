@@ -32,8 +32,8 @@ else
 endif
 filetype plugin indent on
 color slate
-set clipboard=unnamedplus cursorline ignorecase linebreak nowrap number
-  \ relativenumber scrolloff=5 showmode smartcase splitbelow splitright
+set clipboard=unnamedplus cursorline foldnestmax=2 ignorecase linebreak nowrap
+  \ number relativenumber scrolloff=5 showmode smartcase splitbelow splitright
   \ updatetime=500 visualbell
   \ listchars=tab:→\ ,trail:·,extends:…,precedes:…,nbsp:•,eol:¬,space:·
   \ statusline=[%F]\ %m%r%h%w%=[%{&ff}/%Y]\ [line\ %l\/%L,\ col\ %c]
