@@ -65,3 +65,7 @@ A difference is made between four types of lines:
                  line gets longer it wraps and lines are scrolled to
                  make room.
 
+== tips ==
+
+- use :tc command to change directory for current tab
+

@@ -11,9 +11,9 @@ build-essential
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
-"vim-gtk3
-"vim-scripts
-"vim-doc
+#vim-gtk3
+#vim-scripts
+#vim-doc
 vim-athena
 git
 btop
@@ -36,6 +36,10 @@ python3-pygments
 swig
 swig-doc
 swig-examples
+
+# ncurses
+libncurses-dev
+ncurses-doc
 
 # language servers
 # python3-pylsp # not working well, better install it inside venv, uv, poetry or using pipx (for system-wide installation)
