@@ -1,3 +1,6 @@
+" vim: sw=2 sts=2 et
+" :h modeline
+"
 "       _
 "__   _(_)_ __ ___  _ __ ___
 "\ \ / / | '_ ` _ \| '__/ __|
@@ -97,18 +100,19 @@ nn <A-k> <C-y>
 "}}}
 
 
-" language dependent options {{{
+" language dependent {{{
 augroup custom_indentation
   autocmd!
   autocmd Filetype vim setlocal sw=2 sts=2 et fdm=marker
-  autocmd Filetype c setlocal sw=4 ts=4 noet
+  "autocmd Filetype c setlocal sw=4 ts=4 noet
+  autocmd Filetype c setlocal sw=2 sts=2 et
   autocmd Filetype python setlocal sw=4 sts=4 et
   autocmd Filetype javascript\|java\|lua setlocal sw=2 ts=2 noet
 augroup END
 "}}}
 
 
-" project dependent options {{{
+" project dependent {{{
 set exrc " use local .vimrc files
 let g:c_syntax_for_h = 1 " this should be adjusted depending on the project: c -> 1, cpp -> 0
 "}}}
@@ -163,7 +167,7 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 "}}}
 
 
-" lsp configuration {{{
+" lsp {{{
 if !has('nvim')
   " lsp plugin
   let g:lsp_diagnostics_float_insert_mode_enabled = 0
@@ -184,19 +188,19 @@ if !has('nvim')
   "nnoremap <expr><c-d> lsp#scroll(-4)
 
   " register ccls C/C++ lanuage server
-  if executable('ccls')
-     au User lsp_setup call lsp#register_server({
-        \ 'name': 'ccls',
-        \ 'cmd': {server_info->['ccls']},
-        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-        \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
-        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-        \ })
-  endif
-  " use ccls instead of clangd
-  let g:lsp_settings = {
-        \ 'clangd': {'disabled': 1}
-  \}
+  "if executable('ccls')
+  "   au User lsp_setup call lsp#register_server({
+  "      \ 'name': 'ccls',
+  "      \ 'cmd': {server_info->['ccls']},
+  "      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+  "      \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
+  "      \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+  "      \ })
+  "endif
+  "" use ccls instead of clangd
+  "let g:lsp_settings = {
+  "      \ 'clangd': {'disabled': 1}
+  "\}
 
 elseif has('nvim')
   "call v:lua.vim.lsp.enable('ccls')
@@ -210,9 +214,23 @@ elseif has('nvim')
   nn gr :lua vim.lsp.buf.references()<cr>
   nn gi :lua vim.lsp.buf.implementation()<cr>
   nn gt :lua vim.lsp.buf.type_definition()<cr>
-lua << EOF
-  x =  vim.lsp.buf
-EOF
+endif
+"}}}
+
+
+" terminal {{{
+" terminal colorscheme
+if !has('nvim')
+  " dracula theme from foot terminal
+  " /usr/share/foot/themes/dracula
+  let g:terminal_ansi_colors = [
+    \'#000000', '#ff5555', '#50fa7b', '#f1fa8c',
+    \'#bd93f9', '#ff79c6', '#8be9fd', '#bfbfbf',
+    \'#4d4d4d', '#ff6e67', '#5af78e', '#f4f99d',
+    \'#caa9fa', '#ff92d0', '#9aedfe', '#e6e6e6' ]
+
+  "highlight Terminal guibg='#282a36' guifg='#f8f8f2'
+  "highlight Terminal guibg='#000000' guifg='#f8f8f2'
 endif
 "}}}
 
