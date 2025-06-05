@@ -128,13 +128,14 @@ command Edit exe "set ul=-1 | e! | set ul=" . &ul
 
 
 " language dependent {{{
-augroup custom_indentation
+augroup language_dependant_settings
   autocmd!
-  autocmd Filetype vim setlocal sw=2 sts=2 et fdm=marker
+  autocmd Filetype vim setlocal sw=2 sts=2 et fdm=marker foldenable
   "autocmd Filetype c setlocal sw=4 ts=4 noet
-  autocmd Filetype c setlocal sw=2 sts=2 et
+  autocmd Filetype c\|cpp setlocal sw=2 sts=2 et
   autocmd Filetype python setlocal sw=4 sts=4 et
   autocmd Filetype javascript\|java\|lua setlocal sw=2 ts=2 noet
+  au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  set ft=markdown
 augroup END
 "}}}
 
@@ -172,12 +173,12 @@ call plug#begin()
   Plug 'preservim/vim-indent-guides' " visually display indent levels
   Plug 'tpope/vim-fugitive' " a git plugin so awesome it should be illegal
   Plug 'mhinz/vim-signify' " show differences with style
+  Plug 'ap/vim-css-color'
   " some interesting plugins I'm currently not using
   "Plug 'lepture/vim-jinja' " jinja templates plugin
-  Plug 'meatballs/vim-xonsh' " xonsh python-based shell plugin
+  "Plug 'meatballs/vim-xonsh' " xonsh python-based shell plugin
   "Plug 'itchyny/lightline.vim'
   "Plug 'dense-analysis/ale'
-  Plug 'ap/vim-css-color'
 call plug#end()
 
 "fugitive plugin
@@ -191,6 +192,9 @@ nnoremap <leader>t :TagbarToggle jf<cr>
 nnoremap <leader>b :TagbarToggle jf<cr>
 " nertree plugin
 nnoremap <leader>n :NERDTreeToggle<cr>
+" vimwiki
+" don't change md files filetype to vimwiki
+let g:vimwiki_global_ext = 0
 "}}}
 
 

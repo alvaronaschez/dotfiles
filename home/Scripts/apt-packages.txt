@@ -19,17 +19,21 @@ git
 btop
 
 gcc
+gcc-doc
 manpages-dev
 manpages-posix-dev
 gdb
 gdb-doc
 valgrind
 tcc# tiny c compiler
+clang
 clang-format
 cscope
 cmake
 universal-ctags
 python3-pygments
+
+libgc-dev# garbage collector for C
 
 # swig: simple wrapper and interface generator
 # https://www.swig.org/tutorial.html

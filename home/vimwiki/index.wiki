@@ -67,5 +67,6 @@ A difference is made between four types of lines:
 
 == tips ==
 
-- use :tc command to change directory for current tab
-
+- :tc - command to change directory for current tab
+- :h clear-undo
+ 

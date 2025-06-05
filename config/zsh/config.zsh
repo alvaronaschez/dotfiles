@@ -86,73 +86,28 @@ source ~/.config/zsh/aliases.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/git.plugin.zsh
+source ~/.config/zsh/vi-mode.plugin.zsh
 source ~/.config/zsh/omz.directories.zsh
 source ~/.config/zsh/omz.history.zsh
-source ~/.config/zsh/pyenv.zsh
-source ~/.config/zsh/nvm.zsh
-source ~/.config/zsh/sdkman.zsh
-
+source ~/.config/zsh/vi-mode.plugin.zsh
+VI_MODE_SET_CURSOR=true
+#MODE_INDICATOR="%F{white}$%f"
+#INSERT_MODE_INDICATOR="%f$"
+MODE_INDICATOR="%F{#666}$%f"
+#INSERT_MODE_INDICATOR="%F{#0f0}$"
+INSERT_MODE_INDICATOR="%F{#fff}$%f"
 
 # Keybindings --------------------------------------------------------------------------------------
 # run 'bindkey' alone to print all keybindings
 
-bindkey -v # vi mode
-# bindkey -M vicmd '^[' undefined-key # bind ESC to undefined-key widget
-### https://unix.stackexchange.com/a/593120
-# Remove mode switching delay.
-KEYTIMEOUT=1 # set ESC timeout to 0.01s (default value is 0.4s)
-#function _set_cursor() {
-#  echo -ne $1
-#}
-
-## cursor style
-# Set cursor style (DECSCUSR), VT520.
-# 0  ⇒  blinking block.
-# 1  ⇒  blinking block (default).
-# 2  ⇒  steady block.
-# 3  ⇒  blinking underline.
-# 4  ⇒  steady underline.
-# 5  ⇒  blinking bar, xterm.
-# 6  ⇒  steady bar, xterm.
-if [[ $DISPLAY != '' ]]; then # don't apply these settings in tty
-	function _set_cursor() {
-	  if [[ $TMUX = '' ]]; then
-	    # echo '\e[6 q'
-	    echo -ne "\e[$1 q"
-	  else
-	    # printf '\033[6 q'
-	    printf "\033[$1 q"
-	  fi
-	}
-	function _set_block_cursor() { _set_cursor 2 }
-	function _set_bar_cursor() { _set_cursor 5 }
-	#function _set_bar_cursor() { _set_cursor 1 }
-
-	function zle-keymap-select {
-	  if [[ ${KEYMAP} == vicmd ]]; then
-	      _set_block_cursor
-	  else
-	      _set_bar_cursor
-	  fi
-	}
-	zle -N zle-keymap-select
-	# ensure beam cursor when starting new terminal
-	precmd_functions+=(_set_bar_cursor) #
-	# ensure insert mode and beam cursor when exiting vim
-	zle-line-init() { zle -K viins; _set_bar_cursor }
-	zle-line-finish() { _set_block_cursor }
-	zle -N zle-line-finish
-fi
-
-### add new line after each command
-##https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command
-#precmd(){
-#	precmd() { echo }
-#}
+KEYTIMEOUT=15 # set ESC timeout to 0.15s (default value is 0.4s)
 
 # Startup ------------------------------------------------------------------------------------------
 
 
+source ~/.config/zsh/pyenv.zsh
+source ~/.config/zsh/nvm.zsh
+source ~/.config/zsh/sdkman.zsh
 # neofetch
 # figlet alvaro sanchez
 # fortune | cowsay -pf www

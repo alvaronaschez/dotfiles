@@ -87,6 +87,14 @@ function +vi-git-st() {
 zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 
 
-PROMPT='%(?.%F{green}».%F{red}»)%f [%F{blue}%~%f] ${vcs_info_msg_0_}
-$ '
+#PROMPT='%(?.%F{green}».%F{red}»)%f [%F{blue}%~%f] ${vcs_info_msg_0_}
+#$ '
+#
+#PROMPT="$PROMPT\>(vi_mode_prompt_info) "
 
+#PROMPT='%(?.%F{green}».%F{red}»)%f [%F{blue}%~%f] ${vcs_info_msg_0_}
+#$(vi_mode_prompt_info) '
+
+RPROMPT=''
+PROMPT='%(?.%F{green}».%F{red}»)%f [%F{blue}%~%f] ${vcs_info_msg_0_}
+$(vi_mode_prompt_info) %f%b'

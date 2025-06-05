@@ -31,9 +31,8 @@ function __confirm() {
 
 alias start="sway"
 alias st=start
-alias sd="__confirm shutdown now"
-alias rs="__confirm shutdown -r now"
-alias rb=rs
+alias po="__confirm poweroff"
+alias rb="__confirm reboot"
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
