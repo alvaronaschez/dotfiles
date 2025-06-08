@@ -136,6 +136,7 @@ augroup language_dependant_settings
   autocmd Filetype python setlocal sw=4 sts=4 et
   autocmd Filetype javascript\|java\|lua setlocal sw=2 ts=2 noet
   au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  set ft=markdown
+  au BufNewFile,BufRead *.wiki  set ft=vimwiki
 augroup END
 "}}}
 
@@ -236,7 +237,7 @@ if !has('nvim')
 elseif has('nvim')
   "call v:lua.vim.lsp.enable('ccls')
   call v:lua.vim.lsp.enable('clangd')
-  call v:lua.vim.lsp.enable('pyright')
+  "call v:lua.vim.lsp.enable('pyright')
   call v:lua.vim.lsp.enable('gopls')
 
   nn gd :lua vim.lsp.buf.definition()<cr>

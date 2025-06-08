@@ -88,7 +88,6 @@ alias ctagsc="ctags -R --kinds-C=+p --fields=+iaS --extras=+q /usr/include /usr/
 alias cdd="cd ~/dotfiles"
 alias cddot=cdd
 alias cdz="cd ~/.config/zsh"
-alias cdw="cd ~/Workspace"
 alias cdb="cd ~/Bookshelf"
 alias cddoc="cd ~/Documents"
 alias cddown="cd ~/Downloads"
@@ -98,7 +97,6 @@ alias cdsw=cdsway
 alias cdnv="cd ~/.config/nvim"
 alias cdv="cd ~/.config/vim"
 alias cds="cd ~/Scripts"
-# alias cdk="cd ~/Workspace/linux/kernel/stable"
 
 alias vvim="vim ~/.config/vim/vimrc"
 alias nvnv="nv ~/.config/nvim/init.vim"

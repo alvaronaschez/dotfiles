@@ -26,7 +26,6 @@ custom_aliases = {
     'vvim': 'vim ~/.config/vim/vimrc',
     'nvnv': 'nvim ~/.config/nvim/init.vim',
     'cdd': 'cd ~/dotfiles',
-    'cdw': 'cd ~/Workspace',
     'vxsh': 'vim ~/dotfiles/config/xonsh/xonshrc.xsh',
     'vxonsh': 'vim ~/dotfiles/config/xonsh/xonshrc.xsh',
     'sxsh': 'source ~/dotfiles/config/xonsh/xonshrc.xsh',
