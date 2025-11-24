@@ -1,0 +1,12 @@
+[submodule "home/.config/nvim/pack/nvim/start/vim-fugitive"]
+	path = home/.config/nvim/pack/nvim/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "home/.config/nvim/pack/nvim/start/gitsigns"]
+	path = home/.config/nvim/pack/nvim/start/gitsigns
+	url = https://github.com/lewis6991/gitsigns.nvim
+[submodule "home/.config/nvim/pack/nvim/start/nvim-lspconfig"]
+	path = home/.config/nvim/pack/nvim/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "home/.config/alacritty/alacritty-theme"]
+	path = home/.config/alacritty/alacritty-theme
+	url = https://github.com/alacritty/alacritty-theme.git

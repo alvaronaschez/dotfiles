@@ -1,0 +1,4 @@
+[general]
+import = [
+  "~/.config/alacritty/alacritty-theme/themes/google.toml"
+]
