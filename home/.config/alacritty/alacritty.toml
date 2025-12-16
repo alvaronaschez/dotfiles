@@ -1,4 +1,4 @@
 [general]
 import = [
-  "~/.config/alacritty/alacritty-theme/themes/google.toml"
+  "~/.config/alacritty/alacritty-theme/themes/aura.toml"
 ]

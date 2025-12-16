@@ -2,6 +2,7 @@ set number relativenumber
 set ignorecase
 set notermguicolors
 set clipboard=unnamedplus
+set nofoldenable
 
 "set colorcolumn=80
 "color paramount | set bg=light
