@@ -1,11 +1,10 @@
 set number relativenumber
-set ignorecase
+set ignorecase smartcase
 set notermguicolors
 set clipboard=unnamedplus
 set nofoldenable
 
 "set colorcolumn=80
-"color paramount | set bg=light
 
 augroup language_dependant_settings
 	autocmd!
