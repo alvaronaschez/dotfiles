@@ -13,12 +13,16 @@ augroup language_dependant_settings
 	autocmd Filetype javascript\|typescript setlocal sw=2 sts=2 et fdm=syntax
 augroup END
 
+let g:tagbar_ctags_bin="uctags"
+
 lua << EOF
 -- apt install clangd
 vim.lsp.enable('clangd')
 vim.lsp.enable('jdtls')
 -- apt install python3-lsp python3-lsp-black...
 vim.lsp.enable('pylsp')
+-- npm install -g pyright
+vim.lsp.enable('pyright')
 -- npm install -g typescript typescript-language-server
 vim.lsp.enable('ts_ls')
 EOF
