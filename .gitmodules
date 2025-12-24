@@ -10,3 +10,6 @@
 [submodule "home/.config/alacritty/alacritty-theme"]
 	path = home/.config/alacritty/alacritty-theme
 	url = https://github.com/alacritty/alacritty-theme.git
+[submodule "home/.config/nvim/pack/nvim/start/tagbar"]
+	path = home/.config/nvim/pack/nvim/start/tagbar
+	url = https://github.com/preservim/tagbar
