@@ -28,8 +28,8 @@ font pango:monospace 8
 exec --no-startup-id dex --autostart --environment i3
 
 exec --no-startup-id xrandr --output HDMI-2 --left-of eDP-1
-exec --no-startup-id feh --bg-fill ~/Downloads/tp.png
-bindsym $mod+Escape exec i3lock -etfn -i ~/Downloads/tp.png
+exec --no-startup-id feh --bg-fill ~/dotfiles/tp.png
+bindsym $mod+Escape exec i3lock -etfn -i ~/dotfiles/tp.png
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
