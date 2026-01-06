@@ -1,0 +1,7 @@
+#	$OpenBSD: fbtab.head,v 1.2 1999/05/05 06:56:34 deraadt Exp $
+# login(1) reads this file to determine which devices should be chown'd to
+# the new user. Format is:
+# login-tty	perm	device:[device]:...
+/dev/ttyC0	0600	/dev/console:/dev/wskbd:/dev/wskbd[0-9]:/dev/wsmouse:/dev/wsmouse[0-9]:/dev/ttyCcfg:/dev/ttyC4:/dev/dri/card0:/dev/dri/renderD128
+# samples
+#/dev/ttyC0	0600	/dev/fd0
