@@ -3,7 +3,8 @@ openbsd
 
 ```
 pkg_add intel-media-driver libva-utils
-pkg_add i3 alacritty kitty neovim chromium firefox feh universal-ctags xclip noto-fonts
+pkg_add neovim chromium universal-ctags rxvt-unicode
+pkg_add i3 feh i3lock i3status xclip noto-fonts
 ```
 
 
