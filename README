@@ -1,6 +1,9 @@
 
 openbsd
 
+read `man afterboot`
+
+
 ```
 pkg_add intel-media-driver libva-utils
 pkg_add neovim chromium universal-ctags rxvt-unicode
@@ -12,5 +15,10 @@ man dhcpleased.conf
 
 doas sh -c "echo 'interface iwx0 { ignore dns }' >> /etc/dhcpleased.conf"
 
+https://www.c0ffee.net/blog/openbsd-on-a-laptop/
 
+#rcctl set apmd status on
+rcctl enable apmd
+rcctl set apmd flags -A -z 15
+rcctl start apmd
 

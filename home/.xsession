@@ -2,4 +2,5 @@ export LANG="en_US.UTF-8"
 xsetroot -solid black &
 xrandr --output HDMI-2 --left-of eDP-1
 
-exec i3
+export ENV=$HOME/.kshrc
+i3
