@@ -20,7 +20,7 @@ lua << EOF
 vim.lsp.enable('clangd')
 vim.lsp.enable('jdtls')
 -- apt install python3-lsp python3-lsp-black...
-vim.lsp.enable('pylsp')
+--vim.lsp.enable('pylsp')
 -- npm install -g pyright
 vim.lsp.enable('pyright')
 -- npm install -g typescript typescript-language-server
