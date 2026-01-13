@@ -22,3 +22,6 @@ rcctl enable apmd
 rcctl set apmd flags -A -z 15
 rcctl start apmd
 
+edit /etc/X11/xenodm/Xsetup_0
+comment out the line that initializes xconsole
+
